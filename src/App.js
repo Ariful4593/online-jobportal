@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Login from './components/Login/Login'
+import PendingArea from "./components/PendingArea/PendingArea";
+import PostProject from "./components/PostProject/PostProject";
+import Admin from './components/Admin/Admin';
+import PostedJob from "./components/PostedJob/PostedJob";
+import SinglePost from "./components/SinglePost/SinglePost";
+import Navbar from "./components/Navbar/Navbar"
 
+export const collectionContext = createContext()
 function App() {
+
+  const [loginInfo, setLoginInfo] = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <collectionContext.Provider value={{ value1: [loginInfo, setLoginInfo] }}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/postproject">
+            <PostProject />
+          </Route>
+          <Route path="/pendingArea">
+            <PendingArea />
+          </Route>
+          <Route path="/adminPanel">
+            <Admin />
+          </Route>
+          <Route path="/postedJob">
+            <PostedJob />
+          </Route>
+          <Route path="/singlePost/:id">
+            <SinglePost />
+          </Route>
+        </Switch>
+      </Router>
+    </collectionContext.Provider>
   );
 }
 
