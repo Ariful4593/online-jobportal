@@ -54,36 +54,6 @@
         cursor: pointer;
         margin: 5px 5px 5px 0px;
     }
-    .client-area{
-        border-bottom: 1px solid lightgray;
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-        margin-bottom: 16px;
-        font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
-    }
-    
-    .about-client{
-        padding: 10px;
-        border-bottom: 1px solid lightgray;
-    }
-    
-    .client-details{
-        padding: 10px;
-    }
-    .client-details p{
-        margin: 0;
-    }
-    
-    .project-bid{
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-    }
-    .proposal h6{
-        font-weight: bold;
-    }
-    .place-bid{
-        text-align-last: center;
-    }
 }
 
 @media screen and (max-width: 767px) and (min-width: 451px){
@@ -121,75 +91,7 @@
     .project-details-title{
         margin-top: 7px;
     }
-    .details-left{
-        width: 60% !important;
-    }
-    .details-right{
-        width: 40% !important;
-    }
-    .project-details-title-area{
-        padding: 10px;
-        border-bottom: 1px solid lightcoral;
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-    }
-    .project-details-title-area h3{
-        font-size: 20px;
-        font-weight: 700;
-    }
-    .bidding-price{
-        margin: 0;
-    }
-    .bidding{
-        color: #4d525b;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 1.45;
-        text-align: right;
     
-    }
-    .project-details-description-area{
-        padding: 10px;
-    }
-    .project-details-description-area p{
-        text-align: justify;
-    }
-    
-    .skill-area span{
-        border: 1px solid;
-        cursor: pointer;
-        margin: 5px 5px 5px 0px;
-    }
-    .client-area{
-        border-bottom: 1px solid lightgray;
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-        margin-bottom: 16px;
-        font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
-    }
-    
-    .about-client{
-        padding: 10px;
-        border-bottom: 1px solid lightgray;
-    }
-    
-    .client-details{
-        padding: 10px;
-    }
-    .client-details p{
-        margin: 0;
-    }
-    
-    .project-bid{
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-    }
-    .proposal h6{
-        font-weight: bold;
-    }
-    .place-bid{
-        text-align-last: center;
-    }
 }
 
 @media screen and (min-width: 768px){
@@ -241,6 +143,7 @@
     }
     .details-right{
         width: 40% !important;
+        text-align-last: end;
     }
     .bidding-price{
         margin: 0;
@@ -264,35 +167,5 @@
         border: 1px solid;
         cursor: pointer;
         margin: 5px 5px 5px 0px;
-    }
-    .client-area{
-        border-bottom: 1px solid lightgray;
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-        margin-bottom: 16px;
-        font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
-    }
-    
-    .about-client{
-        padding: 10px;
-        border-bottom: 1px solid lightgray;
-    }
-    
-    .client-details{
-        padding: 10px;
-    }
-    .client-details p{
-        margin: 0;
-    }
-    
-    .project-bid{
-        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-        background: #fff;
-    }
-    .proposal h6{
-        font-weight: bold;
-    }
-    .place-bid{
-        text-align-last: center;
     }
 }

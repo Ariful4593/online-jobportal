@@ -7,9 +7,9 @@
     ul li{
         list-style-type: none;
     }
-    .project-area-contest ul{
+    /* .project-area-contest ul{
         padding: 0 !important;
-    }
+    } */
     .project-area-contest ul li:hover{
         cursor: pointer;
         background-color: #F0F0F0;
@@ -110,9 +110,9 @@
     ul li{
         list-style-type: none;
     }
-    .project-area-contest ul{
+    /* .project-area-contest ul{
         padding: 0 !important;
-    }
+    } */
     .project-area-contest ul li:hover{
         cursor: pointer;
         background-color: #F0F0F0;
@@ -212,9 +212,9 @@
     ul li{
         list-style-type: none;
     }
-    .project-area-contest ul{
+    /* .project-area-contest ul{
         padding: 0 !important;
-    }
+    } */
     .project-area-contest ul li:hover{
         cursor: pointer;
         background-color: #F0F0F0;
@@ -315,9 +315,9 @@
     ul li{
         list-style-type: none;
     }
-    .project-area-contest ul{
+    /* .project-area-contest ul{
         padding: 0 !important;
-    }
+    } */
     .project-area-contest ul li:hover{
         cursor: pointer;
         background-color: #F0F0F0;

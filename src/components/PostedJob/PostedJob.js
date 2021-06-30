@@ -44,7 +44,7 @@ const PostedJob = () => {
             <div className="row">
                 <div className="col-12 col-md-3 project-area" >
                     <div className="project-header">
-                        <LeftSidebar/>
+                        <LeftSidebar />
                     </div>
                 </div>
                 <div className="col-12 col-md-9 search-project-area">

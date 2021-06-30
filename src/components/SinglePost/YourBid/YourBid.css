@@ -1,0 +1,39 @@
+.your-bid-area{
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    background: #fff;
+    margin-bottom: 16px;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.about-your-bid{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.about-your-bid h6{
+    font-weight: bold;
+}
+.your-bid-details{
+    padding: 10px;
+}
+.your-bid-details{
+    margin: 0;
+}
+.member{
+    font-size: 15px;
+    margin-left: 30%;
+    font-weight: bold;
+    color: darkgray;
+}
+.bidding-day{
+    font-weight: bold;
+}
+
+.bid-insights{
+    border: none;
+    width: 100%;
+}
+.bid-counter{
+    font-weight: bold;
+}

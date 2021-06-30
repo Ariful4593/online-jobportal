@@ -114,8 +114,12 @@ const Navbar = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>View Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Membership</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Account Analytics</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Bid Insights</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
         </Menu>
     );
 

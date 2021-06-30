@@ -1,0 +1,14 @@
+.project-bid{
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    background: #fff;
+}
+
+.proposal h6{
+    font-weight: bold;
+}
+.place-bid{
+    text-align-last: center;
+}
+.place-bid-area{
+    text-align-last: end;
+}

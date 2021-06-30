@@ -1,0 +1,39 @@
+.details-left{
+    width: 60% !important;
+}
+.details-right{
+    width: 40% !important;
+}
+.project-details-title-area{
+    padding: 10px;
+    border-bottom: 1px solid lightcoral;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    background: #fff;
+}
+.project-details-title-area h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+.bidding-price{
+    margin: 0;
+}
+.bidding{
+    color: #4d525b;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.45;
+    text-align: right;
+
+}
+.project-details-description-area{
+    padding: 10px;
+}
+.project-details-description-area p{
+    text-align: justify;
+}
+
+.skill-area span{
+    border: 1px solid;
+    cursor: pointer;
+    margin: 5px 5px 5px 0px;
+}

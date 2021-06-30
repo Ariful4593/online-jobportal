@@ -1,0 +1,19 @@
+.client-area{
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    background: #fff;
+    margin-bottom: 16px;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.about-client{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.client-details{
+    padding: 10px;
+}
+.client-details p{
+    margin: 0;
+}

@@ -8,9 +8,10 @@ import Login from './components/Login/Login'
 import PendingArea from "./components/PendingArea/PendingArea";
 import PostProject from "./components/PostProject/PostProject";
 import Admin from './components/Admin/Admin';
-import PostedJob from "./components/PostedJob/PostedJob";
-import SinglePost from "./components/SinglePost/SinglePost";
 import Navbar from "./components/Navbar/Navbar"
+import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
+import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
+import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
 
 export const collectionContext = createContext()
 function App() {
@@ -37,10 +38,13 @@ function App() {
             <Admin />
           </Route>
           <Route path="/postedJob">
-            <PostedJob />
+            <JobPostedArea />
           </Route>
           <Route path="/singlePost/:id">
-            <SinglePost />
+            <SinglePostArea />
+          </Route>
+          <Route path="/details-item/:category">
+            <ListItemDetails/>
           </Route>
         </Switch>
       </Router>
