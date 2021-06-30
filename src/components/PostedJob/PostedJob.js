@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './PostedJob.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import LeftSidebar from './LeftSidebar/LeftSidebar';
 
 
 const PostedJob = () => {
@@ -39,17 +40,17 @@ const PostedJob = () => {
 
 
     return (
-        <div className=" mt-5 job-post-area">
+        <div className="job-post-area">
             <div className="row">
-                <div className="col-md-3 project-area" >
+                <div className="col-12 col-md-3 project-area" >
                     <div className="project-header">
-                        <h2>Project</h2>
+                        <LeftSidebar/>
                     </div>
                 </div>
-                <div className="col-md-9">
+                <div className="col-12 col-md-9 search-project-area">
                     <div className="search-results">
                         <div className="search-area row">
-                            <div className="col-12">
+                            <div className="col-12 search-block">
                                 <input className="w-75 form-control" value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search category" />
                             </div>
                         </div>
@@ -58,14 +59,14 @@ const PostedJob = () => {
                                 <Link to={`/singlePost/${data._id}`} key={index}>
                                     <div className="row search-result-item">
 
-                                        <div className="col-10">
+                                        <div className="col-12 col-md-9">
                                             <h4>{data.orderProject.title}</h4>
                                             <p>{(data.orderProject.projectDescription).slice(0, 200)}</p>
                                             <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
                                             <p><small>PHP, JavaScript, Python, HTML5</small></p>
                                         </div>
-                                        <div className="col-2">
-                                            <h5>$50 - $85</h5>
+                                        <div className="col-12 col-md-3 product-price">
+                                            <h5>Price: $50 - $85</h5>
                                         </div>
 
                                     </div>

@@ -2,3 +2,9 @@ a{
     text-decoration: none !important;
     color: white !important;
 }
+
+@media screen and (max-width: 450px) and (min-width: 200px) {
+    .nav-search{
+        width: 100% !important;
+    }
+  }

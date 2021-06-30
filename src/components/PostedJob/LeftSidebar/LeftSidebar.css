@@ -1,0 +1,410 @@
+@media screen and (max-width: 450px) and (min-width: 0px){
+    .project-area-contest ul li{
+        line-height: 2;
+        padding: 0px 0px 0px 10px;
+        font-weight: 400;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    .project-area-contest ul{
+        padding: 0 !important;
+    }
+    .project-area-contest ul li:hover{
+        cursor: pointer;
+        background-color: #F0F0F0;
+        /* padding: 0px 0px 0px 25px; */
+    }
+    #project{
+        background-color: #F0F0F0;
+        border-bottom: 2px solid DARKBLUE;
+    }
+    .project-type ul{
+        padding: 0;
+    }
+    .project-type li{
+        padding: 0px 0px 0px 10px;
+    }
+    .project-area label{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .hr{
+        margin: 15px;
+    }
+    .skills li span:hover{
+        cursor: pointer;
+    }
+    ul{
+        padding-left: 10px !important;
+    }
+    .add-skill{
+        margin: 0px 10px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    
+    .add-skill span{
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    
+    .clear-skill button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    #vol{
+        width: 85%;
+    }
+    
+    .add-location{
+        width: 75% !important;
+    }
+    
+    /* .add-location-btn{
+        width: 50px;
+        height: 38px;
+    } */
+    
+    .clear-location{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .clear-language{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .add-language{
+        margin: 0px 30px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    .add-language span{
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 575px) and (min-width: 451px){
+    .project-area-contest ul li{
+        line-height: 2;
+        padding: 0px 0px 0px 10px;
+        font-weight: 400;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    .project-area-contest ul{
+        padding: 0 !important;
+    }
+    .project-area-contest ul li:hover{
+        cursor: pointer;
+        background-color: #F0F0F0;
+        /* padding: 0px 0px 0px 25px; */
+    }
+    #project{
+        background-color: #F0F0F0;
+        border-bottom: 2px solid DARKBLUE;
+    }
+    .project-type ul{
+        padding: 0;
+    }
+    .project-type li{
+        padding: 0px 0px 0px 10px;
+    }
+    .project-area label{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .hr{
+        margin: 15px;
+    }
+    .skills li span:hover{
+        cursor: pointer;
+    }
+    ul{
+        padding-left: 10px !important;
+    }
+    .add-skill{
+        margin: 0px 10px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    
+    .add-skill span{
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    
+    .clear-skill button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    #vol{
+        width: 85%;
+    }
+    
+    .add-location{
+        width: 75% !important;
+    }
+    
+    /* .add-location-btn{
+        width: 50px;
+        height: 38px;
+    } */
+    
+    .clear-location{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .clear-language{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .add-language{
+        margin: 0px 30px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    .add-language span{
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+    .project-area-contest ul li{
+        line-height: 2;
+        padding: 0px 0px 0px 10px;
+        font-weight: 400;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    .project-area-contest ul{
+        padding: 0 !important;
+    }
+    .project-area-contest ul li:hover{
+        cursor: pointer;
+        background-color: #F0F0F0;
+        /* padding: 0px 0px 0px 25px; */
+    }
+    #project{
+        background-color: #F0F0F0;
+        border-bottom: 2px solid DARKBLUE;
+    }
+    .project-type ul{
+        padding: 0;
+    }
+    .project-type li{
+        padding: 0px 0px 0px 10px;
+    }
+    .project-area label{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .hr{
+        margin: 15px;
+    }
+    .skills li span:hover{
+        cursor: pointer;
+    }
+    ul{
+        padding-left: 10px !important;
+    }
+    .add-skill{
+        margin: 0px 10px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    
+    .add-skill span{
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    
+    .clear-skill button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    #vol{
+        width: 85%;
+    }
+    
+    .add-location{
+        width: 75% !important;
+    }
+    
+    /* .add-location-btn{
+        width: 50px;
+        height: 38px;
+    } */
+    
+    .clear-location{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .clear-language{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .add-language{
+        margin: 0px 30px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    .add-language span{
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .project-area-contest ul li{
+        line-height: 2;
+        padding: 0px 0px 0px 10px;
+        font-weight: 400;
+    }
+    ul li{
+        list-style-type: none;
+    }
+    .project-area-contest ul{
+        padding: 0 !important;
+    }
+    .project-area-contest ul li:hover{
+        cursor: pointer;
+        background-color: #F0F0F0;
+        /* padding: 0px 0px 0px 25px; */
+    }
+    #project{
+        background-color: #F0F0F0;
+        border-bottom: 2px solid DARKBLUE;
+    }
+    .project-type ul{
+        padding: 0;
+    }
+    .project-type li{
+        padding: 0px 0px 0px 10px;
+    }
+    .project-area label{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .hr{
+        margin: 15px;
+    }
+    .skills li span:hover{
+        cursor: pointer;
+    }
+    ul{
+        padding-left: 10px !important;
+    }
+    .add-skill{
+        margin: 0px 10px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    
+    .add-skill span{
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    
+    .clear-skill button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    #vol{
+        width: 85%;
+    }
+    
+    .add-location{
+        width: 75% !important;
+    }
+    
+    /* .add-location-btn{
+        width: 50px;
+        height: 38px;
+    } */
+    
+    .clear-location{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .clear-language{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        margin-top: 15px;
+    }
+    
+    .add-language{
+        margin: 0px 30px 0px 0px;
+        border: 1px solid #DEDEDE;
+        padding: 5px;
+    }
+    .add-language span{
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}

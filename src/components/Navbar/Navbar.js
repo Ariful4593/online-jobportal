@@ -172,6 +172,7 @@ const Navbar = () => {
 
                     <div className={classes.search}>
                         <InputBase
+                        className="nav-search"
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,

@@ -12,9 +12,9 @@ a{
   form p {
     margin: 10px;
   }
-  input[type='text'],
-  [type='email'],
-  [type='password'] {
+  .enter-name,
+  .enter-email,
+  .enter-pass {
     width: 320px;
     outline: none;
     padding: 6px 8px;

@@ -12,18 +12,19 @@ const SinglePost = () => {
                     <h1>{singlePostData.orderProject.title}</h1>
                 </div>
             </div>
-            <div className="container">
+            <div className="details-post">
                 <div className="row">
                     <div className="col-md-9 project-details-area mt-4">
                         <div className="project-details-title-area">
                             <div className="row ">
-                                <div className="col-md-9">
-                                    <h3>Project Details</h3>
+                                <div className="col-sm-9 details-left">
+                                    <h3 className="project-details-title">Project Details</h3>
                                 </div>
-                                <div className="col-md-3 p-0">
+                                <div className="col-sm-3 details-right">
                                     <h5 className="bidding-price">$30.00 – 250.00 USD</h5>
                                     <small className="bidding">BIDDING ENDS IN 6 DAYS, 23 HOURS</small>
                                 </div>
+                                <hr />
                             </div>
                             <div className="row project-details-description-area">
                                 <div className="col-12">
@@ -50,7 +51,7 @@ const SinglePost = () => {
                                 <p>Bid Details</p>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <h6>Bid Amount</h6>
+                                        <h6><label htmlFor="">Bid Amount</label></h6>
                                         <input className="form-control" type="number" />
                                     </div>
                                     <div className="col-md-6">
@@ -62,18 +63,20 @@ const SinglePost = () => {
                                 <div className="row mt-3 proposal">
                                     <div className="col-12">
                                         <h6>Describe your proposal</h6>
-                                        <textarea placeholder="What makes you the best candidate for this project?" name="" id="" cols="95" rows="10">
+                                        <textarea style={{ width: '100%' }} placeholder="What makes you the best candidate for this project?" name="" id="" cols="95" rows="10">
                                         </textarea>
+                                    </div>
+                                </div>
+
+                                <div className="row place-bid">
+                                    <div className="col-12 text-right">
+                                        <button className="btn btn-danger">Place bid</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="row place-bid">
-                            <div className="col-12 text-right">
-                                <button className="btn btn-danger">Place bid</button>
-                            </div>
-                        </div>
+
 
                     </div>
                     <div className="col-md-3 ">

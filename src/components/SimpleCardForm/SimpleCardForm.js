@@ -116,7 +116,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
                             {newUser && (
                                 <input
-                                    className='mb-2 w-100'
+                                    className='mb-2 w-100 enter-name'
                                     onBlur={handleBlur}
                                     type='text'
                                     name='name'
@@ -128,7 +128,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
                             {newUser && (
                                 <input
-                                    className='mb-2 w-100'
+                                    className='mb-2 w-100 enter-email'
                                     onBlur={handleBlur}
                                     type='text'
                                     name='email'
@@ -139,7 +139,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
                             {newUser && (
                                 <input
-                                    className='mb-2 w-100'
+                                    className='mb-2 w-100 enter-pass'
                                     onBlur={handleBlur}
                                     type='password'
                                     name='password'
@@ -180,7 +180,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                             }
                             {
                                 !newUser && <input
-                                    className='mb-2 w-100'
+                                    className='mb-2 w-100 enter-email'
                                     onBlur={handleBlur}
                                     type='email'
                                     name='email'
@@ -191,7 +191,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
                             {
                                 !newUser && <input
-                                    className='mb-2 w-100'
+                                    className='mb-2 w-100 enter-pass'
                                     onBlur={handleBlur}
                                     type='password'
                                     name='password'

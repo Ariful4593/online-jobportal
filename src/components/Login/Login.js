@@ -30,7 +30,7 @@ const Login = () => {
     return (
         <div className="container">
             <div className="row mt-5">
-                <div className="col-md-6">
+                <div className="col-12 col-md-6">
                     <h1 className="display-4 title">Join the world's work marketplace</h1>
                     <p>Find great talent. Build your business.
                         Take your career to the next level.</p>
@@ -46,7 +46,7 @@ const Login = () => {
                         </Elements>
                     </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-12 col-md-6">
                     <img src={worldMobile} alt="" />
                 </div>
             </div>
