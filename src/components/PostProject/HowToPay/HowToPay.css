@@ -1,0 +1,41 @@
+.how-to-pay{
+    margin-top: 45px !important;
+}
+.pay-category{
+    width: 48% !important;
+    margin: 1%;
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+    padding: 20px;
+    cursor: pointer;
+    float: left;
+    margin-top: 10px !important;
+}
+
+.pay-category:hover{
+    background-color: #f0f0f0;
+}
+.project, .contest{
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .how-to-pay{
+        margin-top: 45px !important;
+    }
+    .pay-category{
+        width: 100% !important;
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        float: left;
+        margin-top: 10px !important;
+    }
+    
+    .pay-category:hover{
+        background-color: #f0f0f0;
+    }
+    .project, .contest{
+        font-weight: bold;
+        margin-top: 10px;
+    }
+}

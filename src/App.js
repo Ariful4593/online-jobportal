@@ -6,12 +6,12 @@ import {
 } from "react-router-dom";
 import Login from './components/Login/Login'
 import PendingArea from "./components/PendingArea/PendingArea";
-import PostProject from "./components/PostProject/PostProject";
 import Admin from './components/Admin/Admin';
 import Navbar from "./components/Navbar/Navbar"
 import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
 import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
 import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
+import PostProjectArea from "./components/PostProject/PostProjectArea";
 
 export const collectionContext = createContext()
 function App() {
@@ -29,7 +29,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/postproject">
-            <PostProject />
+            <PostProjectArea />
           </Route>
           <Route path="/pendingArea">
             <PendingArea />

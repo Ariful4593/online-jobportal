@@ -1,47 +1,86 @@
-@media screen and (max-width: 991px) and (min-width: 0px){
-    .post-project-area label{
-        font-size: 20px;
-        font-weight: 700;
+.post-project-area label{
+    font-size: 20px;
+    font-weight: 700;
+}
+.post-project-area .description img{
+    height: 30px;
+}
+.post-project-area .description h1{
+    margin-top: 20px;
+}
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .post-project-area{
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        max-width: 1250px !important;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
     }
+    
     .post-project-area .description{
         margin: 0 auto;
-        width: 100% !important;
+        color: white;
     }
-    .choose-project-area{
-        margin: 0 auto;
+    
+}
+@media screen and (max-width: 991px) and (min-width: 501px){
+    .post-project-area{
+        position: absolute;
+        top: 75px;
         width: 100%;
+        max-width: 1250px !important;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
     }
-    .choose-project-area textarea{
-        width: 100% !important;
+    
+    .post-project-area .description{
+        margin: 0 auto;
+        width: 90% !important;
+        color: white;
     }
-    .choose-project-area .submit-btn{
-        width: 50% !important;
-    }
-    .choose-project-area .btn-area{
-        text-align: center;
-    }
+    
 }
 
-@media screen and (min-width: 992px){
-    .post-project-area label{
-        font-size: 20px;
-        font-weight: 700;
+@media screen and (max-width: 1230px) and (min-width: 992px){
+    .post-project-area{
+        position: absolute;
+        top: 75px;
+        width: 100%;
+        max-width: 1250px !important;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
     }
+    
     .post-project-area .description{
         margin: 0 auto;
         width: 75% !important;
+        color: white;
     }
-    .choose-project-area{
+    
+}
+@media screen and (min-width: 1231px){
+    .post-project-area{
+        position: absolute;
+        top: 75px;
+        width: 100%;
+        max-width: 1250px !important;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    .post-project-area .description{
         margin: 0 auto;
-        width: 75% !important;
+        width: 65% !important;
+        color: white;
     }
-    .choose-project-area textarea{
-        width: 100% !important;
-    }
-    .choose-project-area .submit-btn{
-        width: 40% !important;
-    }
-    .choose-project-area .btn-area{
-        text-align: center;
-    }
+    
 }

@@ -1,0 +1,7 @@
+.required-skill{
+    margin-top: 10px;
+}
+
+.required-skill input{
+    border: 1px solid darkgray;
+}

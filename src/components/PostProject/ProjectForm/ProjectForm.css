@@ -1,0 +1,74 @@
+.choose-project-area textarea{
+    width: 100% !important;
+}
+.choose-project-area .submit-btn{
+    width: 40% !important;
+}
+.choose-project-area .btn-area{
+    text-align: center;
+}
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .choose-project-area{
+        margin: 0 auto;
+        width: 95% !important;
+        background: white;
+        padding: 10px !important;
+    }
+    
+    
+    
+}
+@media screen and (max-width: 767px) and (min-width: 501px){
+    .choose-project-area{
+        margin: 0 auto;
+        width: 90% !important;
+        background: white;
+        padding: 35px !important;
+    }
+    
+    .choose-project-area .submit-btn{
+        width: 50% !important;
+    }
+    
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .choose-project-area{
+        margin: 0 auto;
+        width: 90% !important;
+        background: white;
+        padding: 35px !important;
+    }
+    
+    .choose-project-area .submit-btn{
+        width: 50% !important;
+    }
+    
+}
+@media screen and (max-width: 1230px) and (min-width: 992px){
+    .choose-project-area{
+        margin: 0 auto;
+        width: 75% !important;
+        background: white;
+        padding: 35px !important;
+    }
+    
+    
+    
+}
+@media screen and (min-width: 1231px){
+    .choose-project-area{
+        margin: 0 auto;
+        width: 65% !important;
+        background: white;
+        padding: 35px !important;
+    }
+    .choose-project-area .form-title{
+        border: 1px solid darkgray;
+    }
+    .choose-project-area textarea{
+        width: 100% !important;
+        border: 1px solid darkgray;
+    }
+    
+    
+}

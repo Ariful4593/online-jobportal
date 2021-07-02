@@ -1,0 +1,16 @@
+.press-next{
+    margin-top: 10px;
+    padding: 0px 0px 0px 12px;
+
+}
+.press-next ul{
+    padding-left: 0 !important;
+}
+.press-next button{
+    background: #139ff0;
+    border-color: #139ff0;
+    color: #F7F7F7;
+    text-shadow: 0 -1px transparent;
+    border: none;
+    padding: 5px 15px 5px 15px;
+}

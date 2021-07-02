@@ -1,0 +1,45 @@
+.file-area{
+    border: 1px dashed #bec0c2;
+    padding: 15px;
+    width: 100%;
+}
+.file-type{
+    width: 30% !important;
+    float: left;
+}
+.file-content{
+    width: 70% !important;
+    float: left;
+}
+@media screen and (max-width: 500px) and (min-width: 0px){
+    
+    .file-type{
+        width: 100% !important;
+        float: left;
+    }
+    .file-content{
+        width: 100% !important;
+        float: left;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 501px){
+    
+    .file-type{
+        width: 100% !important;
+    }
+    .file-content{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    
+    .file-type{
+        width: 35% !important;
+        float: left;
+    }
+    .file-content{
+        width: 63% !important;
+        margin-left: 2%;
+        float: left;
+    }
+}

@@ -1,0 +1,10 @@
+.project-type ul{
+    padding: 0;
+}
+.project-type li{
+    padding: 0px 0px 0px 10px;
+}
+.project-area label{
+    font-size: 15px;
+    font-weight: normal;
+}

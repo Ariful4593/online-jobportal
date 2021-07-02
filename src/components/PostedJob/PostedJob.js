@@ -7,8 +7,6 @@ import LeftSidebar from './LeftSidebar/LeftSidebar';
 
 const PostedJob = () => {
 
-
-
     const [getData, setGetdata] = useState([])
     useEffect(() => {
         fetch('https://aqueous-river-54090.herokuapp.com/getUserData')
@@ -38,6 +36,7 @@ const PostedJob = () => {
     }, [getData, search])
 
 
+    
 
     return (
         <div className="job-post-area">

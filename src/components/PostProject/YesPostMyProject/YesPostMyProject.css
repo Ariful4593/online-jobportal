@@ -1,0 +1,14 @@
+.click-post-button{
+    padding: 5px 0px 5px 0px !important;
+    margin: 20px 0px 20px 0px !important;
+    text-align-last: end;
+}
+.click-post-button button{
+    background: #f77d0e;
+    border-color: #f77d0e;
+    color: #F7F7F7;
+    text-shadow: 0 -1px transparent;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+}
