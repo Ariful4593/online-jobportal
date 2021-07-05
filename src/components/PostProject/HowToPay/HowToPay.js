@@ -1,35 +1,33 @@
 import React from 'react';
 import './HowToPay.css';
-const HowToPay = ({ fixedPrice, hourlyPrice }) => {
+import howToPayData from '../../../fakedata/postProjectData/howToPayData';
+const HowToPay = ({ setCounter }) => {
     return (
         <div className="how-to-pay">
             <div className="row">
-                <h4>How do you want to pay?</h4>
-                <div className="col-md-6 pay-category">
-                    <div className="row d-flex align-items-center">
-                        <div className="col-md-4 text-center">
-                            <img src={fixedPrice} alt="" />
-                        </div>
-                        <div className="col-md-8">
-                            <h6 className="project">Pay fixed price</h6>
-                            <small>Agree on a price and release payment when the job is done. Best for one-off tasks.</small>
-                        </div>
+                {
+                    <div>
+                        <h4>{howToPayData.title}</h4>
+                        {
+                            howToPayData.category.map((data, index) => (
+                                <div className="col-md-6 pay-category" key={index} onClick={() => setCounter((counter) => counter + 1)}>
+                                    <div className="row d-flex align-items-center">
+                                        <div className="col-md-4 text-center">
+                                            <img src={data.img} alt="" />
+                                        </div>
+                                        <div className="col-md-8">
+                                            <h6 className="project">{data.title}</h6>
+                                            <small>{data.description}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
-                </div>
-                <div className="col-md-6 pay-category">
-                    <div className="row d-flex align-items-center">
-                        <div className="col-md-4 text-center">
-                            <img src={hourlyPrice} alt="" />
-                        </div>
-                        <div className="col-md-8">
-                            <h6 className="contest">Pay by the hour</h6>
-                            <small>Hire based on an hourly rate and pay for hours billed. Best for ongoing work.</small>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     );
 };
 
-export default HowToPay;
+export default React.memo(HowToPay);

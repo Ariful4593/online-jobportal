@@ -2,7 +2,7 @@ import React from 'react';
 import './Price.css';
 const Price = () => {
     return (
-        <>
+        <div>
             <div className="fixed-price">
                 <ul>
                     <li>
@@ -26,7 +26,7 @@ const Price = () => {
                 </ul>
                 <hr className="hr" />
             </div>
-        </>
+        </div>
     );
 };
 

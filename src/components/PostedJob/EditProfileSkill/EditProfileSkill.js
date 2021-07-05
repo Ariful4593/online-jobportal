@@ -1,38 +1,30 @@
 import React from 'react';
-
+import editProfileSkillData from '../../../fakedata/postedJobData/editProfileSkillData';
 const EditProfileSkill = () => {
     return (
         <div className="edit-profile-skill">
-            <ul>
-                <li>
-                    <h6>Edit Profile Skills</h6>
-                </li>
-            </ul>
-            <hr className="hr" />
+            <div>
+                <ul>
+                    <li>
+                        <h6>{editProfileSkillData.title}</h6>
+                    </li>
+                </ul>
+                <hr className="hr" />
 
-            <ul>
-                <li>
-                    <h6>Listing Types</h6>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor="">Featured</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor=""> Sealed</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor="">NDA</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor=""> Urgent</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor="">Fulltime</label>
-                </li>
-                <li>
-                    <input type="checkbox" name="checkox" id="" /> <label htmlFor=""> Recruiter</label>
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        <h6>{editProfileSkillData.type}</h6>
+                    </li>
+                    {
+                        editProfileSkillData.skill.map((data, index) => (
+                            <li key={index}>
+                                <input type="checkbox" name="checkox" /> <label htmlFor="">{data}</label>
+                            </li>
+                        ))
+                    }
+
+                </ul>
+            </div>
             <hr className="hr" />
         </div>
     );

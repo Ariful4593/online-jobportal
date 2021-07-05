@@ -1,15 +1,16 @@
 import React from 'react';
 import './NextButton.css';
-const NextButton = () => {
+const NextButton = ({ setCounter }) => {
+    
     return (
         <div className="press-next">
             <div className="row">
                 <ul>
-                    <button>Next</button>
+                    <button onClick={() => setCounter((counter) => counter + 1)}>Next</button>
                 </ul>
             </div>
         </div>
     );
 };
 
-export default NextButton;
+export default React.memo(NextButton);

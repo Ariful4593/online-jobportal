@@ -1,6 +1,6 @@
 import React from 'react';
-import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useCallback } from 'react';
+import { useState, useContext } from 'react';
 import { collectionContext } from '../../App';
 import freelancerlogo from '../../images/trusted/freelancer-logo-light.svg';
 import './PostProject.css';
@@ -8,24 +8,47 @@ import ProjectForm from './ProjectForm/ProjectForm';
 const PostProject = () => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo, setLoginInfo] = value1;
+    const [file, setFile] = useState(null);
 
-    const history = useHistory()
-    const onSubmit = data => {
-        const loginInfoWithProjectDetails = { ...loginInfo };
-        loginInfoWithProjectDetails.orderProject = data;
-        loginInfoWithProjectDetails.status = 'Pending';
-        setLoginInfo(loginInfoWithProjectDetails)
 
-        fetch('https://aqueous-river-54090.herokuapp.com/userData', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(loginInfoWithProjectDetails)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
 
-        history.push('/pendingArea')
-    };
+
+    const [count, setCount] = useState(0);
+    const [post, setPost] = useState({
+        title: '',
+        description: ''
+    })
+
+
+    const handleFileChange = useCallback((e) => {
+        const newFile = e.target.files[0];
+        setFile(newFile)
+    }, [])
+
+    const handleBlur = useCallback((e) => {
+        let isFieldValid;
+        if (e.target.name === 'title') {
+            isFieldValid = e.target.value
+        }
+        if (e.target.name === 'description') {
+            isFieldValid = e.target.value
+        }
+        if (isFieldValid) {
+            const newPostInfo = { ...post }
+            newPostInfo[e.target.name] = e.target.value
+            setPost(newPostInfo)
+        }
+    }, [post.description, post.title])
+
+    useEffect(() => {
+        const newLoginInfo = { ...loginInfo };
+        newLoginInfo.title = post.title;
+        newLoginInfo.description = post.description;
+        const description = post.description;
+        setCount(description.length)
+        setLoginInfo(newLoginInfo);
+    }, [post.description])
+
     return (
         <div className="container post-project-area">
             <div className="row">
@@ -36,7 +59,7 @@ const PostProject = () => {
                 </div>
             </div>
             <div className="row">
-                <ProjectForm onSubmit={onSubmit} />
+                <ProjectForm count={count} handleFileChange={handleFileChange} handleBlur={handleBlur} post={post} file={file} />
             </div>
         </div>
     );

@@ -1,44 +1,45 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
-import ChoosePosting from '../ChoosePosting/ChoosePosting';
-import NextButton from '../NextButton/NextButton';
+import { useState } from 'react';
+import ChoosePostingArea from '../ChoosePosting/ChoosePostingArea';
 import RequiredSkill from '../RequiredSkill/RequiredSkill';
-import UploadFiles from '../UploadFiles/UploadFiles';
+import HowToPay from '../HowToPay/HowToPay';
 import './ProjectForm.css';
-const ProjectForm = ({ onSubmit }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+import Budget from '../Budget/Budget';
+import ProjectType from '../ProjectType/ProjectType';
+import PostReview from '../PostReview/PostReview';
+import ProjectFullForm from './ProjectFullForm';
+const ProjectForm = ({ count, handleBlur, post, handleFileChange, file }) => {
+
+    const [counter, setCounter] = useState(0)
+
     return (
         <div className="col-12 choose-project-area">
             <div className="row">
-                <div className="col-12">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <label htmlFor="">Choose a name for your project</label>
-                        <br />
-                        <input defaultValue="" placeholder="e.g Build me a website" {...register("title")} className="w-100 form-title" />
-                        {errors.title && <span className="text-danger">The title is required</span>}
-                        <br /><br />
-                        <label htmlFor="">Tell us more about your project</label>
-                        <br />
-                        <p>Start with a bit about yourself or your business, and include an overview of what you need done.</p>
-                        <textarea rows="4" placeholder="Describe your project here..." {...register("projectDescription", { required: true })} ></textarea>
-                        {errors.projectDescription && <span className="text-danger">This field is required</span>}
-                        <br /><br />
-                        {/* <div className="btn-area">
-                    <input type="submit" className="submit-btn" />
-                </div> */}
-                    </form>
-                </div>
+                <ProjectFullForm post={post} counter={counter} setCounter={setCounter} handleBlur={handleBlur} count={count} handleFileChange={handleFileChange} />
             </div>
 
-            <UploadFiles />
-            <NextButton />
-            <RequiredSkill />
+            {
+                counter === 1 && <RequiredSkill setCounter={setCounter} />
+            }
 
-            <NextButton />
-            <ChoosePosting />
-            
+            {
+                counter === 2 && <ChoosePostingArea setCounter={setCounter} />
+            }
+            {
+                counter === 3 && <HowToPay setCounter={setCounter} />
+            }
+            {
+                counter === 4 && <Budget setCounter={setCounter} />
+            }
+            {
+                counter === 5 && <ProjectType setCounter={setCounter} />
+            }
+            {
+                counter === 6 && <PostReview file={file} setCounter={setCounter} />
+            }
+
         </div>
     );
 };
 
-export default ProjectForm;
+export default React.memo(ProjectForm);
