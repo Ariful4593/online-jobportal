@@ -3,6 +3,11 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useHistory } from "react-router-dom"
 import { collectionContext } from '../../App';
 import './SimpleCardForm.css';
+import NewClient from '../Login/ClientVerify/NewClient';
+import ExistingClient from '../Login/ClientVerify/ExistingClient';
+import NewFreelancer from '../Login/FreelancerVerify/NewFreelancer'
+import ExistingFreelancer from '../Login/FreelancerVerify/ExistingFreelancer';
+import LoginButton from '../Login/LoginButton/LoginButton';
 const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
     const { value1 } = useContext(collectionContext)
@@ -63,8 +68,9 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
             try {
                 if (loginUser && employer) {
-                    console.log(loginUser)
-                    setLoginInfo(loginUser);
+                    const newLoginInfo = { ...loginUser };
+                    newLoginInfo.isLoggedIn = true;
+                    setLoginInfo(newLoginInfo);
                     history.push('postproject');
                 }
                 else if (loginUser && jobSeaker) {
@@ -107,7 +113,6 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
             const newLoginUser = userLogin.find(userData => userData.email === user.email)
             try {
-                console.log(newLoginUser)
                 if (newLoginUser) {
                     return alert("This email is already store in database")
                 } else {
@@ -116,7 +121,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     const paymentInfo = [id, brand, country, exp_month, exp_year, funding, last4];
 
                     const newLoginInfo = { ...loginInfo };
-                    
+
                     newLoginInfo.accountType = accountType;
                     newLoginInfo.paymentData = paymentInfo;
 
@@ -162,140 +167,31 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                                 {newUser ? 'Created an account' : 'Login'}
                             </h4>
 
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100 enter-name'
-                                    onBlur={handleBlur}
-                                    type='text'
-                                    name='name'
-                                    placeholder='Enter Your Name'
-                                    required
-                                />
-                            )}
-
-
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100 enter-email'
-                                    onBlur={handleBlur}
-                                    type='text'
-                                    name='email'
-                                    placeholder='Enter email'
-                                    required
-                                />
-                            )}
-
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100 enter-pass'
-                                    onBlur={handleBlur}
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter password'
-                                    required
-                                />
-                            )}
-
-                            {
-                                newUser && <pre style={{ fontFamily: 'system-ui' }}>Account Type: <select name="cars" id="account-type" value={accountType} onChange={(e) => setAccountType(e.target.value)}>
-                                    <option value="basic">Basic</option>
-                                    <option value="standard">Standard</option>
-                                    <option value="premium">Premium</option>
-                                </select></pre>
-                            }
-                            {
-                                newUser &&
-                                <div>
-                                    {
-                                        accountType === 'basic' && <p style={{ color: 'green' }}>Your can 10 post job per month!</p>
-                                    }
-                                    {
-                                        accountType === 'standard' && <p style={{ color: 'green' }}>Your can 20 post job per month!</p>
-                                    }
-                                    {
-                                        accountType === 'premium' && <p style={{ color: 'green' }}>Your can 30 post job per month!</p>
-                                    }
-                                </div>
-                            }
-                            {
-                                newUser &&
-                                <div>
-                                    <label htmlFor="" className="">Enter Stripe Payment Number</label>
-                                    <br /><br />
-                                    <CardElement required className="w-100" />
-                                </div>
-
-                            }
+                            <NewClient
+                                newUser={newUser}
+                                handleBlur={handleBlur}
+                                accountType={accountType}
+                                setAccountType={setAccountType}
+                                CardElement={CardElement}
+                            />
 
 
                             {/* Not new user */}
 
-                            {!newUser && (
-                                <input
-                                    className='mb-2 w-100 enter-name'
-                                    onBlur={handleBlur}
-                                    type='text'
-                                    name='name'
-                                    placeholder='Enter Your Name'
-                                    required
-                                />
-                            )}
-                            {
-                                !newUser && <input
-                                    className='mb-2 w-100 enter-email'
-                                    onBlur={handleBlur}
-                                    type='email'
-                                    name='email'
-                                    placeholder='Enter email'
-                                    required
-                                />
-                            }
-
-                            {
-                                !newUser && <input
-                                    className='mb-2 w-100 enter-pass'
-                                    onBlur={handleBlur}
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter password'
-                                    required
-                                />
-                            }
+                            <ExistingClient
+                                newUser={newUser}
+                                handleBlur={handleBlur}
+                            />
 
                             {/* <p className='text-left mb-2 px-3'>
                         <span className='float-right'>
                             <Link to="/">Forgot Password ?</Link>
                         </span>
                     </p> */}
-                            <input
-                                className='mt-3 w-100'
-                                type='submit'
-                                value={newUser ? 'Create an account' : 'Login'}
+                            <LoginButton
+                                newUser={newUser}
+                                setNewUser={setNewUser}
                             />
-                            <div>
-                                {!newUser && (
-                                    <div className='login-qstn'>
-                                        <span>Don't have an account? </span>
-                                        <span className='pl-1'>
-                                            <span style={{ cursor: 'pointer', color: 'orange', fontSize: '16px' }} onClick={() => setNewUser(!newUser)}>
-                                                Create an account
-                                            </span>
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                            <div>
-                                {newUser && (
-                                    <div>
-                                        <span>Already have an account? </span>
-                                        <span className='pl-1'>
-                                            <span style={{ color: 'orange', cursor: 'pointer', fontSize: '20px' }} onClick={() => setNewUser(!newUser)}>
-                                                Login
-                                            </span>
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     </form>
                 }
@@ -309,106 +205,27 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                                 {newUser ? 'Created an account' : 'Login'}
                             </h4>
 
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100'
-                                    onBlur={handleBlur}
-                                    type='text'
-                                    name='name'
-                                    placeholder='Enter Your Name'
-                                    required
-                                />
-                            )}
+                            <NewFreelancer
+                                newUser={newUser}
+                                handleBlur={handleBlur}
+                                CardElement={CardElement}
+                            />
 
 
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100'
-                                    onBlur={handleBlur}
-                                    type='text'
-                                    name='email'
-                                    placeholder='Enter email'
-                                    required
-                                />
-                            )}
-
-                            {newUser && (
-                                <input
-                                    className='mb-2 w-100'
-                                    onBlur={handleBlur}
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter password'
-                                    required
-                                />
-                            )}
-                            {
-                                newUser &&
-                                <div>
-                                    <label htmlFor="" className="">Enter Stripe Payment Number</label>
-                                    <br /><br />
-                                    <CardElement required className="w-100" />
-                                </div>
-
-                            }
-
-
-                            {
-                                !newUser && <input
-                                    className='mb-2 w-100'
-                                    onBlur={handleBlur}
-                                    type='email'
-                                    name='email'
-                                    placeholder='Enter email'
-                                    required
-                                />
-                            }
-
-                            {
-                                !newUser && <input
-                                    className='mb-2 w-100'
-                                    onBlur={handleBlur}
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter password'
-                                    required
-                                />
-                            }
+                            <ExistingFreelancer
+                                newUser={newUser}
+                                handleBlur={handleBlur}
+                            />
 
                             {/* <p className='text-left mb-2 px-3'>
                         <span className='float-right'>
                             <Link to="/">Forgot Password ?</Link>
                         </span>
                     </p> */}
-                            <input
-                                className='mt-3 w-100'
-                                type='submit'
-                                value={newUser ? 'Create an account' : 'Login'}
+                            <LoginButton
+                                newUser={newUser}
+                                setNewUser={setNewUser}
                             />
-                            <div>
-                                {!newUser && (
-                                    <div className='login-qstn'>
-                                        <span>Don't have an account? </span>
-                                        <span className='pl-1'>
-                                            <span style={{ cursor: 'pointer', color: 'orange', fontSize: '16px' }} onClick={() => setNewUser(!newUser)}>
-                                                Create an account
-                                            </span>
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                            <div>
-                                {newUser && (
-                                    <div>
-                                        <span>Already have an account? </span>
-                                        <span className='pl-1'>
-                                            <span style={{ color: 'orange', cursor: 'pointer', fontSize: '20px' }} onClick={() => setNewUser(!newUser)}>
-                                                Login
-                                            </span>
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     </form>
                 }

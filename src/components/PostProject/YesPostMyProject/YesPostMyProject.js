@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import { collectionContext } from '../../../App';
 import './YesPostMyProject.css';
 import { withStyles } from '@material-ui/core/styles';
@@ -56,13 +57,12 @@ const YesPostMyProject = ({ file }) => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo] = value1;
 
-    console.log(loginInfo)
 
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
         // fetch('https://aqueous-river-54090.herokuapp.com/userData', {
-        
+
         const formData = new FormData()
         formData.append('file', file);
         formData.append('name', loginInfo.name);
@@ -75,13 +75,12 @@ const YesPostMyProject = ({ file }) => {
         formData.append('budget', loginInfo.budget);
         formData.append('currencyName', loginInfo.currencyName);
         formData.append('accountType', loginInfo.accountType);
+        formData.append('isLoggedIn', loginInfo.isLoggedIn);
         formData.append('paymentData', JSON.stringify(loginInfo.paymentData));
         formData.append('skillData', JSON.stringify(loginInfo.skillData));
 
-        // formData.append('clientData', loginInfo)
         fetch('http://localhost:4000/userData', {
             method: 'POST',
-            // headers: { 'Content-Type': 'application/json' },
             body: formData
         })
             .then(res => res.json())
@@ -89,8 +88,10 @@ const YesPostMyProject = ({ file }) => {
 
         setOpen(true);
     };
+    const history = useHistory()
     const handleClose = () => {
         setOpen(false);
+        // history.push('/pendingArea');
     };
     return (
         <div className="click-post-button">

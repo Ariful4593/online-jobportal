@@ -14,9 +14,11 @@ const Skills = ({ skillData }) => {
                             </li>
                             <li className="add-skill">
                                 {
-                                    skillData.map((data, index) => (
-                                        <span className={`badge bg-warning text-white`} key={index}>{data}</span>
+                                   skillData ? skillData.map((data, index) => (
+                                        <span className={`badge bg-dark text-white`} key={index}>{data}</span>
                                     ))
+                                    : 
+                                    ""
                                 }
 
                             </li>
