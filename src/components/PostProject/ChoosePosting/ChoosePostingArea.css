@@ -10,73 +10,86 @@
     border-top: 4px solid dodgerblue;
 }
 .choose-item-content p{
-    padding: 15px 15px 0px 0px;
-}
-.category{
-    width: 48% !important;
-    margin: 1%;
-    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
-    padding: 20px;
-    cursor: pointer;
-    float: left;
-    margin-top: 20px !important;
+    padding: 10px;
+    font-size: 19px;
 }
 
-.category:hover{
-    background-color: #f0f0f0;
-}
-.project, .contest{
-    font-weight: bold;
-}
+
 @media screen and (max-width: 500px) and (min-width: 0px){
    
-    .category{
-        width: 100% !important;
+    .post-project{
         box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
         padding: 20px;
         cursor: pointer;
-        float: left;
         margin-top: 20px !important;
+        /* width: 49% !important; */
+    }
+    .start-contest{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        /* width: 49% !important;
+        margin-left: 2% !important; */
+    }
+    
+    .post-project:hover,.start-contest:hover{
+        background-color: #f0f0f0;
     }
     
     
-    .project, .contest{
-        font-weight: bold;
-        margin: 10px;
-    }
+    
 }
 @media screen and (max-width: 991px) and (min-width: 501px){
 
-    .category{
-        width: 48% !important;
-        margin: 1%;
+    .post-project{
         box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
         padding: 20px;
         cursor: pointer;
-        float: left;
         margin-top: 20px !important;
+        width: 49% !important;
+    }
+    .start-contest{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 49% !important;
+        margin-left: 2% !important;
+    }
+    
+    .choose-category{
+        margin: 0 !important;
+    }
+    .post-project:hover,.start-contest:hover{
+        background-color: #f0f0f0;
     }
     
     
-    .project, .contest{
-        font-weight: bold;
-        margin: 10px;
-    }
+    
+    
 }
 @media screen and (min-width: 992px){
-    .category{
-        width: 48% !important;
-        margin: 1%;
+    .post-project{
         box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
         padding: 20px;
         cursor: pointer;
-        float: left;
         margin-top: 20px !important;
+        width: 49% !important;
+    }
+    .start-contest{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 49% !important;
+        margin-left: 2% !important;
+    }
+    .choose-category{
+        margin: 0 !important;
+    }
+    .post-project:hover,.start-contest:hover{
+        background-color: #f0f0f0;
     }
     
-    
-    .project, .contest{
-        font-weight: bold;
-        margin: 10px;
-    }
 }

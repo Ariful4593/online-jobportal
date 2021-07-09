@@ -16,14 +16,14 @@ const RequiredSkill = ({ setCounter }) => {
         setLoginInfo(skill)
     }, [])
 
+
     return (
-        <div>
+        <div className="col-sm-12 mt-4">
             <div className="required-skill">
                 <h4>What skills are required?</h4>
                 <p>Enter up to 5 skills that best describe your project. Freelancers will use these skills to find projects they are most interested and experienced in.</p>
-                {/* <p><input className="w-100" onBlur={handleBlur} placeholder="Enter Skill here..." type="text" /></p> */}
             </div>
-            <div>
+            <div className="mb-3 p-0">
                 <ChipInput defaultValue={defaultValue} onChange={(e) => handleBlur(e)} label="Add Skill" />
             </div>
             <NextButton setCounter={setCounter} />

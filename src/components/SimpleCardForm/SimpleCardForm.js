@@ -126,11 +126,9 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     newLoginInfo.paymentData = paymentInfo;
 
                     setLoginInfo(newLoginInfo)
-                    // fetch('https://aqueous-river-54090.herokuapp.com/userLogin', {
 
 
-
-                    fetch('http://localhost:4000/userLogin', {
+                    fetch('https://aqueous-river-54090.herokuapp.com/userLogin', {
                         method: 'POST',
                         headers: { 'Content-type': 'application/json' },
                         body: JSON.stringify(newLoginInfo)

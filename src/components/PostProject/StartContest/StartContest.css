@@ -1,0 +1,39 @@
+.start-contest-area{
+    margin-top: 20px !important;
+    padding: 0 !important;
+}
+.great-result-area{
+    padding: 12px;
+}
+.start-contest-area h4{
+    padding: 0px !important;
+}
+
+.contest-budget{
+    width: 100%;
+    padding-left: 0 !important;
+
+}
+
+
+.contest-budget .form-control{
+    border-radius: 0 !important;
+}
+.form-control:focus{
+    box-shadow: none !important;
+    border-color: 0 !important
+}
+
+.great-result{
+    text-align: center;
+    background: #ffc4d9;
+    padding: 5px;
+}
+.great-result h4{
+    margin-bottom: 0px !important;
+    font-weight: bold;
+}
+.currency-area{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}

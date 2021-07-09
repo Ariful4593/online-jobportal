@@ -12,7 +12,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-
+import PostPolicy from '../PostPolicy/PostPolicy'
 
 const styles = (theme) => ({
     root: {
@@ -59,7 +59,6 @@ const YesPostMyProject = ({ file }) => {
 
 
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         // fetch('https://aqueous-river-54090.herokuapp.com/userData', {
 
@@ -78,8 +77,13 @@ const YesPostMyProject = ({ file }) => {
         formData.append('isLoggedIn', loginInfo.isLoggedIn);
         formData.append('paymentData', JSON.stringify(loginInfo.paymentData));
         formData.append('skillData', JSON.stringify(loginInfo.skillData));
+        formData.append('projectType', loginInfo.projectType ? loginInfo.projectType.chooseProjectTitle : '');
+        formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
+        formData.append('postType', loginInfo.postType ? loginInfo.postType : '');
+        formData.append('howLongRunContestDay', loginInfo.howLongRunContestDay ? loginInfo.howLongRunContestDay : '');
+        formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
 
-        fetch('http://localhost:4000/userData', {
+        fetch('https://aqueous-river-54090.herokuapp.com/userData', {
             method: 'POST',
             body: formData
         })
@@ -91,29 +95,34 @@ const YesPostMyProject = ({ file }) => {
     const history = useHistory()
     const handleClose = () => {
         setOpen(false);
-        // history.push('/pendingArea');
+        history.push('/pendingArea');
     };
     return (
-        <div className="click-post-button">
-            <button onClick={handleClickOpen}>
-                Yes, post my project
-            </button>
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    Wow Great!
-                </DialogTitle>
-                <DialogContent dividers>
-                    <Typography gutterBottom>
-                        Your post is submitted. Now it need to admin approval. When it would be approved then you can see this project into the job post area.
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+        <React.Fragment>
+            <div className="click-post-button">
+                <button onClick={handleClickOpen}>
+                    Yes, post my project
+                </button>
+                <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                    <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                        Wow Great!
+                    </DialogTitle>
+                    <DialogContent dividers>
+                        <Typography gutterBottom>
+                            Your post is submitted. Now it need to admin approval. When it would be approved then you can see this project into the job post area.
+                        </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button autoFocus onClick={handleClose} color="primary">
+                            Close
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
+
+            <hr />
+            <PostPolicy />
+        </React.Fragment>
     );
 };
 

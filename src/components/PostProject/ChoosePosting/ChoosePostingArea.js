@@ -1,31 +1,71 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useState } from 'react';
+import { collectionContext } from '../../../App';
 import choosePostingData from '../../../fakedata/postProjectData/choosePostingData';
+import HowToPay from '../HowToPay/HowToPay';
+import StartContest from '../StartContest/StartContest';
 import './ChoosePostingArea.css';
-const ChoosePostingArea = ({ setCounter }) => {
+const ChoosePostingArea = ({postingBgColor, currentCategory, handleCategory, setCounter, file }) => {
+    const { value1 } = useContext(collectionContext);
+    const [loginInfo, setLoginInfo] = value1;
+
+    const categoryArray = ['post-project', 'start-contest'];
+
+    const [payBgColor, setPayBgColor] = useState('')
+    const [price, setPrice] = useState('');
+    const handlePay = (pay, data) => {
+        setPrice(pay)
+        setPayBgColor(pay)
+
+        const postType = { ...loginInfo };
+        postType.payingStatus = data.payTitle;
+        setLoginInfo(postType);
+    }
+
     return (
-        <div>
+        <div className="col-sm-12 mt-4">
             <h4 className="p-0">{choosePostingData.title}</h4>
             <div className="choose-item">
                 <div className="choose-item-content">
                     <p>{choosePostingData.chooseItemContent}</p>
                 </div>
             </div>
-            {
-                choosePostingData.category.map((data, index) => (
-                    <div className="col-md-6 category" key={index} onClick={() => setCounter((counter) => counter + 1)}>
-                        <div className="row d-flex align-items-center">
-                            <div className="col-md-4 text-center">
-                                <img src={data.img} alt="" />
-                            </div>
-                            <div className="col-md-8">
-                                <h6 className="project">{data.title}</h6>
-                                <small>{data.description}</small>
+            <div className="row choose-category">
+                {
+                    choosePostingData.category.map((data, index) => (
+                        <div className={`col-md-6  ${categoryArray[index]}`}
+                            key={index}
+                            onClick={() => handleCategory(categoryArray[index], data)}
+                            style={{background: `${postingBgColor === categoryArray[index] ? '#f0f0f0' : ''}`}}
+                        >
+                            <div className="row d-flex align-items-center">
+                                <div className="col-md-4 text-center">
+                                    <img src={data.img} alt="" />
+                                </div>
+                                <div className="col-md-8">
+                                    <h6 className="project">{data.choosePostTitle}</h6>
+                                    <small className="project-hints">{data.description}</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
+                    ))
+                }
+            </div>
+
+
+            {
+                currentCategory === 'post-project' && <HowToPay
+                    setCounter={setCounter}
+                    price={price}
+                    file={file}
+                    handlePay={handlePay}
+                    payBgColor={payBgColor}
+                    />
             }
-            
+            {
+                currentCategory === 'start-contest' && <StartContest setCounter={setCounter} file={file} />
+            }
+
         </div>
     );
 };

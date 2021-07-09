@@ -11,4 +11,18 @@
     border: none;
     padding: 5px 15px 5px 15px;
     font-weight: bold;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .click-post-button button{
+        background: #f77d0e;
+        border-color: #f77d0e;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        font-weight: bold;
+        font-size: 15px;
+    }
 }

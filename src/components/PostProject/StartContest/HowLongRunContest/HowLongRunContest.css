@@ -1,0 +1,22 @@
+.how-long-run-area{
+    padding: 12px;
+}
+.long-run-title{
+    margin-left: 0px !important;
+}
+.contest-budget{
+    text-align-last: end;
+}
+
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .how-long-run-area{
+        padding: 12px;
+        margin-top: 20px;
+    }
+    .long-run-title{
+        margin-left: 0px !important;
+    }
+    .contest-budget{
+        text-align-last: end;
+    }
+}

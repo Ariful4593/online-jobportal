@@ -1,0 +1,18 @@
+.guaranty-area{
+    transition: background-color .1s ease-in-out;
+    cursor: pointer;
+    border-bottom: 1px solid darkgray;
+}
+
+.guaranty-area:hover{
+    background: #f0f0f0;
+}
+.guaranty-type{
+    background: rgb(55, 158, 84);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+.guaranty-type h5{
+    line-height: 1.6;
+}

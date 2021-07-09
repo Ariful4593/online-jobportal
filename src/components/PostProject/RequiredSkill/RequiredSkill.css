@@ -1,7 +1,16 @@
 .required-skill{
-    margin-top: 10px;
+    padding: 0 !important;
 }
 
 .required-skill input{
     border: 1px solid darkgray;
+}
+.WAMuiChipInput-label-18{
+    font-size: 25px !important;
+}
+.MuiChip-label{
+    font-size: 20px !important;
+}
+.WAMuiChipInput-chipContainer-13.WAMuiChipInput-labeled-17.WAMuiChipInput-chipContainer-13.WAMuiChipInput-standard-15{
+    margin-top: 30px !important;
 }

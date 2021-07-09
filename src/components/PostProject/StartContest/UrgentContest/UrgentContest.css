@@ -1,0 +1,62 @@
+.not-urgent{
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 20px !important;
+    width: 49% !important;
+}
+.urgent{
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 20px !important;
+    width: 49% !important;
+    margin-left: 2% !important;
+}
+
+.not-urgent:hover,.urgent:hover{
+    background-color: #f0f0f0;
+}
+
+.hints{
+    font-size: 18px;
+    font-weight: bold;
+}
+.urgent-area-block{
+    margin: 0 !important;
+}
+.urgent-area-block h4{
+    margin-left: 0px !important;
+}
+
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .not-urgent{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 100% !important;
+    }
+    .urgent{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 100% !important;
+        margin-left: 0% !important;
+    }
+    
+    .not-urgent:hover,.urgent:hover{
+        background-color: #f0f0f0;
+    }
+    
+    .hints{
+        margin: 0 !important;
+    }
+    .urgent-area-block{
+        padding: 12px;
+    }
+    .urgent-area-block h4{
+        margin-left: 0px !important;
+    }
+}

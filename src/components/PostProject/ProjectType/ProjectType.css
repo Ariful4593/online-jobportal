@@ -1,0 +1,88 @@
+.project-posting-area{
+    padding: 0 !important;
+    margin-top: 30px !important;
+}
+
+.standard-project{
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 20px !important;
+    width: 49% !important;
+}
+.recruiter-contest{
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 20px !important;
+    width: 49% !important;
+    margin-left: 2% !important;
+}
+.project-posting-area-block{
+    margin: 0 !important;
+}
+
+.standard-project:hover,.recruiter-contest:hover{
+    background-color: #f0f0f0;
+}
+
+
+
+
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .how-to-pay{
+        margin-top: 45px !important;
+    }
+    .standard-project{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 100% !important;
+    }
+    .recruiter-contest{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 100% !important;
+        margin-left: 0% !important;
+    }
+    
+    .standard-project:hover,.recruiter-contest:hover{
+        background-color: #f0f0f0;
+    }
+    
+    
+    
+}
+
+@media screen and (min-width: 501px){
+    .how-to-pay{
+        margin-top: 45px !important;
+    }
+    .standard-project{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 49% !important;
+    }
+    .recruiter-contest{
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 12%), 0 4px 10px 0 rgb(0 0 0 / 16%);
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 20px !important;
+        width: 49% !important;
+        margin-left: 2% !important;
+    }
+    .project-posting-title{
+        padding-left: 0px !important;
+    }
+    
+    .standard-project:hover,.recruiter-contest:hover{
+        background-color: #f0f0f0;
+    }
+    
+    
+}

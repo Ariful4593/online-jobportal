@@ -7,6 +7,14 @@
 .choose-project-area .btn-area{
     text-align: center;
 }
+.form-control{
+    border-radius: 0 !important;
+}
+.form-control:focus{
+    box-shadow: none !important;
+    border-color: 0 !important
+}
+
 @media screen and (max-width: 500px) and (min-width: 0px){
     .choose-project-area{
         margin: 0 auto;
@@ -74,5 +82,6 @@
         margin: 0 !important;
         font-weight: bold;
     }
+    
     
 }
