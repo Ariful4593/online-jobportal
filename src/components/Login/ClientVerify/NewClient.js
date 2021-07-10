@@ -38,7 +38,7 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
             )}
 
             {
-                newUser && <pre style={{ fontFamily: 'system-ui' }}>Account Type: <select name="cars" id="account-type" value={accountType} onChange={(e) => setAccountType(e.target.value)}>
+                newUser && <pre style={{ fontFamily: 'system-ui', color: 'white' }}>Account Type: <select name="cars" id="account-type" value={accountType} onChange={(e) => setAccountType(e.target.value)}>
                     <option value="basic">Basic</option>
                     <option value="standard">Standard</option>
                     <option value="premium">Premium</option>
@@ -48,22 +48,22 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
                 newUser &&
                 <div>
                     {
-                        accountType === 'basic' && <p style={{ color: 'green' }}>Your can 10 post job per month!</p>
+                        accountType === 'basic' && <p style={{ color: 'green' }}>You can 10 post job per month!</p>
                     }
                     {
-                        accountType === 'standard' && <p style={{ color: 'green' }}>Your can 20 post job per month!</p>
+                        accountType === 'standard' && <p style={{ color: 'green' }}>You can 20 post job per month!</p>
                     }
                     {
-                        accountType === 'premium' && <p style={{ color: 'green' }}>Your can 30 post job per month!</p>
+                        accountType === 'premium' && <p style={{ color: 'green' }}>You can 30 post job per month!</p>
                     }
                 </div>
             }
             {
                 newUser &&
                 <div>
-                    <label htmlFor="" className="">Enter Stripe Payment Number</label>
+                    <label htmlFor="" className="text-white">Enter Stripe Payment Number</label>
                     <br /><br />
-                    <CardElement required className="w-100" />
+                    <CardElement required className="w-100 text-white" />
                 </div>
 
             }

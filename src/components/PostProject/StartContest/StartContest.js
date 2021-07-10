@@ -4,7 +4,6 @@ import UrgentContest from './UrgentContest/UrgentContest';
 import startContestRate from '../../../fakedata/postProjectData/startContestRate';
 import { useEffect } from 'react';
 import { collectionContext } from '../../../App';
-import { useCallback } from 'react';
 const StartContest = ({ setCounter, file }) => {
 
     const { value1 } = useContext(collectionContext)
@@ -17,19 +16,25 @@ const StartContest = ({ setCounter, file }) => {
     const [urgentCategory, setUrgentCategory] = useState('')
     const [urgentBgColor, setUrgentBgColor] = useState('')
 
-    const handleUrgent = useCallback((urgent, data) => {
+    useEffect(() => {
+        setRate('190')
+        setCurrency('USD')
+    }, [])
+
+
+
+    const handleUrgent = (urgent, data) => {
         setUrgentCategory(urgent)
         setUrgentBgColor(urgent)
 
         const newStartContestState = { ...loginInfo };
         newStartContestState.days = data.urgentContestTitle
         setLoginInfo(newStartContestState);
-    }, [])
+    }
 
-    useEffect(() => {
-        setCurrency('USD')
-    }, [])
+    
 
+    
     useEffect(() => {
         const newStartContestState = { ...loginInfo };
         newStartContestState.currencyName = currency;

@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import SimpleCardForm from '../SimpleCardForm/SimpleCardForm';
 import './Login.css';
+import Home from '../Home/Home';
 const Login = () => {
     // eslint-disable-next-line no-unused-vars
     const [card, setCard] = useState()
@@ -21,36 +22,39 @@ const Login = () => {
     }
 
     const [stripePromise] = useState(() => loadStripe(('pk_test_51HZp7VIFvbZO7xjYzMuCl9Dg8ITpUsSOwQX6LSfH45broJINKMrTNjw0Ls4TvaruUP9P94xnOO3fX3pXcQeJ1mkp00YyPWDvqq')))
-    
+
     const cardData = (cardInfo) => {
         setCard(cardInfo)
     }
 
 
     return (
-        <div className="container">
-            <div className="row mt-5">
-                <div className="col-12 col-md-6">
-                    <h1 className="display-4 title">Join the world's work marketplace</h1>
-                    <p>Find great talent. Build your business.
-                        Take your career to the next level.</p>
+        <React.Fragment>
+            <div className="login-block">
+                <div className="row login-block-row">
+                    <div className="col-12 col-md-6 login-page">
+                        <h1 className="display-4 title">Hire the best <br /> freelancers for any job, online.</h1>
+                        <p className="title-description">Millions of people use freelancer.com to turn their ideas into reality.</p>
 
-                    <div>
-                        <button className="btn btn-success hire-freelancer" onClick={() => handleEmployer()}>Hire Freelancer</button>
-                        <button className="btn btn-success find-work" onClick={() => handleJobseaker()}>Find Work</button>
+                        <div className="btn-area">
+                            <button className="btn hire-freelancer" onClick={() => handleEmployer()}>Hire a Freelancer</button>
+                            <button className="btn find-work" onClick={() => handleJobseaker()}>Earn Money Freelancing</button>
+                        </div>
+
+                        <div className="create-form mt-5 mb-5">
+                            <Elements stripe={stripePromise}>
+                                <SimpleCardForm cardData={cardData} employer={employer} jobSeaker={jobSeaker}></SimpleCardForm>
+                            </Elements>
+                        </div>
                     </div>
-
-                    <div className="create-form mt-5">
-                        <Elements stripe={stripePromise}>
-                            <SimpleCardForm cardData={cardData} employer={employer} jobSeaker={jobSeaker}></SimpleCardForm>
-                        </Elements>
+                    <div className="col-12 col-md-6 d-flex align-items-center login-img">
+                        <img className="w-75" src={worldMobile} alt="" />
                     </div>
                 </div>
-                <div className="col-12 col-md-6">
-                    <img src={worldMobile} alt="" />
-                </div>
+                
             </div>
-        </div>
+            <Home />
+        </React.Fragment>
     );
 };
 

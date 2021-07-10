@@ -5,7 +5,6 @@ import HowLongRunContest from '../HowLongRunContest/HowLongRunContest';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { collectionContext } from '../../../../App';
-import { useCallback } from 'react';
 const UrgentContest = ({ urgentBgColor, urgentCategory, handleUrgent, file }) => {
 
     const { value1 } = useContext(collectionContext);
@@ -16,7 +15,7 @@ const UrgentContest = ({ urgentBgColor, urgentCategory, handleUrgent, file }) =>
 
     const [bgColor, setBgColor] = useState('')
     const [contestType, setContestType] = useState('')
-    const handleWhatTypeContestRun = useCallback((contestRun, data) => {
+    const handleWhatTypeContestRun = (contestRun, data) => {
         setContestType(contestRun)
         setBgColor(contestRun)
 
@@ -24,7 +23,7 @@ const UrgentContest = ({ urgentBgColor, urgentCategory, handleUrgent, file }) =>
         newTypesOfContestRun.whatTypeContestRun = data.whatTypeOfContestTitle;
         setLoginInfo(newTypesOfContestRun)
 
-    }, [])
+    }
     return (
         <div className="is-urgent-area col-12">
 

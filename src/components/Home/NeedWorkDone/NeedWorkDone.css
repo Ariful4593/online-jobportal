@@ -1,0 +1,125 @@
+@media screen and (max-width: 500px) and (min-width: 0px){
+    .need-something-done-area{
+        margin-bottom: 0px !important;
+    }
+    .need-something-done{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area .img{
+        text-align: center;
+    }
+    .need-work-done-area .img img{
+        width: 30% !important;
+    }
+    .need-something-done-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-work-done-area .title{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .need-work-done-area .description{
+        font-weight: 400;
+    }
+    .need-work-done-hr{
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 501px){
+    .need-something-done-area{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area{
+        width: 50% !important;
+    }
+    .need-something-done{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area .img{
+        text-align: center;
+    }
+    .need-work-done-area .img img{
+        width: 50% !important;
+    }
+    .need-something-done-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-work-done-area .title{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .need-work-done-area .description{
+        font-weight: 400;
+    }
+    .need-work-done-hr{
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .need-something-done-area{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area{
+        width: 33% !important;
+    }
+    .need-something-done{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area .img{
+        text-align: center;
+    }
+    /* .need-work-done-area .img img{
+        width: 50% !important;
+    } */
+    .need-something-done-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-work-done-area .title{
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .need-work-done-area .description{
+        font-weight: 400;
+    }
+    .need-work-done-hr{
+        margin-bottom: 20px !important;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .need-something-done-area{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area{
+        width: 25% !important;
+        margin-top: 30px !important;
+    }
+    .need-something-done{
+        margin-bottom: 0px !important;
+    }
+    .need-work-done-area .img{
+        text-align: center;
+    }
+    /* .need-work-done-area .img img{
+        width: 50% !important;
+    } */
+    .need-something-done-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-work-done-area .title{
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .need-work-done-area .description{
+        font-weight: 400;
+    }
+    .need-work-done-hr{
+        margin-bottom: 20px !important;
+    }
+}

@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar/Navbar"
 import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
 import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
 import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
-import PostProjectArea from "./components/PostProject/PostProjectArea";
+// import PostProjectArea from "./components/PostProject/PostProjectArea";
 
 export const collectionContext = createContext()
 function App() {
@@ -29,9 +29,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/postproject">
+          {/* <Route path="/postproject">
             <PostProjectArea />
-          </Route>
+          </Route> */}
           <Route path="/pendingArea">
             <PendingArea />
           </Route>

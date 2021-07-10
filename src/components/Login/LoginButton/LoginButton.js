@@ -11,7 +11,7 @@ const LoginButton = ({newUser, setNewUser}) => {
             <div>
                 {!newUser && (
                     <div className='login-qstn'>
-                        <span>Don't have an account? </span>
+                        <span style={{color: 'white'}}>Don't have an account? </span>
                         <span className='pl-1'>
                             <span style={{ cursor: 'pointer', color: 'orange', fontSize: '22px' }} onClick={() => setNewUser(!newUser)}>
                                 Create an account
@@ -23,7 +23,7 @@ const LoginButton = ({newUser, setNewUser}) => {
             <div>
                 {newUser && (
                     <div>
-                        <span>Already have an account? </span>
+                        <span style={{color: 'white'}}>Already have an account? </span>
                         <span className='pl-1'>
                             <span style={{ color: 'orange', cursor: 'pointer', fontSize: '20px' }} onClick={() => setNewUser(!newUser)}>
                                 Login

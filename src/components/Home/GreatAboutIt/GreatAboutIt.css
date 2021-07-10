@@ -1,0 +1,138 @@
+@media screen and (max-width: 450px) and (min-width: 0px){
+    .great-about-area{
+        margin-bottom: 0px !important;
+    }
+
+    .need-browse-area{
+        margin-top: 25px !important;
+    }
+    .great-about{
+        margin-bottom: 0px !important;
+    }
+    .great-about-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-browse-area .img{
+        width: 25% !important;
+    }
+    .need-browse-title-block{
+        width: 75% !important;
+    }
+    .need-browse-area .title{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .need-browse-area .description{
+        font-weight: 400;
+    }
+    .great-about-area-hr{
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 575px) and (min-width: 451px){
+    .great-about-area{
+        margin-bottom: 0px !important;
+    }
+
+    .need-browse-area{
+        margin-top: 25px !important;
+        width: 50% !important;
+    }
+    .great-about{
+        margin-bottom: 0px !important;
+    }
+    .great-about-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-browse-area .img{
+        width: 30% !important;
+    }
+    .need-browse-area .img img{
+        width: 100% !important;
+    }
+    .need-browse-title-block{
+        width: 70% !important;
+        padding-left: 0px !important;
+    }
+    .need-browse-area .title{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .need-browse-area .description{
+        font-weight: 400;
+    }
+    .great-about-area-hr{
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 576px){
+    .great-about-area{
+        margin-bottom: 0px !important;
+    }
+
+    .need-browse-area{
+        margin-top: 25px !important;
+        width: 50% !important;
+    }
+    .great-about{
+        margin-bottom: 0px !important;
+    }
+    .great-about-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-browse-area .img{
+        width: 25% !important;
+    }
+    .need-browse-title-block{
+        width: 75% !important;
+    }
+    .need-browse-area .title{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .need-browse-area .description{
+        font-weight: 400;
+    }
+    .great-about-area-hr{
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .great-about-area{
+        margin-bottom: 0px !important;
+    }
+
+    .need-browse-area{
+        margin-top: 25px !important;
+        width: 25% !important;
+    }
+    .great-about{
+        margin-bottom: 0px !important;
+    }
+    .great-about-title{
+        font-weight: 700;
+        font-size: 22px !important;
+    }
+    .need-browse-area .img{
+        width: 25% !important;
+    }
+    .need-browse-title-block{
+        width: 75% !important;
+    }
+    .need-browse-area .title{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .need-browse-area .description{
+        font-weight: 400;
+    }
+    .great-about-area-hr{
+        margin-bottom: 20px;
+    }
+}

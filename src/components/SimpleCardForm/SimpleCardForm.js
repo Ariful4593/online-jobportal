@@ -29,7 +29,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
     useEffect(() => {
         let isMounted = true;
         setAccountType('basic')
-        fetch("https://aqueous-river-54090.herokuapp.com/userLoginData")
+        fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -128,7 +128,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     setLoginInfo(newLoginInfo)
 
 
-                    fetch('https://aqueous-river-54090.herokuapp.com/userLogin', {
+                    fetch('https://morning-tundra-89617.herokuapp.com/userLogin', {
                         method: 'POST',
                         headers: { 'Content-type': 'application/json' },
                         body: JSON.stringify(newLoginInfo)
@@ -161,7 +161,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     employer &&
                     <form id="form" onSubmit={handleSubmit}>
                         <div className='form-field w-100 p-4 m-0'>
-                            <h4 className='text-center mb-5 ml-3'>
+                            <h4 className='text-center text-white mb-5 ml-3'>
                                 {newUser ? 'Created an account' : 'Login'}
                             </h4>
 
@@ -199,7 +199,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     jobSeaker &&
                     <form id="form" onSubmit={handleSubmit}>
                         <div className='form-field w-100 p-4 m-0'>
-                            <h4 className='text-center mb-5 ml-3'>
+                            <h4 className='text-center text-white mb-5 ml-3'>
                                 {newUser ? 'Created an account' : 'Login'}
                             </h4>
 

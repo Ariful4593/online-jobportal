@@ -53,14 +53,12 @@ const DialogActions = withStyles((theme) => ({
         padding: theme.spacing(1),
     },
 }))(MuiDialogActions);
-const YesPostMyProject = ({ file }) => {
+const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo] = value1;
 
-
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
-        // fetch('https://aqueous-river-54090.herokuapp.com/userData', {
 
         const formData = new FormData()
         formData.append('file', file);
@@ -71,25 +69,28 @@ const YesPostMyProject = ({ file }) => {
         formData.append('description', loginInfo.description);
         formData.append('status', loginInfo.status);
         formData.append('projectId', loginInfo.projectId);
-        formData.append('budget', loginInfo.budget);
+        formData.append('budget', budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`);
         formData.append('currencyName', loginInfo.currencyName);
         formData.append('accountType', loginInfo.accountType);
         formData.append('isLoggedIn', loginInfo.isLoggedIn);
         formData.append('paymentData', JSON.stringify(loginInfo.paymentData));
         formData.append('skillData', JSON.stringify(loginInfo.skillData));
-        formData.append('projectType', loginInfo.projectType ? loginInfo.projectType.chooseProjectTitle : '');
+        formData.append('projectType', loginInfo.projectType ? loginInfo.projectType : '');
         formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
         formData.append('postType', loginInfo.postType ? loginInfo.postType : '');
         formData.append('howLongRunContestDay', loginInfo.howLongRunContestDay ? loginInfo.howLongRunContestDay : '');
         formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
+        formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-        fetch('https://aqueous-river-54090.herokuapp.com/userData', {
+        fetch('https://morning-tundra-89617.herokuapp.com/userData', {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(data => console.log(data))
-
+            .catch(error => {
+                console.error(error)
+            })
         setOpen(true);
     };
     const history = useHistory()

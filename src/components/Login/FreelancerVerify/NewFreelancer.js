@@ -39,7 +39,7 @@ const NewFreelancer = ({ newUser, handleBlur, CardElement }) => {
             {
                 newUser &&
                 <div>
-                    <label htmlFor="" className="">Enter Stripe Payment Number</label>
+                    <label htmlFor="" className="text-white">Enter Stripe Payment Number</label>
                     <br /><br />
                     <CardElement required className="w-100" />
                 </div>

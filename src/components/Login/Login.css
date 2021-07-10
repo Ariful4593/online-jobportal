@@ -1,4 +1,4 @@
-.title{
+/* .title{
     color: #14A800;
 }
 .find-work{
@@ -6,7 +6,229 @@
 }
 .hire-freelancer, .find-work{
     font-size: 20px !important;
+    width: 160px !important;
 }
 .login-qstn{
     font-size: 20px;
+} */
+
+
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .btn-area{
+        text-align: center;
+    }
+    .login-block{
+        max-width: 1200px !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px !important;
+        
+    }
+    .login-block-row{
+        background-image: 
+        linear-gradient(#00000078, #00000078),
+        linear-gradient(#00000078, #00000078),
+        url('../../images/login\ page\ bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .find-work{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #736f75cc !important;
+        width: 100% !important;
+        font-weight: bold !important;
+        color: white !important;
+    }
+    .login-img img{
+        display: none;
+    }
+    .hire-freelancer{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #f20091 !important;
+        color: white !important;
+        font-weight: bold !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+    }
+    .btn-check:focus+.btn, .btn:focus {
+        box-shadow: none !important;
+    }
+    .login-block .title{
+        color: white;
+        font-weight: bold !important;
+        margin-top: 30px;
+    }
+    .login-block .title-description{
+        color: white;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 576px){
+    .login-block{
+        max-width: 1200px !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px !important;
+    }
+    .login-block-row{
+        background-image: 
+        linear-gradient(#00000078, #00000078),
+        linear-gradient(#00000078, #00000078),
+        url('../../images/login\ page\ bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .find-work{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #736f75cc !important;
+        width: 49% !important;
+        font-weight: bold !important;
+        color: white !important;
+        margin-left: 2%;
+    }
+    .login-img img{
+        display: none;
+    }
+    .hire-freelancer{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #f20091 !important;
+        color: white !important;
+        font-weight: bold !important;
+        border-radius: 0 !important;
+        width: 49% !important;
+    }
+    .btn-check:focus+.btn, .btn:focus {
+        box-shadow: none !important;
+    }
+    .login-block .title{
+        color: white;
+        font-weight: bold !important;
+        margin-top: 30px;
+    }
+    .login-block .title-description{
+        color: white;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .login-page{
+        width: 75% !important;
+    }
+    .login-block{
+        max-width: 1200px !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px !important;
+    }
+    .login-block-row{
+        background-image: 
+        linear-gradient(#00000078, #00000078),
+        linear-gradient(#00000078, #00000078),
+        url('../../images/login\ page\ bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .find-work{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #736f75cc !important;
+        width: 46% !important;
+        font-weight: bold !important;
+        color: white !important;
+        margin-left: 2%;
+    }
+    .login-img img{
+        display: none;
+    }
+    .hire-freelancer{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #f20091 !important;
+        color: white !important;
+        font-weight: bold !important;
+        border-radius: 0 !important;
+        width: 35% !important;
+    }
+    .btn-check:focus+.btn, .btn:focus {
+        box-shadow: none !important;
+    }
+    .login-block .title{
+        color: white;
+        font-weight: bold !important;
+        margin-top: 30px;
+    }
+    .login-block .title-description{
+        color: white;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .login-page{
+        width: 50% !important;
+        padding-left: 40px !important;
+    }
+    .login-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+    }
+    .login-block-row{
+        background-image: 
+        linear-gradient(#00000078, #00000078),
+        linear-gradient(#00000078, #00000078),
+        url('../../images/login\ page\ bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-height: 800px;
+        
+    }
+    .find-work{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #736f75cc !important;
+        font-weight: bold !important;
+        color: white !important;
+        margin-left: 2%;
+    }
+    .login-img img{
+        display: none;
+    }
+    .hire-freelancer{
+        font-size: 20px !important;
+        margin-top: 8px;
+        background: #f20091 !important;
+        color: white !important;
+        font-weight: bold !important;
+        border-radius: 0 !important;
+    }
+    .btn-check:focus+.btn, .btn:focus {
+        box-shadow: none !important;
+    }
+    .login-block .title{
+        color: white;
+        font-weight: bold !important;
+        margin-top: 30px;
+    }
+    .login-block .title-description{
+        color: white;
+        margin-top: 30px;
+    }
 }

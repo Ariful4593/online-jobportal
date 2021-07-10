@@ -65,4 +65,4 @@ const PostProject = () => {
     );
 };
 
-export default React.memo(PostProject);
+export default PostProject;

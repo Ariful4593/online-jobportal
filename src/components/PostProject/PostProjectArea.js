@@ -12,4 +12,4 @@ const PostProjectArea = () => {
     );
 };
 
-export default React.memo(PostProjectArea);
+export default PostProjectArea;

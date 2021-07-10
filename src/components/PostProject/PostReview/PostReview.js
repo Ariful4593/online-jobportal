@@ -12,18 +12,15 @@ const PostReview = ({ contestType, file, currentCategory }) => {
     const { title, description, skillData } = loginInfo;
 
     const [budgetState, setBudgetState] = useState({})
-    console.log(loginInfo)
-    console.log(loginInfo.budget)
-    console.log(loginInfo.currencyName)
+
     useEffect(() => {
-        const newBudgetState = {...budgetState};
+        const newBudgetState = { ...budgetState };
         newBudgetState.currency = loginInfo.currencyName;
         newBudgetState.price = loginInfo.budget;
         setBudgetState(newBudgetState)
 
     }, [loginInfo.budget, loginInfo.currencyName])
-    // const budgetData = budgetState ? StringManipulation(budgetState.budget) : ''
-    // console.log(budgetData)
+    const budgetData = StringManipulation(loginInfo.budget);
     return (
         <React.Fragment>
             {
@@ -34,8 +31,7 @@ const PostReview = ({ contestType, file, currentCategory }) => {
                             <div className="col-md-4 project-icon">
                                 <img className="" src={projectIcon} alt="" />
                                 <h5>Project</h5>
-                                {/* <p><small>{budgetData}</small></p> */}
-                                <p><small>{`${budgetState.currency}.00 ${budgetState.price}`}</small></p>
+                                <p><small>{budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`}</small></p>
                             </div>
                             <div className="col-md-8">
                                 <div className="review-post-content">
@@ -63,7 +59,11 @@ const PostReview = ({ contestType, file, currentCategory }) => {
                 </div>
 
             }
-            <YesPostMyProject file={file} />
+            <YesPostMyProject 
+            file={file}
+            budgetState={budgetState}
+            budgetData={budgetData}
+            />
         </React.Fragment>
     );
 };
