@@ -1,18 +1,28 @@
-/* .title{
-    color: #14A800;
+.login-block-row{
+    background-image: 
+    linear-gradient(#00000078, #00000078),
+    linear-gradient(#00000078, #00000078),
+    url('../../images/login\ page\ bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.find-work{
-    margin-left: 20px !important;
+.login-img img{
+    display: none;
 }
-.hire-freelancer, .find-work{
-    font-size: 20px !important;
-    width: 160px !important;
-}
-.login-qstn{
-    font-size: 20px;
-} */
 
+.btn-check:focus+.btn, .btn:focus {
+    box-shadow: none !important;
+}
 
+.login-block .title{
+    color: white;
+    font-weight: bold !important;
+    margin-top: 30px;
+}
+.login-block .title-description{
+    color: white;
+    margin-top: 30px;
+}
 @media screen and (max-width: 575px) and (min-width: 0px){
     .btn-area{
         text-align: center;
@@ -27,14 +37,7 @@
         margin-top: 0px !important;
         
     }
-    .login-block-row{
-        background-image: 
-        linear-gradient(#00000078, #00000078),
-        linear-gradient(#00000078, #00000078),
-        url('../../images/login\ page\ bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+    
     .find-work{
         font-size: 20px !important;
         margin-top: 8px;
@@ -43,9 +46,7 @@
         font-weight: bold !important;
         color: white !important;
     }
-    .login-img img{
-        display: none;
-    }
+    
     .hire-freelancer{
         font-size: 20px !important;
         margin-top: 8px;
@@ -55,19 +56,12 @@
         border-radius: 0 !important;
         width: 100% !important;
     }
-    .btn-check:focus+.btn, .btn:focus {
-        box-shadow: none !important;
-    }
-    .login-block .title{
-        color: white;
-        font-weight: bold !important;
-        margin-top: 30px;
-    }
-    .login-block .title-description{
-        color: white;
-        margin-top: 30px;
-    }
+    
+    
+    
 }
+
+
 
 @media screen and (max-width: 767px) and (min-width: 576px){
     .login-block{
@@ -79,14 +73,7 @@
         margin-left: auto;
         margin-top: 0px !important;
     }
-    .login-block-row{
-        background-image: 
-        linear-gradient(#00000078, #00000078),
-        linear-gradient(#00000078, #00000078),
-        url('../../images/login\ page\ bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+    
     .find-work{
         font-size: 20px !important;
         margin-top: 8px;
@@ -96,9 +83,7 @@
         color: white !important;
         margin-left: 2%;
     }
-    .login-img img{
-        display: none;
-    }
+    
     .hire-freelancer{
         font-size: 20px !important;
         margin-top: 8px;
@@ -108,18 +93,9 @@
         border-radius: 0 !important;
         width: 49% !important;
     }
-    .btn-check:focus+.btn, .btn:focus {
-        box-shadow: none !important;
-    }
-    .login-block .title{
-        color: white;
-        font-weight: bold !important;
-        margin-top: 30px;
-    }
-    .login-block .title-description{
-        color: white;
-        margin-top: 30px;
-    }
+    
+    
+    
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px){
@@ -135,14 +111,7 @@
         margin-left: auto;
         margin-top: 0px !important;
     }
-    .login-block-row{
-        background-image: 
-        linear-gradient(#00000078, #00000078),
-        linear-gradient(#00000078, #00000078),
-        url('../../images/login\ page\ bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+    
     .find-work{
         font-size: 20px !important;
         margin-top: 8px;
@@ -152,9 +121,7 @@
         color: white !important;
         margin-left: 2%;
     }
-    .login-img img{
-        display: none;
-    }
+    
     .hire-freelancer{
         font-size: 20px !important;
         margin-top: 8px;
@@ -164,18 +131,9 @@
         border-radius: 0 !important;
         width: 35% !important;
     }
-    .btn-check:focus+.btn, .btn:focus {
-        box-shadow: none !important;
-    }
-    .login-block .title{
-        color: white;
-        font-weight: bold !important;
-        margin-top: 30px;
-    }
-    .login-block .title-description{
-        color: white;
-        margin-top: 30px;
-    }
+    
+    
+    
 }
 
 @media screen and (min-width: 992px){
@@ -197,7 +155,7 @@
         url('../../images/login\ page\ bg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        max-height: 800px;
+        max-height: 900px;
         
     }
     .find-work{
@@ -208,9 +166,7 @@
         color: white !important;
         margin-left: 2%;
     }
-    .login-img img{
-        display: none;
-    }
+    
     .hire-freelancer{
         font-size: 20px !important;
         margin-top: 8px;
@@ -219,16 +175,7 @@
         font-weight: bold !important;
         border-radius: 0 !important;
     }
-    .btn-check:focus+.btn, .btn:focus {
-        box-shadow: none !important;
-    }
-    .login-block .title{
-        color: white;
-        font-weight: bold !important;
-        margin-top: 30px;
-    }
-    .login-block .title-description{
-        color: white;
-        margin-top: 30px;
-    }
+    
+    
+    
 }
