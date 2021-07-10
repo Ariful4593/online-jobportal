@@ -38,6 +38,14 @@
     .need-work-done-area .img img{
         width: 50% !important;
     }
+    .need-something-done {
+        margin-bottom: 36px !important;
+    }
+    
+    .need-something-done-title {
+        font-weight: 700;
+        font-size: 30px !important;
+    }    
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px){
@@ -47,6 +55,17 @@
     }    .need-work-done-area .title{
         font-size: 18px;
         font-weight: bold;
+    }
+    .need-something-done {
+        margin-bottom: 36px !important;
+    }
+    .need-something-done-title {
+        font-weight: 700;
+        font-size: 35px !important;
+    }
+    .need-work-done-hr {
+        margin-bottom: 60px !important;
+        margin-top: 36px;
     }
 }
 
@@ -59,5 +78,16 @@
     .need-work-done-area .title{
         font-size: 18px;
         font-weight: bold;
+    }
+    .need-something-done-title{
+        font-weight: 700;
+        font-size: 48px !important;
+    }
+    .need-something-done{
+        margin-bottom: 30px !important;
+    }
+    .need-work-done-hr {
+        margin-bottom: 60px !important;
+        margin-top: 36px;
     }
 }

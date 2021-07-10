@@ -8,10 +8,7 @@
 .our-client-logo img{
     height: 36px !important;
 }
-.our-client-logo-area-hr{
-    margin-top: 36px !important;
-    margin-bottom: 96px !important;
-}
+
 .slider{
     display: none;
 }
@@ -34,4 +31,13 @@
 }
 .our-client-logo{
     display: none;
+}
+
+
+
+@media screen and (min-width: 768px){
+    .our-client-logo-area-hr{
+        margin-top: 36px !important;
+        margin-bottom: 96px !important;
+    }
 }

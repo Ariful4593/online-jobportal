@@ -3,7 +3,7 @@ import './Price.css';
 const Price = () => {
     return (
         <div>
-            <div className="fixed-price">
+            <div className="fixed-prices">
                 <ul>
                     <li>
                         <h6>Fixed Price</h6>

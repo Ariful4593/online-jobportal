@@ -12,16 +12,25 @@ import Navbar from "./components/Navbar/Navbar"
 import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
 import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
 import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
-// import PostProjectArea from "./components/PostProject/PostProjectArea";
-
+import PostProjectArea from "./components/PostProject/PostProjectArea";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { useEffect } from "react";
+// import HeaderLower from './components/Header/HeaderLower/HeaderLower';
 export const collectionContext = createContext()
 function App() {
-
+  const [userAuth, setUserAuth] = useState([]);
+  useEffect(() => {
+    fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
+        .then(res => res.json())
+        .then(data => {setUserAuth(data)})
+}, [])
   const [loginInfo, setLoginInfo] = useState({});
   return (
     <collectionContext.Provider value={{ value1: [loginInfo, setLoginInfo] }}>
       <Router>
         <Navbar />
+        {/* <HeaderLower /> */}
+        {/* { window.location.pathname === '/postproject' &&} */}
         <Switch>
           <Route exact path="/">
             <Login />
@@ -29,24 +38,24 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          {/* <Route path="/postproject">
+          <PrivateRoute userAuth={userAuth} path="/postproject">
             <PostProjectArea />
-          </Route> */}
-          <Route path="/pendingArea">
+          </PrivateRoute>
+          <PrivateRoute userAuth={userAuth} path="/pendingArea">
             <PendingArea />
-          </Route>
-          <Route path="/adminPanel">
+          </PrivateRoute>
+          <PrivateRoute userAuth={userAuth} path="/adminPanel">
             <Admin />
-          </Route>
-          <Route path="/postedJob">
+          </PrivateRoute>
+          <PrivateRoute userAuth={userAuth} path="/postedJob">
             <JobPostedArea />
-          </Route>
-          <Route path="/singlePost/:id">
+          </PrivateRoute>
+          <PrivateRoute userAuth={userAuth} path="/singlePost/:id">
             <SinglePostArea />
-          </Route>
-          <Route path="/details-item/:category">
-            <ListItemDetails/>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute userAuth={userAuth} path="/details-item/:category">
+            <ListItemDetails />
+          </PrivateRoute>
         </Switch>
       </Router>
     </collectionContext.Provider>

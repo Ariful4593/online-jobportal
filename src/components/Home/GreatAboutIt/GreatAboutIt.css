@@ -68,7 +68,17 @@
         margin-top: 25px !important;
         width: 50% !important;
     }  
-    
+    .great-about {
+        margin-bottom: 36px !important;
+    }
+    .great-about-title {
+        font-weight: 700;
+        font-size: 35px !important;
+    }
+    .great-about-area-hr {
+        margin-bottom: 60px !important;
+        margin-top: 36px;
+    }
 }
 
 @media screen and (min-width: 992px){
@@ -78,10 +88,14 @@
         margin-top: 25px !important;
         width: 25% !important;
     }
-    
-    
-    
-    
+    .great-about-title {
+        font-weight: 700;
+        font-size: 48px !important;
+    }
+    .great-about-area-hr {
+        margin-bottom: 60px;
+        margin-top: 36px;
+    }
     
     
     
