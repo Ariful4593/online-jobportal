@@ -10,12 +10,15 @@ const PrivateRoute = ({ userAuth, children, ...rest }) => {
     const [loginInfo] = value1;
 
     const loginUser = userAuth.find(user => user.name === loginInfo.name && user.email === loginInfo.email && user.password === loginInfo.password)
+
+
+    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     return (
 
         <Route
             {...rest}
             render={({ location }) =>
-                (loginUser) ? (
+                (loginUser || userLoginInfo) ? (
                     children
                 ) : (
                     <Redirect

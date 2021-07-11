@@ -1,0 +1,23 @@
+import React from 'react';
+import './Reviews.css';
+import reviewImage from '../../../../images/review item image.svg';
+const Reviews = () => {
+    return (
+        <div className="review-items-block">
+            <div className="row">
+                <div className="col-md-12">
+                    <h4>Review Items</h4>
+                </div>
+            </div>
+            <hr />
+            <div className="row">
+                <div className="col-12 review-image-area">
+                    <img src={reviewImage} alt="" />
+                    <h6>No reviews to see here!</h6>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Reviews;

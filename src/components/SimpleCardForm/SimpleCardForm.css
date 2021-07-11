@@ -26,6 +26,7 @@ a{
   textarea {
     background-color: none !important;
   }
+  
   input[type='submit'] {
     width: 320px;
     padding: 6px 16px;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './NewFreelancer.css'
 const NewFreelancer = ({ newUser, handleBlur, CardElement }) => {
     return (
         <div>

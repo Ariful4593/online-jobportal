@@ -1,0 +1,28 @@
+.verification-area{
+    background: white;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.verification-title-area{
+    padding: 15px 0px 0px 15px;
+}
+
+.verificaion-item{
+    padding: 0px 15px 15px 15px;
+}
+
+
+.verification-area ul h6{
+    font-size: 20px;
+    margin: 0 !important;
+}
+
+.hr{
+    margin: 0px !important;
+}
+.verification-area ul li{
+    list-style-type: none;
+    line-height: 2.4;
+}
+.verification-area ul a{
+    color: black;
+}

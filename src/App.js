@@ -6,24 +6,26 @@ import {
   Route,
 } from "react-router-dom";
 import Login from './components/Login/Login'
-import PendingArea from "./components/PendingArea/PendingArea";
-import Admin from './components/Admin/Admin';
+
 import Navbar from "./components/Navbar/Navbar"
-import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
-import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
-import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
-import PostProjectArea from "./components/PostProject/PostProjectArea";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { useEffect } from "react";
+import ViewProfile from "./components/ViewProfile/ViewProfile";
+// import PendingArea from "./components/PendingArea/PendingArea";
+// import Admin from './components/Admin/Admin';
+// import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
+// import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
+// import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
+// import PostProjectArea from "./components/PostProject/PostProjectArea";
+// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+// import { useEffect } from "react";
 // import HeaderLower from './components/Header/HeaderLower/HeaderLower';
 export const collectionContext = createContext()
 function App() {
-  const [userAuth, setUserAuth] = useState([]);
-  useEffect(() => {
-    fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
-        .then(res => res.json())
-        .then(data => {setUserAuth(data)})
-}, [])
+  //   const [userAuth, setUserAuth] = useState([]);
+  //   useEffect(() => {
+  //     fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
+  //         .then(res => res.json())
+  //         .then(data => {setUserAuth(data)})
+  // }, [])
   const [loginInfo, setLoginInfo] = useState({});
   return (
     <collectionContext.Provider value={{ value1: [loginInfo, setLoginInfo] }}>
@@ -38,7 +40,7 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <PrivateRoute userAuth={userAuth} path="/postproject">
+          {/* <PrivateRoute userAuth={userAuth} path="/postproject">
             <PostProjectArea />
           </PrivateRoute>
           <PrivateRoute userAuth={userAuth} path="/pendingArea">
@@ -55,7 +57,10 @@ function App() {
           </PrivateRoute>
           <PrivateRoute userAuth={userAuth} path="/details-item/:category">
             <ListItemDetails />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          <Route path="/view-profile">
+            <ViewProfile />
+          </Route>
         </Switch>
       </Router>
     </collectionContext.Provider>

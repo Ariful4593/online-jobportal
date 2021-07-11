@@ -71,9 +71,15 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     const newLoginInfo = { ...loginUser };
                     newLoginInfo.isLoggedIn = true;
                     setLoginInfo(newLoginInfo);
+                    localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
                     history.push('postproject');
                 }
                 else if (loginUser && jobSeaker) {
+                    const newLoginInfo = { ...loginUser };
+                    newLoginInfo.isLoggedIn = true;
+                    setLoginInfo(newLoginInfo);
+                    localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+                    
                     return history.push('postedJob')
                 } else {
                     alert("Sorry! your password or email address doesn't match on the database")

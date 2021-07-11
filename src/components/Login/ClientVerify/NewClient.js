@@ -48,13 +48,13 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
                 newUser &&
                 <div>
                     {
-                        accountType === 'basic' && <p style={{ color: 'green' }}>You can 10 post job per month!</p>
+                        accountType === 'basic' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 10 post job per month!</p>
                     }
                     {
-                        accountType === 'standard' && <p style={{ color: 'green' }}>You can 20 post job per month!</p>
+                        accountType === 'standard' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 20 post job per month!</p>
                     }
                     {
-                        accountType === 'premium' && <p style={{ color: 'green' }}>You can 30 post job per month!</p>
+                        accountType === 'premium' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 30 post job per month!</p>
                     }
                 </div>
             }

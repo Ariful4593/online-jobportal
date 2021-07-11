@@ -1,0 +1,29 @@
+.top-skill-area{
+    background: white;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    margin-top: 20px;
+}
+.top-skill-title-area{
+    padding: 15px 0px 0px 15px;
+}
+
+.top-skill-item{
+    padding: 0px 15px 15px 15px;
+}
+
+
+.top-skill-area ul h6{
+    font-size: 20px;
+    margin: 0 !important;
+}
+
+.hr{
+    margin: 0px !important;
+}
+.top-skill-area ul li{
+    list-style-type: none;
+    line-height: 2.4;
+}
+.top-skill-area ul a{
+    color: black;
+}

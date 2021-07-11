@@ -1,0 +1,35 @@
+.certification-area{
+    background: white;
+    margin-top: 20px;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.certification-title-area{
+    padding: 15px 0px 0px 15px;
+}
+
+.certification-item{
+    padding: 0px 15px 15px 15px;
+}
+
+.get-certificate{
+    border: 1px solid darkgray;
+}
+.certificate-img{
+    text-align: center;
+    margin-top: 10px;
+}
+.certification-area ul h6{
+    font-size: 20px;
+    margin: 0 !important;
+}
+
+.hr{
+    margin: 0px !important;
+}
+.certification-area ul li{
+    list-style-type: none;
+    line-height: 2.4;
+}
+.certification-area ul a{
+    color: black;
+}

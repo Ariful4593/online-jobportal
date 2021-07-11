@@ -87,7 +87,9 @@ const Navbar = () => {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>Account</MenuItem>
-            <MenuItem onClick={handleMenuClose}>View Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="view-profile">View Profile</Link>
+            </MenuItem>
             <MenuItem onClick={handleMenuClose}>Membership</MenuItem>
             <MenuItem onClick={handleMenuClose}>Account Analytics</MenuItem>
             <MenuItem onClick={handleMenuClose}>Bid Insights</MenuItem>
@@ -136,65 +138,65 @@ const Navbar = () => {
         </Menu>
     );
     return (
-            <div className={classes.grow}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography className={classes.title} variant="h6" noWrap>
-                            <Link to="/">
-                                <img style={{ height: '40px' }} className="" src={freelancerLogo} alt="" />
-                            </Link>
-                        </Typography>
+        <div className={classes.grow}>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography className={classes.title} variant="h6" noWrap>
+                        <Link to="/">
+                            <img style={{ height: '40px' }} className="" src={freelancerLogo} alt="" />
+                        </Link>
+                    </Typography>
 
-                        <Typography className={classes.subTitle} variant="h6" noWrap>
-                            <Link to="/">
-                                How It Works
-                            </Link>
-                        </Typography>
+                    <Typography className={classes.subTitle} variant="h6" noWrap>
+                        <Link to="/">
+                            How It Works
+                        </Link>
+                    </Typography>
 
-                        <Typography className={classes.subTitle} variant="h6" noWrap>
-                            <Link to="/">
-                                Browse Jobs
-                            </Link>
-                        </Typography>
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <IconButton aria-label="show 4 new mails" color="inherit">
-                                <Badge badgeContent={4} color="secondary">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={17} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                            >
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
-                    </Toolbar>
-                </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
-            </div>
+                    <Typography className={classes.subTitle} variant="h6" noWrap>
+                        <Link to="/">
+                            Browse Jobs
+                        </Link>
+                    </Typography>
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <IconButton aria-label="show 4 new mails" color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <MailIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton aria-label="show 17 new notifications" color="inherit">
+                            <Badge badgeContent={17} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            edge="end"
+                            aria-label="account of current user"
+                            aria-controls={menuId}
+                            aria-haspopup="true"
+                            onClick={handleProfileMenuOpen}
+                            color="inherit"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </AppBar>
+            {renderMobileMenu}
+            {renderMenu}
+        </div>
     );
 };
 

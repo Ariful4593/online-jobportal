@@ -1,0 +1,15 @@
+.education-block{
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    margin-top: 20px;
+}
+
+/* .add-experience-image-area{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.add-experience-area img{
+    margin: 50px 50px 20px 50px;
+} */
