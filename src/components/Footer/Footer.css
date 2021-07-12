@@ -9,7 +9,7 @@
     padding-left: var(--bs-gutter-x,.75rem);
     margin-right: auto;
     margin-left: auto;
-    margin-top: 30px !important;
+    /* margin-top: 30px !important; */
     padding-top: 40px;
 }
 

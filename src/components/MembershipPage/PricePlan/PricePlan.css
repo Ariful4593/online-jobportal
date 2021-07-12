@@ -1,0 +1,12 @@
+.monthly-plan{
+    text-align: end;
+}
+.plan{
+    text-align: center !important;
+}
+.anual-plan, .anual-monthly, .monthly-plan{
+    padding: 5px 15px 5px 15px;
+    font-weight: 700;
+    font-size: larger;
+    border: 1px solid gainsboro;
+}

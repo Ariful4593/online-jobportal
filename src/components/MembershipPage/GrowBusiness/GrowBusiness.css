@@ -1,0 +1,141 @@
+
+
+.grow-business-logo{
+    height: 60px;
+}
+
+.grow-business-title{
+    width: 50%;
+    font-size: 45px;
+}
+@media screen and (max-width: 450px) and (min-width: 0px){
+    
+    .grow-business{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        padding-top: 40px;
+    
+    }
+    .grow-business-single-block{
+        text-align: center;
+    }
+    
+    .grow-business-title{
+        width: 100% !important;
+        font-size: 15px;
+    }
+    
+    
+}
+
+@media screen and (max-width: 600px) and (min-width: 451px){
+    
+    .grow-business{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        padding-top: 40px;
+    
+    }
+    .grow-business-single-block{
+        text-align: center;
+        width: 50% !important;
+    }
+    
+    .grow-business-title{
+        width: 100% !important;
+        font-size: 22px;
+    }
+    
+    
+}
+
+@media screen and (max-width: 767px) and (min-width: 601px){
+    
+    .grow-business{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        padding-top: 40px;
+    
+    }
+    .grow-business-single-block{
+        text-align: center;
+        width: 33.33% !important;
+    }
+    
+    .grow-business-title{
+        width: 100% !important;
+        font-size: 25px;
+    }
+    
+    
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px){
+    
+
+    .grow-business-single-block{
+        width: 25% !important;
+    }
+    
+    .grow-business-title{
+        /* width: 50%; */
+        font-size: 25px;
+    }
+    .grow-business{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        padding: 45px !important;
+    
+    }
+    
+}
+
+@media screen and (min-width: 992px){
+    
+
+    .grow-business-single-block{
+        width: 25% !important;
+    }
+    
+    .grow-business-title{
+        /* width: 50%; */
+        font-size: 25px;
+    }
+    .grow-business{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #f0f0f0;
+        margin-top: 10px;
+        padding: 45px !important;
+    
+    }
+    
+}

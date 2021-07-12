@@ -1,0 +1,37 @@
+
+.try-a-freelancer-title{
+    margin-bottom: 25px;
+}
+.try-a-freelancer-describe-block h4{
+    font-weight: 400;
+    font-size: 24px !important;
+    line-height: 1.33;
+}
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .try-a-freelancer-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        padding: 20px !important;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid gainsboro
+    }  
+    
+}
+
+@media screen and (min-width: 576px){
+    .try-a-freelancer-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        padding: 64px !important;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid gainsboro
+    }   
+}

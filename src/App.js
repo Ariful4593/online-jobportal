@@ -9,6 +9,7 @@ import Login from './components/Login/Login'
 
 import Navbar from "./components/Navbar/Navbar"
 import ViewProfile from "./components/ViewProfile/ViewProfile";
+import MembershipPage from "./components/MembershipPage/MembershipPage";
 // import PendingArea from "./components/PendingArea/PendingArea";
 // import Admin from './components/Admin/Admin';
 // import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
@@ -60,6 +61,9 @@ function App() {
           </PrivateRoute> */}
           <Route path="/view-profile">
             <ViewProfile />
+          </Route>
+          <Route path="/membership">
+            <MembershipPage />
           </Route>
         </Switch>
       </Router>
