@@ -5,7 +5,7 @@ import TopSkill from './TopSkill/TopSkill';
 import Verification from './Verification/Verification';
 const RightSide = () => {
     return (
-        <div className="col-md-3">
+        <div className="col-lg-3 right-side">
             <Verification />
             <Certifications />
             <TopSkill />

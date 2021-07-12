@@ -4,12 +4,25 @@
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
     margin-top: 20px;
 }
-
 .review-image-area{
     text-align: center;
     padding-bottom: 40px;
 }
+@media screen and (max-width: 575px) and (min-width: 0px){
 
-.review-image-area img{
-    margin: 50px 50px 20px 50px;
+    .review-image-area img{
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 576px){
+    .review-image-area img{
+        padding: 30px 210px 20px 210px;
+    }
+}
+
+@media screen and (min-width: 992px){
+
+    .review-image-area img{
+        padding: 30px 210px 20px 210px;
+    }
 }

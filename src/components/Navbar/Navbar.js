@@ -86,14 +86,28 @@ const Navbar = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Account</MenuItem>
             <MenuItem onClick={handleMenuClose}>
-                <Link to="view-profile">View Profile</Link>
+                <Link to="account" className="text-dark">Account</Link>
             </MenuItem>
-            <MenuItem onClick={handleMenuClose}>Membership</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Account Analytics</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Bid Insights</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="view-profile" className="text-dark" >View Profile</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="membership" className="text-dark">Membership</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="account-analysis" className="text-dark">Account Analytics</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="bid-insight" className="text-dark">Bid Insights</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="settings" className="text-dark">Settings</Link>
+            </MenuItem>
         </Menu>
     );
 

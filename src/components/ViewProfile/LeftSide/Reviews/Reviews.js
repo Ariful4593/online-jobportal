@@ -12,7 +12,7 @@ const Reviews = () => {
             <hr />
             <div className="row">
                 <div className="col-12 review-image-area">
-                    <img src={reviewImage} alt="" />
+                    <img className="w-100" src={reviewImage} alt="" />
                     <h6>No reviews to see here!</h6>
                 </div>
             </div>

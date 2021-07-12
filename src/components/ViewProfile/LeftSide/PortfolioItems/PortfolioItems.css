@@ -1,15 +1,101 @@
-.portfolio-items-block{
-    background: white;
-    padding: 10px;
-    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
-    margin-top: 20px;
+@media screen and (max-width: 332px) and (min-width: 0px){
+    .portfolio-items-block{
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+        margin-top: 20px;
+    }
+    
+    .portfolio-image-area{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    
+    .portfolio-image-area img{
+        padding: 50px 50px 20px 50px;
+    }
+    .portfolio-item{
+        width: 100% !important;
+    }
+    .manage-item{
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 575px) and (min-width: 333px){
+    .portfolio-items-block{
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+        margin-top: 20px;
+    }
+    
+    .portfolio-image-area{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    
+    .portfolio-image-area img{
+        padding: 30px 100px 20px 100px;
+    }
+    .portfolio-item{
+        width: 50% !important;
+    }
+    .manage-item{
+        width: 50% !important;
+        text-align: end;
+        display: block;
+    }
+    
+}
+@media screen and (max-width: 991px) and (min-width: 576px){
+    .portfolio-items-block{
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+        margin-top: 20px;
+    }
+    
+    .portfolio-image-area{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    
+    .portfolio-image-area img{
+        padding: 30px 210px 20px 210px;
+    }
+    .portfolio-item{
+        width: 50% !important;
+    }
+    .manage-item{
+        width: 50% !important;
+        text-align: end;
+        display: block;
+    }
 }
 
-.portfolio-image-area{
-    text-align: center;
-    padding-bottom: 40px;
-}
-
-.portfolio-image-area img{
-    margin: 50px 50px 20px 50px;
+@media screen and (min-width: 992px){
+    .portfolio-items-block{
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+        margin-top: 20px;
+    }
+    
+    .portfolio-image-area{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    
+    .portfolio-image-area img{
+        padding: 30px 210px 20px 210px;
+    }
+    .portfolio-item{
+        width: 50% !important;
+    }
+    .manage-item{
+        width: 50% !important;
+        text-align: end;
+        display: block;
+    }
 }

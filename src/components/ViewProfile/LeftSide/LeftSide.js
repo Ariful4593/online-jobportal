@@ -6,10 +6,10 @@ import ProfileDetails from './ProfileDetails/ProfileDetails';
 import Publication from './Publication/Publication';
 import Qualification from './Qualification/Qualification';
 import Reviews from './Reviews/Reviews';
-
+import './LeftSide.css';
 const LeftSide = () => {
     return (
-        <div className="col-md-9">
+        <div className="col-lg-9 left-side">
             <ProfileDetails />
             <PortfolioItems />
             <Reviews />

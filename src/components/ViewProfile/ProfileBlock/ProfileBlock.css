@@ -1,0 +1,33 @@
+.main-profile-block{
+    max-width: 100% !important;
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 90px !important;
+}
+
+@media screen and (max-width: 1095px) and (min-width: 768px){
+    .main-profile-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        padding: 110px 70px 110px 70px !important
+    }
+}
+
+@media screen and (min-width: 1096px){
+    .main-profile-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        padding: 110px 30px 110px 30px !important;
+    }
+}

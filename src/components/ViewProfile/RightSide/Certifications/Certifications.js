@@ -15,7 +15,7 @@ const Certifications = () => {
             <ul className="certification-item">
                 <li className="certificate-img"><img src={certificate} className="" alt="" /></li>
                 <li><small>You don't have any certifications yet.</small></li>
-                <li className="text-center get-certificate"><Link to="">Get Certified</Link></li>
+                <li className="text-center get-certificate"><Link to="" className="text-dark">Get Certified</Link></li>
             </ul>
         </div>
     );

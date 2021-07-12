@@ -4,10 +4,10 @@ const AddExperience = () => {
     return (
         <div className="add-experience-block">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-sm-6 experience">
                     <h4>Experience</h4>
                 </div>
-                <div className="col-md-6 text-end">
+                <div className="col-sm-6 text-end add-experience">
                     <button className="btn btn-danger">Add Experience</button>
                 </div>
             </div>

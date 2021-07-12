@@ -16,7 +16,7 @@ const TopSkill = () => {
                 {
                     topSkill.map((data, index) => (
                         <li key={index}>
-                            <Link to=""> {data}</Link>
+                            <Link to="" className="text-dark"> {data}</Link>
                         </li>
                     ))
                 }

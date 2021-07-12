@@ -1,6 +1,7 @@
 .verification-area{
     background: white;
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    display: block;
 }
 .verification-title-area{
     padding: 15px 0px 0px 15px;
@@ -26,3 +27,9 @@
 .verification-area ul a{
     color: black;
 }
+
+@media screen and (max-width: 575px) and (min-width: 0px) {
+    .verification-area{
+        display: none;
+    }
+}   

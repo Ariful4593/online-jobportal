@@ -4,10 +4,10 @@ const Publication = () => {
     return (
         <div className="publication-block">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 publication">
                     <h4>Publication</h4>
                 </div>
-                <div className="col-md-6 text-end">
+                <div className="col-md-6 text-end add-publication">
                     <button className="btn btn-danger">Add Publication</button>
                 </div>
             </div>

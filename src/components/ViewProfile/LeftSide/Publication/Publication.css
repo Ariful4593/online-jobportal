@@ -4,3 +4,23 @@
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
     margin-top: 20px;
 }
+
+
+@media screen and (max-width: 338px) and (min-width: 0px){
+    .publication{
+        width: 100% !important;
+    }
+    .add-publication{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 339px){
+    .publication{
+        width: 50% !important;
+    }
+    .add-publication{
+        width: 50% !important;
+        display: block;
+    }
+}

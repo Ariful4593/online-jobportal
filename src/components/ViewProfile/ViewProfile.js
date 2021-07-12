@@ -3,9 +3,9 @@ import ProfileBg from './ProfileBg/ProfileBg';
 
 const ViewProfile = () => {
     return (
-        <React.Fragment >
+        <div >
             <ProfileBg />
-        </React.Fragment>
+        </div>
     );
 };
 

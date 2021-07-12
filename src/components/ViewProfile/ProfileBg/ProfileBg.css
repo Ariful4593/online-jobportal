@@ -1,17 +1,33 @@
 .profile-bg{
     width: 100%;
-    height: 450px;
+    height: 150px;
     background-image: url('../../../images/cover-product.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-.profile-block-home{
-    position: relative;
+    background-size: cover;        
 }
 
 .profile-block{
-    position: absolute;
-    top: 140px;
-    left: 50px;
+    background: radial-gradient(rgb(0 0 0 / 5%), transparent);
+}
+
+@media screen and (max-width: 1095px) and (min-width: 768px){
+    .profile-bg{
+        width: 100%;
+        height: 280px;
+        background-image: url('../../../images/cover-product.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;        
+    }
+    
+}
+
+@media screen and (min-width: 1096px){
+    .profile-bg{
+        width: 100%;
+        height: 310px;
+        background-image: url('../../../images/cover-product.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;        
+    }
+    
 }

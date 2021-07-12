@@ -5,11 +5,22 @@
     margin-top: 20px;
 }
 
-/* .add-experience-image-area{
-    text-align: center;
-    padding-bottom: 40px;
+
+@media screen and (max-width: 338px) and (min-width: 0px){
+    .education{
+        width: 100% !important;
+    }
+    .add-education{
+        display: none;
+    }
 }
 
-.add-experience-area img{
-    margin: 50px 50px 20px 50px;
-} */
+@media screen and (min-width: 339px){
+    .education{
+        width: 50% !important;
+    }
+    .add-education{
+        width: 50% !important;
+        display: block;
+    }
+}

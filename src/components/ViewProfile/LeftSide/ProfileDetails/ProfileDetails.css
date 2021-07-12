@@ -1,14 +1,205 @@
+.profile-name{
+    display: none;
+}
 .profile-details{
     background: white;
     padding: 10px;
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
 }
-
+.profile-image{
+    padding: 0px 50px 0px 50px;
+    border-radius: 50%;
+}
+.user-pro-title{
+    margin-top: 20px;
+}
 .n-a{
     color: #5DC26A;
+    font-size: 16px;
 }
-
 .online-area p{
     margin: 0;
     line-height: 2;
+}
+.online-area{
+    text-align: center;
+}
+.edit-profile-button{
+    width: 100% !important;
+    position: static;
+    text-align: center;
+    margin-top: 30px;
+}
+.verificaion-item-p a{
+    color: black;
+}
+
+.verificaion-item-p li{
+    float: left;
+    width: 16.66%;
+}
+@media screen and (max-width: 332px) and (min-width: 0px){
+    .job-state{
+        width: 40% !important;
+    }
+    .job-status{
+        font-size: 13px;
+        padding-left: 0px !important;
+        width: 60% !important;
+    }
+    
+    
+    .profile-name{
+        display: block;
+    }
+    .edit-profile-name{
+        display: none;
+    }
+    
+    
+    .edit-profile-button button{
+        width: 100%;
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    .verificaion-item-p{
+        display: block;
+        text-align: center;
+        margin-top: 30px !important;
+    }
+    
+    
+}
+@media screen and (max-width: 575px) and (min-width: 333px){
+    
+    
+    
+    
+
+    .job-status{
+        font-size: 13px;
+        padding-left: 0px !important;
+    }
+    
+    
+    .profile-name{
+        display: block;
+    }
+    .edit-profile-name{
+        display: none;
+    }
+    
+    
+    .edit-profile-button button{
+        width: 100%;
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    .verificaion-item-p{
+        display: block;
+        text-align: center;
+    }
+    
+    
+}
+
+@media screen and (max-width: 991px) and (min-width: 576px){
+    
+    .profile-image{
+        padding: 0px !important;
+        border-radius: 50%;
+    }
+    
+    
+
+    .job-status{
+        font-size: 13px;
+        padding-left: 0px !important;
+    }
+    
+    .online-area{
+        text-align: left;
+    }
+    
+    .profile-name{
+        display: none;
+    }
+    .edit-profile-name{
+        display: block;
+        width: 50% !important;
+    }
+    .edit-profile-button{
+        position: static;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .edit-profile-button button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    .verificaion-item-p{
+        display: none;
+        text-align: center;
+
+    }
+    
+    
+}
+
+@media screen and (min-width: 992px){
+    
+    .profile-image{
+        padding: 0px !important;
+        border-radius: 50%;
+    }
+    
+    .online-area{
+        text-align: left;
+    }
+
+    .job-status{
+        font-size: 13px;
+        padding-left: 0px !important;
+    }
+    
+    
+    .profile-name{
+        display: none;
+    }
+    .edit-profile-name{
+        display: block;
+        width: 50% !important;
+    }
+    .edit-profile-button{
+        position: static;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .edit-profile-button button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    .verificaion-item-p{
+        display: none;
+        text-align: center;
+
+    }
+    
+    
 }
