@@ -1,0 +1,22 @@
+.profile-details{
+    max-width: 100%;
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px !important;
+}
+
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .profile-details{
+        max-width: 100%;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        padding: 10px 10px 0px 10px !important;
+        margin-top: 40px !important;
+    }   
+}

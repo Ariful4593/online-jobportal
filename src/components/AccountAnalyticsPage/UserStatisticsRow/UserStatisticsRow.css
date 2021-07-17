@@ -1,0 +1,13 @@
+.user-statistics-row{
+    background: white;
+    /* box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%); */
+    margin-top: 20px;
+    max-width: 96% !important;
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px !important;
+    margin-bottom: 50px !important;
+}

@@ -10,6 +10,8 @@ import Login from './components/Login/Login'
 import Navbar from "./components/Navbar/Navbar"
 import ViewProfile from "./components/ViewProfile/ViewProfile";
 import MembershipPage from "./components/MembershipPage/MembershipPage";
+import AccountAnalyticsPage from "./components/AccountAnalyticsPage/AccountAnalyticsPage";
+import SettingsPage from "./components/SettingsPage/SettingsPage";
 // import PendingArea from "./components/PendingArea/PendingArea";
 // import Admin from './components/Admin/Admin';
 // import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
@@ -64,6 +66,12 @@ function App() {
           </Route>
           <Route path="/membership">
             <MembershipPage />
+          </Route>
+          <Route path="/account-analytics">
+            <AccountAnalyticsPage />
+          </Route>
+          <Route path="/settings">
+            <SettingsPage />
           </Route>
         </Switch>
       </Router>

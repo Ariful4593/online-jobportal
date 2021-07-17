@@ -1,0 +1,104 @@
+.email-notifications-block small{
+    font-weight: bold;
+}
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .email-notifications-title-block{
+        padding: 20px 50px 20px 50px !important;
+    }
+    
+    
+    
+    .password-block{
+        padding-bottom: 20px !important;
+    }
+    .email{
+        margin-top: 10px !important;
+    }
+    .email-format{
+        padding-bottom: 20px !important;
+    }
+    
+    .email-format select{
+        width: 100% !important;
+        border: 1px solid gainsboro;
+    }
+    
+    .form-control:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+    }
+    .select-end-hr{
+        margin: 0px !important;
+    }
+    .save-settings{
+        padding: 35px 50px 35px 50px !important;
+        background: #a9a9a92b;
+    }
+    
+    .save-settings button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        width: 100% !important;
+    }
+    .save-settings-hr{
+        margin: 0px !important;
+    }
+
+
+}
+
+@media screen and (min-width: 576px){
+    .email-notifications-title-block{
+        padding: 20px 50px 20px 50px !important;
+    }
+    
+    .email-block{
+        padding: 20px 0px 50px 50px !important;
+    }
+    
+    .password-block{
+        padding: 58px 50px 20px 20px !important;
+    }
+    .email{
+        margin-top: 10px !important;
+    }
+    
+    .address-block{
+        padding: 20px 50px 50px 50px !important;
+    }
+    .email-format{
+        padding: 20px 50px 50px 50px !important;
+    }
+    
+    .email-format select{
+        width: 100% !important;
+        border: 1px solid gainsboro;
+    }
+    
+    .form-control:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+    }
+    
+    .save-settings{
+        padding: 35px 50px 35px 50px !important;
+        background: #a9a9a92b;
+    }
+    
+    .save-settings button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+    .digest-email, .email-for-latest-project-posted, .email-for-ltest-local-job{
+        padding: 20px 50px 50px 50px !important;
+    }
+
+}

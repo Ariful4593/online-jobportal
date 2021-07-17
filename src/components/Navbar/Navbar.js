@@ -98,7 +98,7 @@ const Navbar = () => {
             </MenuItem>
 
             <MenuItem onClick={handleMenuClose}>
-                <Link to="account-analysis" className="text-dark">Account Analytics</Link>
+                <Link to="account-analytics" className="text-dark">Account Analytics</Link>
             </MenuItem>
 
             <MenuItem onClick={handleMenuClose}>

@@ -1,0 +1,52 @@
+
+.user-statistics-title{
+    margin-bottom: 25px;
+}
+.user-statistics-describe-block h4{
+    font-weight: 400;
+    font-size: 24px !important;
+    line-height: 1.33;
+}
+.user-statistics-subtitle{
+    border-bottom: 3px solid #139FF0;
+    width: 180px !important;
+    margin-left: 37px !important;
+    padding: 0 !important;
+    margin-bottom: 0px !important;
+    cursor: pointer;
+    color: #139FF0;
+}
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .user-statistics-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        
+        background-color: #f0f0f0;
+        border-bottom: 1px solid gainsboro
+    }  
+    .user-statistics-single-block{
+        padding: 20px !important;
+    }
+    
+}
+
+@media screen and (min-width: 576px){
+    .user-statistics-block{
+        max-width: 100% !important;
+        width: 100%;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+        
+        background-color: #f0f0f0;
+        border-bottom: 1px solid gainsboro
+    }   
+    .user-statistics-single-block{
+        padding: 40px !important;
+    }
+}
