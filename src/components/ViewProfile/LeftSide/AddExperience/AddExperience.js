@@ -1,33 +1,38 @@
 import React from 'react';
 import './AddExperience.css';
-const AddExperience = () => {
+const AddExperience = ({ handleEditExperience, postData }) => {
+
+    const { experienceTitle, companyName, jobStartMonth, jobStartYear, jobEndMonth, jobEndYear, jobSummary } = postData;
     return (
         <div className="add-experience-block">
-            <div className="row">
-                <div className="col-sm-6 experience">
-                    <h4>Experience</h4>
-                </div>
-                <div className="col-sm-6 text-end add-experience">
-                    <button className="btn btn-danger">Add Experience</button>
+            <div className="single-add-block">
+                <div className="row">
+                    <div className="col-sm-6 experience">
+                        <h4>Experience</h4>
+                    </div>
+                    <div className="col-sm-6 text-end add-experience">
+                        <button className="add-button" onClick={() => handleEditExperience()}>Add Experience</button>
+                    </div>
                 </div>
             </div>
             <hr />
-            <div className="row">
-                <div className="col-12 add-experience-image-area">
-                    <h5>Frontend Developer</h5>
-                    <h6>Programming Hero</h6>
-                    <p>Jun 2020 - Dec 2020 (6 months, 2 days)</p>
-                    <p>
-                        I am responsible for creating and developing exciting graphics and visuals for client websites that
-                        make their page beautiful and attractive. In addition to excellent programming
-                        and creativity, I rely on extensive knowledge of HTML, CSS, Bootstrap, React
-                        Bootstrap, Material UI, Vanilla JavaScript, React JS, and comfortable with
-                        NodeJS, MongoDB, Express, Data Structure & Algorithm, Object-Oriented
-                        Programming (OOP).
-                    </p>
+            <div className="single-row-block">
+                <div className="row">
+                    <div className="col-12 add-experience-image-area">
+                        {
+                            (experienceTitle && companyName && jobStartMonth, jobStartYear && jobEndMonth && jobEndYear) ? 
+                            < React.Fragment >
+                                <h5>{experienceTitle}</h5>
+                                <h6>{companyName}</h6>
+                                <p>{`${jobStartMonth} ${jobStartYear} - ${jobEndMonth} ${jobEndYear}`}</p>
+                                <p>{jobSummary}</p>
+                            </React.Fragment>: 
+                            <p>No experience have been added yet</p>
+                        }
                 </div>
             </div>
         </div>
+        </div >
     );
 };
 

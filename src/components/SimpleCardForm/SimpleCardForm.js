@@ -29,7 +29,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
     useEffect(() => {
         let isMounted = true;
         setAccountType('basic')
-        fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
+        fetch("http://localhost:4000/userLoginData")
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -79,7 +79,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     newLoginInfo.isLoggedIn = true;
                     setLoginInfo(newLoginInfo);
                     localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
-                    
+
                     return history.push('postedJob')
                 } else {
                     alert("Sorry! your password or email address doesn't match on the database")
@@ -134,16 +134,18 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     setLoginInfo(newLoginInfo)
 
 
-                    fetch('https://morning-tundra-89617.herokuapp.com/userLogin', {
+                    fetch('http://localhost:4000/userLogin', {
                         method: 'POST',
                         headers: { 'Content-type': 'application/json' },
                         body: JSON.stringify(newLoginInfo)
                     })
 
                     if (jobSeaker) {
+                        localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
                         return history.push('postedJob')
                     }
                     else if (employer) {
+                        localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
                         return history.push('postproject')
                     }
 

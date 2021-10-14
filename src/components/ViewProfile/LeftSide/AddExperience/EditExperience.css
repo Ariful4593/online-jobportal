@@ -1,0 +1,136 @@
+.profile-details-block small{
+    font-weight: bold;
+}
+.experience-details-block{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    margin-top: 20px !important;
+}
+
+.save-button{
+    background: #139ff0;
+    border-color: #139ff0;
+    color: #F7F7F7;
+    text-shadow: 0 -1px transparent;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.cancel-button{
+    background: #dcd7d7f0;
+    border-color: #bec0c2;
+    color: #4d525b;
+    text-shadow: 0 -1px transparent;
+    padding: 5px 15px 5px 15px;
+    margin-top: 15px;
+    border: none;
+    margin-right: 10px;
+    font-weight: 500;
+    
+}
+@media screen and (max-width: 575px) and (min-width: 0px){
+    .profile-details-title-block{
+        padding: 20px 50px 20px 50px !important;
+    }
+    
+    
+    
+    .name-block{
+        padding-bottom: 20px !important;
+    }
+    .name{
+        margin-top: 10px !important;
+    }
+    .language-settings{
+        padding-bottom: 20px !important;
+    }
+    
+    .language-settings select{
+        width: 100% !important;
+        border: 1px solid gainsboro;
+    }
+    
+    .form-control:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+    }
+    .select-end-hr{
+        margin: 0px !important;
+    }
+    .save-settings{
+        padding: 35px 50px 35px 50px !important;
+        background: #a9a9a92b;
+    }
+    
+    .save-settings button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        width: 100% !important;
+    }
+    .save-settings-hr{
+        margin: 0px !important;
+    }
+
+
+}
+
+@media screen and (min-width: 576px){
+    .profile-details-title-block{
+        padding: 20px 50px 20px 50px !important;
+    }
+    
+    /* .name-block{
+        padding: 20px 0px 50px 50px !important;
+    } */
+    
+    .name-block{
+        padding: 0px 50px 0px 12px !important;
+    }
+    .name{
+        margin-top: 10px !important;
+    }
+    
+    .address-block{
+        padding: 20px 50px 50px 50px !important;
+    }
+    .language-settings{
+        padding: 20px 50px 50px 50px !important;
+    }
+    
+    .language-settings select{
+        width: 100% !important;
+        border: 1px solid gainsboro;
+    }
+    
+    .form-control:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+    }
+    .form-select:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+    }
+    
+    .save-settings{
+        padding: 35px 50px 35px 50px !important;
+        background: #a9a9a92b;
+    }
+    
+    .save-settings button{
+        background: #139ff0;
+        border-color: #139ff0;
+        color: #F7F7F7;
+        text-shadow: 0 -1px transparent;
+        border: none;
+        padding: 5px 15px 5px 15px;
+    }
+
+}

@@ -2,23 +2,25 @@ import React from 'react';
 import './Skills.css';
 // import skillData from '../../../fakedata/postedJobData/skillData';
 
-const Skills = ({ skillData }) => {
+const Skills = ({ skillData, postedjob }) => {
     return (
         <div>
             {
                 <div>
                     <div className="skills">
-                        <ul className="skill-ul">
-                            <li>
+                        <ul className={`${postedjob ? 'skill-ul' : 'skill-ul-postedjob'}`}>
+                            {
+                                postedjob && <li>
                                 <h6>Skills</h6>
                             </li>
-                            <li className="add-skill">
+                            }
+                            <li className={`${postedjob ? 'add-skill' : 'add-skill-postedjob'}`}>
                                 {
-                                   skillData ? skillData.map((data, index) => (
-                                        <span className={`badge bg-dark text-white`} key={index}>{data}</span>
+                                    skillData ? skillData.map((data, index) => (
+                                        <span className={`${postedjob ? 'badge bg-dark text-white' : 'badge bg-dark text-white badge-area'}`} key={index}>{data}</span>
                                     ))
-                                    : 
-                                    ""
+                                        :
+                                        ""
                                 }
 
                             </li>

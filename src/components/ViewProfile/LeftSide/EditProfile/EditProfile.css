@@ -1,38 +1,64 @@
 .profile-name{
     display: none;
 }
-.profile-details{
+.edit-profile{
     background: white;
     padding: 10px;
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
     margin-top: 40px !important;
 }
-.profile-image{
+.edit-profile-image{
     padding: 0px 50px 0px 50px;
     border-radius: 50%;
 }
 .user-pro-title{
-    margin-top: 0px !important;
-    color: #4d525b;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.4;
+    margin-top: 20px;
 }
 .n-a{
     color: #5DC26A;
     font-size: 16px;
 }
-.online-area p{
+.edit-online-area p{
     margin: 0;
     line-height: 2;
 }
-.online-area{
-    text-align: center;
+.hourly-rate{
+    padding: 0 !important;
+    line-height: 1.5;
 }
-.profile-edit-profile-button{
+.edit-contest-budget{
+    text-align-last: left !important;
+}
+.edit-online-area{
+    text-align: center;
+    margin: 30px 0px 0px 0px !important;
+}
+.save-button{
+    background: #139ff0;
+    border-color: #139ff0;
+    color: #F7F7F7;
+    text-shadow: 0 -1px transparent;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+.cancel-button{
+    background: #dcd7d7f0;
+    border-color: #bec0c2;
+    color: #4d525b;
+    text-shadow: 0 -1px transparent;
+    padding: 5px 15px 5px 15px;
+    margin-top: 15px;
+    border: none;
+    margin-right: 10px;
+    font-weight: 500;
+    
+}
+.edit-profile-button{
     width: 100% !important;
     position: static;
-    text-align: right;
+    text-align: center;
     margin-top: 30px;
 }
 .verificaion-item-p a{
@@ -62,7 +88,7 @@
     }
     
     
-    .profile-edit-profile-button button{
+    .edit-profile-button button{
         width: 100%;
         background: #139ff0;
         border-color: #139ff0;
@@ -99,7 +125,7 @@
     }
     
     
-    .profile-edit-profile-button button{
+    .edit-profile-button button{
         width: 100%;
         background: #139ff0;
         border-color: #139ff0;
@@ -118,7 +144,7 @@
 
 @media screen and (max-width: 991px) and (min-width: 576px){
     
-    .profile-image{
+    .edit-profile-image{
         padding: 0px !important;
         border-radius: 50%;
     }
@@ -130,7 +156,7 @@
         padding-left: 0px !important;
     }
     
-    .online-area{
+    .edit-online-area{
         text-align: left;
     }
     
@@ -141,13 +167,13 @@
         display: block;
         width: 50% !important;
     }
-    .profile-edit-profile-button{
+    .edit-profile-button{
         position: static;
-        text-align: right;
+        text-align: center;
         margin-top: 30px;
         width: 50% !important;
     }
-    .profile-edit-profile-button button{
+    .edit-profile-button button{
         background: #139ff0;
         border-color: #139ff0;
         color: #F7F7F7;
@@ -166,12 +192,12 @@
 
 @media screen and (min-width: 992px){
     
-    .profile-image{
+    .edit-profile-image{
         padding: 0px !important;
         border-radius: 50%;
     }
     
-    .online-area{
+    .edit-online-area{
         text-align: left;
     }
 
@@ -188,13 +214,13 @@
         display: block;
         width: 50% !important;
     }
-    .profile-edit-profile-button{
+    .edit-profile-button{
         width: 50% !important;
         position: static;
-        text-align: right;
+        text-align: center;
         margin-top: 30px;
     }
-    .profile-edit-profile-button button{
+    .edit-profile-button button{
         background: #139ff0;
         border-color: #139ff0;
         color: #F7F7F7;

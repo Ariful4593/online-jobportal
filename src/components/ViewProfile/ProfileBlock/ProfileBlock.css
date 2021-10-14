@@ -6,6 +6,19 @@
     margin-right: auto;
     margin-left: auto;
     padding-top: 90px !important;
+    position: relative;
+}
+.cover-photo-btn{
+    background: #f7f7f7;
+    border-color: #bec0c2;
+    color: #4d525b;
+    text-shadow: 0 -1px transparent;
+    padding: 5px 15px 5px 15px;
+    border: none;
+    margin-right: 10px;
+    font-weight: 500;
+    position: absolute;
+    margin-top: -7px !important;
 }
 
 @media screen and (max-width: 1095px) and (min-width: 768px){

@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProjectDetailsTitleArea.css';
-const ProjectDetailsTitleArea = ({singlePostData}) => {
+
+const ProjectDetailsTitleArea = ({ singlePostData }) => {
+    const classArray = ['badge badge-primary text-primary', 'badge badge-secondary text-secondary', 'badge badge-success text-success', 'badge badge-danger text-danger', 'badge badge-warning text-warning']
+    const { budget, title, skillData } = singlePostData;
+    const [newState, setNewState] = useState([])
+    useEffect(() => {
+        setNewState(skillData)
+    }, [skillData])
     return (
         <div className="project-details-title-area">
             <div className="row ">
@@ -8,21 +15,21 @@ const ProjectDetailsTitleArea = ({singlePostData}) => {
                     <h3 className="project-details-title">Project Details</h3>
                 </div>
                 <div className="col-sm-3 details-right">
-                    <h5 className="bidding-price">$30.00 – 250.00 USD</h5>
+                    <h5 className="bidding-price">{budget}</h5>
                     <small className="bidding">BIDDING ENDS IN 6 DAYS, 23 HOURS</small>
                 </div>
                 <hr />
             </div>
             <div className="row project-details-description-area">
                 <div className="col-12">
-                    <p>{singlePostData.orderProject.projectDescription}</p>
+                    <p>{title}</p>
 
                     <div className="skill-area">
-                        <span className="badge badge-primary text-primary">Node.js</span>
-                        <span className="badge badge-secondary text-secondary">Andular JS</span>
-                        <span className="badge badge-success text-success">Typescript</span>
-                        <span className="badge badge-danger text-danger">Angular Material</span>
-                        <span className="badge badge-warning text-warning">Google APIs</span>
+                        {
+                            newState && newState.map((data, index) => (
+                                <span key={index} className={`${classArray[index]}`}>{data}</span>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

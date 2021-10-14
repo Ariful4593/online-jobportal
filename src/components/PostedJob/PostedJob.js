@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react';
 import './PostedJob.css';
 import { Link } from 'react-router-dom';
 import LeftSidebar from './LeftSidebar/LeftSidebar';
+import Skills from './Skills/Skills';
 
 
 const PostedJob = () => {
 
     const [getData, setGetdata] = useState([])
     useEffect(() => {
-        fetch('https://aqueous-river-54090.herokuapp.com/getUserData')
-            .then(res => res.json())
+        fetch('http://localhost:4000/getPostProject')
+            .then(res => res.json())//data.filter(post => post.status === 'Approved')
             .then(data => {
-                const approvedData = data.filter(post => post.status === 'Approved')
-                setGetdata(approvedData)
+                setGetdata(data)
                 sessionStorage.setItem('data', JSON.stringify(data))
             })
     }, [])
@@ -22,21 +22,21 @@ const PostedJob = () => {
     const [search, setSearch] = useState('')
     const [searchResult, setSearchResult] = useState([])
 
-
     useEffect(() => {
         if (search !== '') {
-            const newData = getData.filter((data) => {
-                return (Object.values(data.orderProject).join(" ").toLowerCase().includes(search.toLowerCase()))
+            getData.filter((data) => {
+                const afterFilterData = data.postInfo.filter(item => Object.values(item).join(" ").toLowerCase().includes(search.toLowerCase()))
+                if (afterFilterData.length > 0) {
+                    setSearchResult(afterFilterData)
+                }
+                return afterFilterData;
             });
-            setSearchResult(newData);
         }
         else {
             setSearchResult(getData);
         }
     }, [getData, search])
 
-
-    
 
     return (
         <div className="job-post-area">
@@ -54,40 +54,52 @@ const PostedJob = () => {
                             </div>
                         </div>
                         {
-                            search.length < 1 ? getData.map((data, index) => (
-                                <Link to={`/singlePost/${data._id}`} key={index}>
-                                    <div className="row search-result-item">
+                            search.length < 1 ? getData.map((data) => {
+                                return (
+                                    data.postInfo.map((item, index) => {
 
-                                        <div className="col-12 col-md-9">
-                                            <h4>{data.orderProject.title}</h4>
-                                            <p>{(data.orderProject.projectDescription).slice(0, 200)}</p>
-                                            <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
-                                            <p><small>PHP, JavaScript, Python, HTML5</small></p>
-                                        </div>
-                                        <div className="col-12 col-md-3 product-price">
-                                            <h5>Price: $50 - $85</h5>
-                                        </div>
+                                        return (
+                                            <Link to={`/singlePost/${item.projectId}`} key={index}>
+                                                <div className="row search-result-item">
 
-                                    </div>
-                                </Link>
+                                                    <div className="col-12 col-md-9">
+                                                        <h4>{item.title}</h4>
+                                                        {/* <p>{(data.description).slice(0, 200)}</p> */}
+                                                        <p>{item.description}</p>
+                                                        <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
+                                                        <Skills postedjob={false} skillData={item.skillData} />
+                                                    </div>
+                                                    <div className="col-12 col-md-3 product-price">
+                                                        <h5 style={{fontSize: '17px'}}>{item.budget}</h5>
+                                                    </div>
 
-                            )) : searchResult.map((data, index) => (
+                                                </div>
+                                            </Link>
+                                        )
+                                    })
+                                )
 
-                                <Link to={`/singlePost/${data._id}`} key={index}>
-                                    <div className="row search-result-item">
-                                        <div className="col-10">
-                                            <h4>{data.orderProject.title}</h4>
-                                            <p>{(data.orderProject.projectDescription).slice(0, 200)}</p>
-                                            <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
-                                            <p><small>PHP, JavaScript, Python, HTML5</small></p>
-                                        </div>
-                                        <div className="col-2">
-                                            <h5>$50 - $85</h5>
-                                        </div>
+                            })
+                                : searchResult.map((data, index) => {
+                                    return (
+                                        <Link to={`/singlePost/${data._id}`} key={index}>
+                                            <div className="row search-result-item">
 
-                                    </div>
-                                </Link>
-                            ))
+                                                <div className="col-12 col-md-9">
+                                                    <h4>{data.title}</h4>
+                                                    {/* <p>{(data.description).slice(0, 200)}</p> */}
+                                                    <p>{data.description}</p>
+                                                    <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
+                                                    <p><small>PHP, JavaScript, Python, HTML5</small></p>
+                                                </div>
+                                                <div className="col-12 col-md-3 product-price">
+                                                    <h5>{data.budget}</h5>
+                                                </div>
+
+                                            </div>
+                                        </Link>
+                                    )
+                                })
                         }
                     </div>
                 </div>

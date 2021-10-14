@@ -26,10 +26,11 @@ const Admin = () => {
 
     const [userData, setUserData] = useState([])
     useEffect(() => {
-        fetch('https://aqueous-river-54090.herokuapp.com/getUserData')
+        fetch('http://localhost:4000/getUserData')
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
+    // console.log(userData)
     return (
         <div className="dashboard mt-2">
             <div className="row">
@@ -73,13 +74,13 @@ const Admin = () => {
                             <div className="col-md-3" style={{ fontSize: '25px' }}>Project Details</div>
                             <div className="col-md-2" style={{ fontSize: '25px' }}>Status</div>
                         </div>
-                        {
+                        {/* {
                             userData.map(service => {
                                 return (
                                     <Dashboard key={service._id} service={service}></Dashboard>
                                 )
                             })
-                        }
+                        } */}
                     </Card>
 
                 </div>

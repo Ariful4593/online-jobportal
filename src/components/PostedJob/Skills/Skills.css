@@ -10,3 +10,12 @@
     margin-left: 5px;
     margin-top: 5px;
 }
+.skill-ul-postedjob{
+    padding-left: 0px !important;
+}
+.add-skill-postedjob{
+    border: 0px !important;
+}
+.badge-area{
+    margin-right: 5px !important;
+}

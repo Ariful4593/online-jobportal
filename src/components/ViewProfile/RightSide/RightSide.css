@@ -3,3 +3,12 @@
         width: 100% !important;
     }
 }
+
+@media screen and (min-width: 1096px){
+    .right-side{
+        margin-top: 40px !important;
+    }
+    .right-side-false{
+        margin-top: 40px !important;
+    }
+}

@@ -20,18 +20,34 @@ import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
 import PostProjectArea from "./components/PostProject/PostProjectArea";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useEffect } from "react";
-import HeaderLower from './components/Header/HeaderLower/HeaderLower';
 export const collectionContext = createContext()
 function App() {
-    const [userAuth, setUserAuth] = useState([]);
-    useEffect(() => {
-      fetch("https://morning-tundra-89617.herokuapp.com/userLoginData")
-          .then(res => res.json())
-          .then(data => {setUserAuth(data)})
-  }, [])
+
+  // https://morning-tundra-89617.herokuapp.com/
+  const [userAuth, setUserAuth] = useState([]);
   const [loginInfo, setLoginInfo] = useState({});
+  const [userName, setUserName] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [rate, setRate] = useState('');
+
+
+  useEffect(() => {
+    fetch("http://localhost:4000/userLoginData")
+      .then(res => res.json())
+      .then(data => { setUserAuth(data) })
+  }, []);
+  
+
   return (
-    <collectionContext.Provider value={{ value1: [loginInfo, setLoginInfo] }}>
+    <collectionContext.Provider value={{
+      value1: [loginInfo, setLoginInfo],
+      value2: [userName, setUserName],
+      value3: [title, setTitle],
+      value4: [description, setDescription],
+      value5: [rate, setRate],
+      value6: [userAuth, setUserAuth],
+    }}>
       <Router>
         <Navbar />
         <Switch>
@@ -44,7 +60,7 @@ function App() {
           <PrivateRoute userAuth={userAuth} path="/postproject">
             <PostProjectArea />
           </PrivateRoute>
-          <PrivateRoute userAuth={userAuth} path="/pendingArea">
+          <PrivateRoute userAuth={userAuth} path="/pendingArea/:postId">
             <PendingArea />
           </PrivateRoute>
           <PrivateRoute userAuth={userAuth} path="/adminPanel">

@@ -1,11 +1,11 @@
 import React from 'react';
 import ProfileBlock from '../ProfileBlock/ProfileBlock';
 import './ProfileBg.css';
-const ProfileBg = () => {
+const ProfileBg = ({ userData, userLogin }) => {
     return (
         <div className="profile-bg">
             <div className="profile-block">
-                <ProfileBlock />
+                <ProfileBlock userData={userData} />
             </div>
         </div>
     );

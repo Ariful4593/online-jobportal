@@ -5,7 +5,7 @@ const Dashboard = ({ service }) => {
 
     const handleChange = (e) => {
         setPending(!pending)
-        fetch('https://aqueous-river-54090.herokuapp.com/update', {
+        fetch('http://localhost:4000/update', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -22,7 +22,7 @@ const ProjectBid = () => {
                 <div className="row mt-3 proposal">
                     <div className="col-12">
                         <h6>Describe your proposal</h6>
-                        <textarea style={{ width: '100%' }} placeholder="What makes you the best candidate for this project?" name="" id="" cols="95" rows="10">
+                        <textarea style={{ width: '100%' }} className="form-control" placeholder="What makes you the best candidate for this project?" name="" id="" cols="95" rows="10">
                         </textarea>
                     </div>
                 </div>

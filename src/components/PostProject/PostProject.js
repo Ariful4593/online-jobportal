@@ -39,11 +39,14 @@ const PostProject = () => {
             setPost(newPostInfo)
         }
     }, [post.description, post.title])
+    const uniqueId = Math.random().toString(36).substring(7);
+
 
     useEffect(() => {
         const newLoginInfo = { ...loginInfo };
         newLoginInfo.title = post.title;
         newLoginInfo.description = post.description;
+        newLoginInfo.uniqueId = uniqueId;
         const description = post.description;
         setCount(description.length)
         setLoginInfo(newLoginInfo);

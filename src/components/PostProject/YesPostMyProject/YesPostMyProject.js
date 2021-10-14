@@ -69,6 +69,7 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
         formData.append('description', loginInfo.description);
         formData.append('status', loginInfo.status);
         formData.append('projectId', loginInfo.projectId);
+        formData.append('uniqueId', loginInfo.uniqueId);
         formData.append('budget', budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`);
         formData.append('currencyName', loginInfo.currencyName);
         formData.append('accountType', loginInfo.accountType);
@@ -82,7 +83,7 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
         formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
         formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-        fetch('https://morning-tundra-89617.herokuapp.com/userData', {
+        fetch('http://localhost:4000/userData', {
             method: 'POST',
             body: formData
         })
@@ -96,7 +97,7 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const history = useHistory()
     const handleClose = () => {
         setOpen(false);
-        history.push('/pendingArea');
+        history.push(`/pendingArea/${loginInfo.projectId}`);
     };
     return (
         <React.Fragment>
