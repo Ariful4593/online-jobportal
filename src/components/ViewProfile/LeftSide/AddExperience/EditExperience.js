@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EditExperience.css';
 import month from '../../../../fakedata/editExperienceData/month';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditExperience = ({ handleExperienceSave, postData }) => {
+const EditExperience = ({ handleExperienceSave }) => {
 
     const [title, setTitle] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -12,12 +12,13 @@ const EditExperience = ({ handleExperienceSave, postData }) => {
     const [endYear, setEndYear] = useState('');
     const [summary, setSummary] = useState('')
 
-    const { id } = postData;
+
+    const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const saveButton = () => {
         fetch('http://localhost:4000/editExperience', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: id })
+            body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: getUserLoginInfo._id })
         })
         handleExperienceSave()
     }

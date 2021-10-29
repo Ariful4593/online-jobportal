@@ -10,6 +10,7 @@
     .project-title{
         height: 110px;
         background-color: #0e1724;
+        
     }
     .project-title h1{
         color: #f7f7f7;
@@ -95,6 +96,12 @@
 }
 
 @media screen and (min-width: 768px){
+    .proposals{
+        border-bottom: 3px solid;
+    }
+    .details{
+        border-bottom: 3px solid;
+    }
     .details-post{
         max-width: 1180px;
         width: 100%;
@@ -112,8 +119,9 @@
         margin-left: auto;
     }
     .project-title{
-        height: 110px;
+        height: 138px;
         background-color: #0e1724;
+        padding-left: 55px !important;
     }
     .project-title h1{
         color: #f7f7f7;

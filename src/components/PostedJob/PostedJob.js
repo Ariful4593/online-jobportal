@@ -4,7 +4,8 @@ import './PostedJob.css';
 import { Link } from 'react-router-dom';
 import LeftSidebar from './LeftSidebar/LeftSidebar';
 import Skills from './Skills/Skills';
-
+import TimeAgo from "javascript-time-ago";
+import en from 'javascript-time-ago/locale/en'
 
 const PostedJob = () => {
 
@@ -16,7 +17,7 @@ const PostedJob = () => {
                 setGetdata(data)
                 sessionStorage.setItem('data', JSON.stringify(data))
             })
-    }, [])
+    }, []);
 
 
     const [search, setSearch] = useState('')
@@ -37,7 +38,6 @@ const PostedJob = () => {
         }
     }, [getData, search])
 
-
     return (
         <div className="job-post-area">
             <div className="row">
@@ -57,16 +57,20 @@ const PostedJob = () => {
                             search.length < 1 ? getData.map((data) => {
                                 return (
                                     data.postInfo.map((item, index) => {
-
+                                        TimeAgo.addLocale(en);
+    const timeAgo = new TimeAgo("en-US");
+    const inSeconds = new Date(item.date).getTime();
+    const minutesAgo = timeAgo.format(inSeconds - 60 * 1000);
                                         return (
-                                            <Link to={`/singlePost/${item.projectId}`} key={index}>
+                                            <Link to={`/singlePost/${item.projectId}/${data._id}`} key={index}>
                                                 <div className="row search-result-item">
 
                                                     <div className="col-12 col-md-9">
                                                         <h4>{item.title}</h4>
                                                         {/* <p>{(data.description).slice(0, 200)}</p> */}
-                                                        <p>{item.description}</p>
-                                                        <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
+                                                        <p>{`${(item.description).slice(0, 60)}....`}</p>
+                                                        <p><small> <span style={{ color: '#5dc26a' }}>Open </span> {`${minutesAgo} - ${item.biddingPeople.length} bids`}</small></p>
+{/* ${<Time date={item.date}/> */}
                                                         <Skills postedjob={false} skillData={item.skillData} />
                                                     </div>
                                                     <div className="col-12 col-md-3 product-price">
@@ -88,8 +92,8 @@ const PostedJob = () => {
                                                 <div className="col-12 col-md-9">
                                                     <h4>{data.title}</h4>
                                                     {/* <p>{(data.description).slice(0, 200)}</p> */}
-                                                    <p>{data.description}</p>
-                                                    <p><small> <span style={{ color: '#5dc26a' }}>Open </span> 3 minutes ago - 0 bids</small></p>
+                                                    <p>{`${(data.description)}`}</p>
+                                                    <p><small> <span style={{ color: '#5dc26a' }}>Open </span> {`3 minutes ago - 0 bids`}</small></p>
                                                     <p><small>PHP, JavaScript, Python, HTML5</small></p>
                                                 </div>
                                                 <div className="col-12 col-md-3 product-price">

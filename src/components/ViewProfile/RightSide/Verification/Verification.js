@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineUsergroupAdd } from 'react-icons/ai';
+import React, { useState, useContext, useEffect } from 'react';
 import { BiGroup } from 'react-icons/bi';
 import { MdVerifiedUser, MdEmail, MdCall } from 'react-icons/md';
-import { IoLogoFacebook } from 'react-icons/io';
 import './Verification.css';
 import firebase from '../../../../firebase';
+import { collectionContext } from '../../../../App'
 
-// import verificationTypeData from '../../../../fakedata/viewProfileData/rightSideData/verificationTypeData';
-const Verification = () => {
+
+const Verification = ({ profileId }) => {
 
 
     const [newNumber, setNewNumber] = useState('');
     const [verified, setVerified] = useState(false);
+    const { value6 } = useContext(collectionContext)
+
+    const [userAuth] = value6;
+
+    const { name } = JSON.parse(localStorage.getItem('userLoginInfo'))
+
+    const loginData = userAuth.find(data => data.name === name);
+
+    const [userData, setUserData] = useState([]);
+    useEffect(() => {
+        let isMounted = true;
+        fetch('http://localhost:4000/userLoginData')
+            .then(res => res.json())
+            .then(data => {
+                if (isMounted) {
+                    const newData = data.find(item => item._id === profileId)
+                    setUserData(newData);
+                }
+            })
+        return () => { isMounted = false };
+    }, [])
+
     const handleClick = () => {
         let recaptcha = new firebase.auth.RecaptchaVerifier('captcha-container');
         let number = `+88${newNumber}`;
@@ -21,12 +41,19 @@ const Verification = () => {
             if (code === null) return;
             e.confirm(code).then((res) => {
                 setVerified(true);
-            }).catch((err) => {
-                alert('Sorry, Your OTP not matching. Try again later...')
+                fetch('http://localhost:4000/phoneVerify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ verify: 'Verified', id: loginData._id })
+                })
+
             })
+                .then(data => window.location.reload())
+                .catch((err) => {
+                    alert('Sorry, Your OTP not matching. Try again later...')
+                })
         })
     }
-
     return (
         <div className="verification-area ">
             {
@@ -41,32 +68,25 @@ const Verification = () => {
 
             <ul className="verificaion-item">
                 <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><AiOutlineUsergroupAdd /> Prererred Freelancer</Link>
-                    <Link to="" className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verifiy</Link>
+                    <small className="text-dark" style={{ fontSize: '14px' }}><BiGroup /> Identity Verified</small>
+                    <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verified</small>
                 </li>
                 <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><BiGroup /> Identity Verified</Link>
-                    <Link to="" className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verifiy</Link>
+                    <small className="text-dark" style={{ fontSize: '14px' }}><MdVerifiedUser /> Payment Verified</small>
+                    <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verified</small>
                 </li>
                 <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><MdVerifiedUser /> Payment Verified</Link>
-                    <Link to="" className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verifiy</Link>
-                </li>
-                <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><MdCall /> Phone Verified</Link>
+                    <small className="text-dark" style={{ fontSize: '14px' }}><MdCall /> Phone Verified</small>
                     {
-                        verified ? <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px', }} data-toggle="modal" data-target="#exampleModal" >Verified</small> : <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px',  cursor: 'pointer'} } data-toggle="modal" data-target="#exampleModal" >Verifiy</small>
+                        !profileId ? loginData && loginData.verify ? <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px', }} >{loginData.verify}</small> : <small className="text-danger" style={{ marginLeft: '25px', fontSize: '14px', cursor: 'pointer' }} data-toggle="modal" data-target="#exampleModal" >Verifiy</small>
+                            :
+                            <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px', }} >{userData && userData.verify ? userData.verify : 'Not Verified'}</small>
                     }
                 </li>
                 <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><MdEmail /> Email Verified</Link>
-                    <Link to="" className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verifiy</Link>
+                    <small className="text-dark" style={{ fontSize: '14px' }}><MdEmail /> Email Verified</small>
+                    <small className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verified</small>
                 </li>
-                <li >
-                    <Link to="" className="text-dark" style={{ fontSize: '14px' }}><IoLogoFacebook /> Facebook Connected</Link>
-                    <Link to="" className="text-success" style={{ marginLeft: '25px', fontSize: '14px' }}>Verifiy</Link>
-                </li>
-
             </ul>
 
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,16 +102,16 @@ const Verification = () => {
                             <input type="number" onChange={(e) => setNewNumber(e.target.value)} required className="form-control" />
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             {
-                                newNumber.length === 11 && <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleClick} >Save changes</button>
+                                newNumber.length === 11 && <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleClick} >Send OTP</button>
                             }
 
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,23 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './EditProfile.css'
 import upload_image from '../../../../images/upload image/upload_image.png'
 import { collectionContext } from '../../../../App';
 
 const EditProfile = ({ profileSave, postData }) => {
 
-    const { value2, value3, value4, value5, value6 } = useContext(collectionContext)
+    const { value2, value3, value4, value5 } = useContext(collectionContext)
     const [userName, setUserName] = value2;
     const [title, setTitle] = value3;
     const [description, setDescription] = value4;
     const [rate, setRate] = value5;
-    const [userAuth,] = value6;
+    const [userProfileData, setUserProfileData] = useState([]);
 
-    const { name } = JSON.parse(localStorage.getItem('userLoginInfo'));
+    useEffect(() => {
+        fetch('http://localhost:4000/userLoginData')
+            .then(res => res.json())
+            .then(data => setUserProfileData(data))
+    }, [])
+    const getUserLogin = JSON.parse(localStorage.getItem('userLoginInfo'));
 
-    const loginData = userAuth.find(data => data.name === name);
+    const loginData = userProfileData.find(data => data.email === getUserLogin.email);
     useEffect(() => {
         if (loginData) {
-            const { name, withoutPostProf: { headline, summery, hourlyRate } } = loginData;
+            const { name, profileEdit: { headline, summery, hourlyRate } } = loginData;
             setUserName(name)
             setTitle(headline);
             setDescription(summery);
@@ -28,22 +33,13 @@ const EditProfile = ({ profileSave, postData }) => {
 
 
     const handleEditProfile = () => {
-        postData ?
-            fetch('http://localhost:4000/add-profile-info', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: title, description: description, rate: rate, id: postData.id })
-            })
-                .then(res => res.json())
-                .then(data => profileSave())
-            : fetch('http://localhost:4000/add-profile-info-without-post', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: title, description: description, rate: rate, id: loginData._id })
-            })
-                .then(res => res.json())
-                .then(data => console.log('data updated'))
-        profileSave()
+        fetch('http://localhost:4000/add-profile-info', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: title, description: description, rate: rate, id: loginData._id })
+        })
+            .then(res => res.json())
+            .then(data => profileSave())
     }
 
 
@@ -52,7 +48,7 @@ const EditProfile = ({ profileSave, postData }) => {
             <div className="row">
                 <div className="col-12 col-sm-4">
                     {
-                        loginData.imageFile.img ?
+                        loginData && loginData.imageFile.img ?
                             <img className="w-100 edit-profile-image" style={{ height: '276px' }} src={`data:image/png;base64,${loginData.imageFile.img}`} alt="" /> :
                             <img className="w-100 profile-image" style={{ height: '276px' }} src={`${upload_image}`} alt="" />
                     }

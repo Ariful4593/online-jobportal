@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,11 +15,10 @@ import SettingsPage from "./components/SettingsPage/SettingsPage";
 import PendingArea from "./components/PendingArea/PendingArea";
 import Admin from './components/Admin/Admin';
 import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
-import ListItemDetails from "./components/ListItemDetails/ListItemDetails";
 import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
 import PostProjectArea from "./components/PostProject/PostProjectArea";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { useEffect } from "react";
+
 export const collectionContext = createContext()
 function App() {
 
@@ -37,7 +36,6 @@ function App() {
       .then(res => res.json())
       .then(data => { setUserAuth(data) })
   }, []);
-  
 
   return (
     <collectionContext.Provider value={{
@@ -50,6 +48,7 @@ function App() {
     }}>
       <Router>
         <Navbar />
+
         <Switch>
           <Route exact path="/">
             <Login />
@@ -60,7 +59,7 @@ function App() {
           <PrivateRoute userAuth={userAuth} path="/postproject">
             <PostProjectArea />
           </PrivateRoute>
-          <PrivateRoute userAuth={userAuth} path="/pendingArea/:postId">
+          <PrivateRoute userAuth={userAuth} path="/pendingArea/:postId/:uniqueId">
             <PendingArea />
           </PrivateRoute>
           <PrivateRoute userAuth={userAuth} path="/adminPanel">
@@ -69,24 +68,25 @@ function App() {
           <PrivateRoute userAuth={userAuth} path="/postedJob">
             <JobPostedArea />
           </PrivateRoute>
-          <PrivateRoute userAuth={userAuth} path="/singlePost/:id">
+          <PrivateRoute path="/singlePost/:id/:userId">
             <SinglePostArea />
           </PrivateRoute>
-          <PrivateRoute userAuth={userAuth} path="/details-item/:category">
-            <ListItemDetails />
-          </PrivateRoute>
-          <Route path="/view-profile">
+          <PrivateRoute path="/view-profile">
             <ViewProfile />
-          </Route>
-          <Route path="/membership">
+          </PrivateRoute>
+
+          <PrivateRoute path="/proposal-user-profile/:profileId">
+            <ViewProfile />
+          </PrivateRoute>
+          <PrivateRoute path="/membership">
             <MembershipPage />
-          </Route>
-          <Route path="/account-analytics">
+          </PrivateRoute>
+          <PrivateRoute path="/account-analytics">
             <AccountAnalyticsPage />
-          </Route>
-          <Route path="/settings">
+          </PrivateRoute>
+          <PrivateRoute path="/settings">
             <SettingsPage />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </collectionContext.Provider>

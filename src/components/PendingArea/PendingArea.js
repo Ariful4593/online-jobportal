@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import './PendingArea.css';
+
+
 const PendingArea = () => {
 
     const history = useHistory();
     const { postId } = useParams();
 
+    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     fetch('http://localhost:4000/statusUpdate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -12,13 +16,32 @@ const PendingArea = () => {
             postId: postId,
         })
     })
-    setTimeout(() => {
+    const [notifications, setNotifications] = useState({})
+    useEffect(() => {
+        fetch('http://localhost:4000/getPostProject')
+            .then(res => res.json())
+            .then(data => {
+                const postList = data.find(item => item.email === userLoginInfo.email);
+                setNotifications(postList);
 
-        history.push('/postedJob')
-    }, 10000);
+            })
+    }, [])
+    const [counter, setCounter] = useState(10);
+
+    useEffect(() => {
+        if (counter > 0) {
+            setTimeout(() => setCounter(counter - 1), 1000);
+        } else {
+            localStorage.setItem('notification', JSON.stringify(notifications));
+            history.push('/postedJob');
+            window.location.reload()
+        }
+    })
     return (
-        <div>
-            <h1>Your order is pending for the aproval of the admin</h1>
+        <div className="pending-area">
+            <div className="pending-block">
+                <h1>{counter}</h1>
+            </div>
         </div>
     );
 };

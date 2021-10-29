@@ -6,21 +6,20 @@ import Footer from '../../Footer/Footer';
 import { collectionContext } from '../../../App';
 
 
-const ProfileBlock = ({ userData }) => {
+const ProfileBlock = ({ userData, profileId }) => {
     const [coverPhotoBtn, setCoverPhotoBtn] = useState(false);
     const [postData, setPostData] = useState('');
     const {value6} = useContext(collectionContext);
-    const [userAuth, setUserAuth] = value6;
+    const [userAuth, ] = value6;
 
     const { name } = JSON.parse(localStorage.getItem('userLoginInfo'))
 
     const loginData = userAuth.find(data => data.name === name);
 
-
-
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     useEffect(() => {
         const finalData = userData.find(data => data.email === userLoginInfo.email);
+        
         if (finalData) {
             const { profileEdit, imageFile, name, _id, editExperience, editEducation, editQualification } = finalData;
             const { headline, summery, hourlyRate } = profileEdit;
@@ -111,8 +110,8 @@ const ProfileBlock = ({ userData }) => {
                     </React.Fragment>
                 }
                 <div className="row">
-                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} postData={postData} setRightSide={setRightSide} />
-                    <RightSide rightSide={rightSide} />
+                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} postData={postData} setRightSide={setRightSide} profileId={profileId} />
+                    <RightSide rightSide={rightSide} profileId={profileId} />
                 </div>
             </div>
             <Footer />

@@ -3,7 +3,7 @@ import './EditEducation.css';
 import countryName from '../../../../fakedata/editEducationData/country';
 import universityName from '../../../../fakedata/editEducationData/university';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditEducation = ({ handleEditEducationSave, postData }) => {
+const EditEducation = ({ handleEditEducationSave }) => {
 
 
     const [country, setCountry] = useState('');
@@ -13,12 +13,12 @@ const EditEducation = ({ handleEditEducationSave, postData }) => {
     const [endYear, setEndYear] = useState('');
 
 
-    const { id } = postData;
+    const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const editEducationSave = () => {
         fetch('http://localhost:4000/editEducation', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ countryName: country, universityName: university, degree: degree, startYear: startYear, endYear: endYear, id: id })
+            body: JSON.stringify({ countryName: country, universityName: university, degree: degree, startYear: startYear, endYear: endYear, id: getUserLoginInfo._id })
         })
         handleEditEducationSave();
     }

@@ -10,7 +10,7 @@ import EditProfile from './EditProfile/EditProfile';
 import EditExperience from './AddExperience/EditExperience';
 import EditEducation from './Education/EditEducation';
 import EditQualification from './Qualification/EditQualification';
-const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide }) => {
+const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId }) => {
     const [editProfileBtn, setEditProfileBtn] = useState(true);
     const [profileSaveBtn, setProfileSaveBtn] = useState(false);
     const [editExperience, setEditExperience] = useState(true);
@@ -69,37 +69,38 @@ const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide }) => {
     }
 
 
+    
     return (
         <div className="col-lg-9 left-side">
             {
-                editProfileBtn && <ProfileDetails editProfile={editProfile} postData={postData} />
+                editProfileBtn && <ProfileDetails editProfile={editProfile} postData={postData} profileId={profileId} />
             }
             {
-                profileSaveBtn && <EditProfile profileSave={profileSave} postData={postData} />
+                !profileId && profileSaveBtn && <EditProfile profileSave={profileSave} postData={postData} />
             }
             <Reviews />
             {
-                editExperience && <AddExperience handleEditExperience={handleEditExperience} postData={postData} />
+                editExperience && <AddExperience handleEditExperience={handleEditExperience} postData={postData} profileId={profileId} />
             }
             {
-                experienceSave && <EditExperience handleExperienceSave={handleExperienceSave} postData={postData} />
+                !profileId && experienceSave && <EditExperience handleExperienceSave={handleExperienceSave} postData={postData} />
             }
 
 
             {
-                editEducation && <Education handleEditEducation={handleEditEducation} postData={postData} />
+                editEducation && <Education handleEditEducation={handleEditEducation} postData={postData} profileId={profileId} />
             }
             {
-                editEducationSave && <EditEducation handleEditEducationSave={handleEditEducationSave} postData={postData} />
+                !profileId && editEducationSave && <EditEducation handleEditEducationSave={handleEditEducationSave} postData={postData} />
             }
 
             {
-                editQualificaton && <Qualification handleEditQualification={handleEditQualification} postData={postData} />
+                editQualificaton && <Qualification handleEditQualification={handleEditQualification} postData={postData} profileId={profileId} />
             }
             {
-                editQualificationSave && <EditQualification handleEditQualificationSave={handleEditQualificationSave} postData={postData} />
+                !profileId && editQualificationSave && <EditQualification handleEditQualificationSave={handleEditQualificationSave} postData={postData} />
             }
-            <Publication />
+            <Publication profileId={profileId} />
         </div>
     );
 };

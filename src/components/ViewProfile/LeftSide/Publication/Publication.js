@@ -1,6 +1,6 @@
 import React from 'react';
 import './Publication.css';
-const Publication = () => {
+const Publication = ({profileId}) => {
     return (
         <div className="publication-block">
             <div className="single-add-block">
@@ -8,9 +8,12 @@ const Publication = () => {
                     <div className="col-md-6 publication">
                         <h4>Publication</h4>
                     </div>
-                    <div className="col-md-6 text-end add-publication">
-                        <button className="add-button">Add Publication</button>
-                    </div>
+                    {/* {
+                        !profileId && <div className="col-md-6 text-end add-publication">
+                            <button className="add-button">Add Publication</button>
+                        </div>
+                    } */}
+
                 </div>
             </div>
             <hr />

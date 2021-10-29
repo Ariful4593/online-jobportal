@@ -3,9 +3,18 @@ a{
     color: white !important;
 }
 
-/* a:hover{
-    color: white !important;
-} */
+.post-project-btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 1px 6px;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 @media screen and (max-width: 450px) and (min-width: 200px) {
     .nav-search{
         width: 100% !important;

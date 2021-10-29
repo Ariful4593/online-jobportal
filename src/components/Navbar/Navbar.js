@@ -53,21 +53,36 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+
+
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    // const [modal, setModal] = useState(false);
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
+    // const handleNotification = (e) => {
+    //     setModal(true);
+    //     setNotifications(e.currentTarget);
+    //     fetch('http://localhost:4000/seenUnseen', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ seenUnseenState: 'Seen', uniqueId: notificationsData.uniqueId })
+    //     })
+    // }
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
     };
 
     const handleMenuClose = () => {
         setAnchorEl(null);
+        // setNotifications(null);
+        // setModal(false);
         handleMobileMenuClose();
     };
 
@@ -130,7 +145,7 @@ const Navbar = () => {
                 </IconButton>
                 <p>Messages</p>
             </MenuItem>
-            <MenuItem>
+            <MenuItem >
                 <IconButton aria-label="show 11 new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
                         <NotificationsIcon />
@@ -151,6 +166,8 @@ const Navbar = () => {
             </MenuItem>
         </Menu>
     );
+
+
     return (
         <div className={classes.grow}>
             <AppBar position="static">
@@ -167,20 +184,35 @@ const Navbar = () => {
                         </Link>
                     </Typography>
 
-                    <Typography className={classes.subTitle} variant="h6" noWrap>
-                        <Link to="/">
-                            Browse Jobs
-                        </Link>
-                    </Typography>
+                    {
+                        userLoginInfo && userLoginInfo.email && <Typography className={classes.subTitle} variant="h6" noWrap>
+                            <Link to="/postedJob">
+                                Browse Projects
+                            </Link>
+                        </Typography>
+                    }
+
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                        {
+                            userLoginInfo && userLoginInfo.email && <Link to="/postProject">
+                                <div className="btn-area">
+                                    <button className="post-project-btn hire-freelancer">Post Project</button>
+                                </div>
+                            </Link>
+                        }
+
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <MailIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
+                        <IconButton
+                            aria-label="show 17 new notifications"
+                            color="inherit"
+                        // onClick={handleNotification}
+                        >
+                            <Badge badgeContent={0} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
@@ -208,6 +240,31 @@ const Navbar = () => {
                     </div>
                 </Toolbar>
             </AppBar>
+
+            {/* {
+                modal && <div className="modal" tabIndex="-1">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Notifications</h5>
+                                <button type="button" className="btn-close" onClick={() => setModal(false)} aria-label="Close"></button>
+                            </div>
+                            {
+                                notificationsData && notificationsData.postInfo.map((data, index) => (
+
+                                    <div className="modal-body border-bottom pb-0" key={index} style={{ cursor: 'pointer' }} >
+                                        <h6>{data.title}</h6>
+                                        <p style={{ margin: '0px', fontSize: '15px' }}>{(data.description).slice(0, 25)}...</p>
+                                        <p style={{ textAlign: 'right', margin: 0 }}><small style={{ fontSize: '13px', fontWeight: '600' }}>{data.date}</small></p>
+                                    </div>
+                                ))
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            } */}
+
             {renderMobileMenu}
             {renderMenu}
         </div>

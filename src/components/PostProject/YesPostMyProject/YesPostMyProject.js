@@ -57,14 +57,27 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo] = value1;
 
+    const userInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
 
-        const formData = new FormData()
+var date = new Date().getDate();
+var year = new Date().getFullYear();
+var month = new Date().getMonth() + 1;
+var hours = new Date().getHours();
+var minutes = new Date().getMinutes();
+        const formData = new FormData();
+
+        formData.append('date', year +"-"+ month +"-"+date+"T"+hours+":"+minutes)
         formData.append('file', file);
-        formData.append('name', loginInfo.name);
-        formData.append('email', loginInfo.email);
-        formData.append('password', loginInfo.password);
+        formData.append('name', userInfo.name);
+        formData.append('email', userInfo.email);
+        formData.append('password', userInfo.password);
+        formData.append('accountType', userInfo.accountType);
+        formData.append('isLoggedIn', userInfo.isLoggedIn);
+        formData.append('paymentData', userInfo.paymentData);
+
         formData.append('title', loginInfo.title);
         formData.append('description', loginInfo.description);
         formData.append('status', loginInfo.status);
@@ -72,9 +85,6 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
         formData.append('uniqueId', loginInfo.uniqueId);
         formData.append('budget', budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`);
         formData.append('currencyName', loginInfo.currencyName);
-        formData.append('accountType', loginInfo.accountType);
-        formData.append('isLoggedIn', loginInfo.isLoggedIn);
-        formData.append('paymentData', JSON.stringify(loginInfo.paymentData));
         formData.append('skillData', JSON.stringify(loginInfo.skillData));
         formData.append('projectType', loginInfo.projectType ? loginInfo.projectType : '');
         formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
@@ -83,6 +93,8 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
         formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
         formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
+        console.log(formData)
+        console.log(loginInfo)
         fetch('http://localhost:4000/userData', {
             method: 'POST',
             body: formData
@@ -97,8 +109,10 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const history = useHistory()
     const handleClose = () => {
         setOpen(false);
-        history.push(`/pendingArea/${loginInfo.projectId}`);
+        history.push(`/pendingArea/${loginInfo.projectId}/${loginInfo.uniqueId}`);
     };
+
+    
     return (
         <React.Fragment>
             <div className="click-post-button">

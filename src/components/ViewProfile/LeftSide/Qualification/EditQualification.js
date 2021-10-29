@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import './EditQualification.css';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditQualification = ({ handleEditQualificationSave, postData }) => {
+const EditQualification = ({ handleEditQualificationSave }) => {
 
     const [certificate, setCertificate] = useState('');
     const [organization, setOrganization] = useState('');
     const [summary, setSummary] = useState('');
     const [startYear, setStartYear] = useState('')
 
-    const { id } = postData;
+
+    const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     const saveEditQualification = () => {
         fetch('http://localhost:4000/editQualification', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ certificate: certificate, organization: organization, certificateSummary: summary, certificateStartYear: startYear, id: id })
+            body: JSON.stringify({ certificate: certificate, organization: organization, certificateSummary: summary, certificateStartYear: startYear, id: getUserLoginInfo._id })
         })
         handleEditQualificationSave();
     }
@@ -42,7 +43,7 @@ const EditQualification = ({ handleEditQualificationSave, postData }) => {
                         <h6 className="name">Start Year</h6>
                         <div className=" w-100 col-md-5">
                             <select className="form-select" value={startYear} onChange={(e) => setStartYear(e.target.value)} aria-label="Default select example">
-                                <option  >Select Country</option>
+                                <option  >Select Year</option>
                                 {
                                     year.map((item, index) => (
                                         <option value={item} key={index}>{item}</option>
