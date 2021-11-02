@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 const firebaseConfig = {
     apiKey: "AIzaSyAQXeqAShL2nGYPvNfD4F4Z-gS4H3Nqmag",
     authDomain: "online-jobplace.firebaseapp.com",

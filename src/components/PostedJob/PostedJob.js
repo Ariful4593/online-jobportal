@@ -58,23 +58,21 @@ const PostedJob = () => {
                                 return (
                                     data.postInfo.map((item, index) => {
                                         TimeAgo.addLocale(en);
-    const timeAgo = new TimeAgo("en-US");
-    const inSeconds = new Date(item.date).getTime();
-    const minutesAgo = timeAgo.format(inSeconds - 60 * 1000);
+                                        const timeAgo = new TimeAgo("en-US");
+                                        const inSeconds = new Date(item.date).getTime();
+                                        const minutesAgo = timeAgo.format(inSeconds - 60 * 1000);
                                         return (
                                             <Link to={`/singlePost/${item.projectId}/${data._id}`} key={index}>
                                                 <div className="row search-result-item">
 
                                                     <div className="col-12 col-md-9">
                                                         <h4>{item.title}</h4>
-                                                        {/* <p>{(data.description).slice(0, 200)}</p> */}
                                                         <p>{`${(item.description).slice(0, 60)}....`}</p>
                                                         <p><small> <span style={{ color: '#5dc26a' }}>Open </span> {`${minutesAgo} - ${item.biddingPeople.length} bids`}</small></p>
-{/* ${<Time date={item.date}/> */}
                                                         <Skills postedjob={false} skillData={item.skillData} />
                                                     </div>
                                                     <div className="col-12 col-md-3 product-price">
-                                                        <h5 style={{fontSize: '17px'}}>{item.budget}</h5>
+                                                        <h5 style={{ fontSize: '17px' }}>{item.budget}</h5>
                                                     </div>
 
                                                 </div>

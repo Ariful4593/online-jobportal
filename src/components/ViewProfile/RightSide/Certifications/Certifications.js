@@ -14,7 +14,7 @@ const Certifications = ({ profileId }) => {
 
             <ul className="certification-item">
                 <li className="certificate-img"><img src={certificate} className="" alt="" /></li>
-                <li>
+                <li className="text-center">
                     {
                         profileId ? <small>Doesn't have any certifications yet.</small> : <small>You don't have any certifications yet.</small>
                     }

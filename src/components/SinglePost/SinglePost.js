@@ -5,10 +5,12 @@ import ProjectDetailsTitleArea from './ProjectDetailsTitleArea/ProjectDetailsTit
 import Proposal from './Proposal/Proposal';
 import './SinglePost.css';
 import YourBid from './YourBid/YourBid';
+import TotalBid from './TotalBid/TotalBid';
 const SinglePost = ({ id, userId }) => {
     var getSessionData = JSON.parse(sessionStorage.getItem('data'));
     const [singlePost, setSinglePost] = useState({})
-
+    const [details, setDetails] = useState('');
+    const [biddingCount, setBiddingCount] = useState(0);
 
     useEffect(() => {
         getSessionData.find(data => {
@@ -23,13 +25,13 @@ const SinglePost = ({ id, userId }) => {
 
     useEffect(() => {
         fetch('http://localhost:4000/clientPlaceData')
-        .then(res => res.json())
-        .then(data => {
-            sessionStorage.setItem('clientData',JSON.stringify(data))
-        })
+            .then(res => res.json())
+            .then(data => {
+                sessionStorage.setItem('clientData', JSON.stringify(data))
+            })
     }, [])
 
-    const [details, setDetails] = useState('');
+    
 
     useEffect(() => {
         setDetails('details');
@@ -57,16 +59,23 @@ const SinglePost = ({ id, userId }) => {
                             details === 'details' ?
                                 <React.Fragment>
                                     <ProjectDetailsTitleArea singlePostData={singlePost} />
-                                    <ProjectBid singlePost={singlePost} id={id} userId={userId} />
+                                    <ProjectBid singlePost={singlePost} id={id} setDetails={setDetails} userId={userId} />
                                 </React.Fragment>
                                 :
-                                <Proposal details={details} id={id} />
+                                <Proposal details={details} id={id} setBiddingCount={setBiddingCount} />
                         }
 
                     </div>
                     <div className="col-md-3 ">
-                        <AboutTheClient />
-                        <YourBid />
+                        {
+                            details === 'proposal' ?
+                                <TotalBid biddingCount={biddingCount}/>
+                                :
+                                <React.Fragment>
+                                    <AboutTheClient />
+                                    <YourBid />
+                                </React.Fragment>
+                        }
                     </div>
                 </div>
             </div>

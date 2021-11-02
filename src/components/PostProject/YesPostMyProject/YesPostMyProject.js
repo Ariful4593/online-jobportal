@@ -62,14 +62,14 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
 
-var date = new Date().getDate();
-var year = new Date().getFullYear();
-var month = new Date().getMonth() + 1;
-var hours = new Date().getHours();
-var minutes = new Date().getMinutes();
+        var date = new Date().getDate();
+        var year = new Date().getFullYear();
+        var month = new Date().getMonth() + 1;
+        var hours = new Date().getHours();
+        var minutes = new Date().getMinutes();
         const formData = new FormData();
 
-        formData.append('date', year +"-"+ month +"-"+date+"T"+hours+":"+minutes)
+        formData.append('date', year + "-" + month + "-" + date + "T" + hours + ":" + minutes)
         formData.append('file', file);
         formData.append('name', userInfo.name);
         formData.append('email', userInfo.email);
@@ -112,7 +112,7 @@ var minutes = new Date().getMinutes();
         history.push(`/pendingArea/${loginInfo.projectId}/${loginInfo.uniqueId}`);
     };
 
-    
+
     return (
         <React.Fragment>
             <div className="click-post-button">

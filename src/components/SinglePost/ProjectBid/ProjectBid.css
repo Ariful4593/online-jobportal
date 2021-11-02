@@ -13,3 +13,23 @@
     text-align-last: end;
     margin-top: 11px !important;
 }
+.bid-amount{
+    background: darkgray;
+    margin-left: 13px !important;
+}
+.currency{
+    background: darkgray;
+    width: 58px !important;
+}
+.bid-amount-field{
+    padding-left: 0 !important;
+    padding-right: 0px !important;
+    width: 300px !important;
+}
+.day-field{
+    padding-right: 0px !important;
+}
+.days{
+    background: darkgray;
+    width: 58 px !important;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectBid.css';
 import Confetti from 'react-confetti';
-const ProjectBid = ({ singlePost, id, userId }) => {
+const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
 
     const [bidAmount, setBidAmount] = useState(singlePost.budget);
     const [projectDelivered, setProjectDelivered] = useState('');
@@ -24,6 +24,7 @@ const ProjectBid = ({ singlePost, id, userId }) => {
         return () => { isMounted = false };
     }, [])
 
+    const proposalId = Math.random().toString(36).substring(7);
     const placeBid = () => {
         const newData = { ...singlePost };
         newData.bidAmount = bidAmount;
@@ -34,10 +35,18 @@ const ProjectBid = ({ singlePost, id, userId }) => {
         fetch('http://localhost:4000/placeBid', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userData._id })
+            body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userData._id, proposalId: proposalId })
         }).then(res => res.json())
             .then(data => {
-                setConfetti(true);
+                
+                if (data) {
+                    setDetails('proposal');
+                    setConfetti(true);
+                } else {
+                    alert('Hey! You already bidded for this project. Please see proposal area.');
+                    setDetails('proposal');
+                }
+
             })
     }
     return (
@@ -52,12 +61,31 @@ const ProjectBid = ({ singlePost, id, userId }) => {
                 <p>Bid Details</p>
                 <div className="row">
                     <div className="col-md-6">
-                        <h6><label htmlFor="">Bid Amount</label></h6>
-                        <input className="form-control" defaultValue={bidAmount} onBlur={(e) => setBidAmount(e.target.value)} type="text" />
+                        <h6 style={{ fontWeight: '700' }}><label htmlFor="">Bid Amount</label></h6>
+                        <div className="row">
+                            <div className="col-md-1 d-flex align-items-center bid-amount" >
+                                $
+                            </div>
+                            <div className="col-md-10 bid-amount-field">
+                                <input className="form-control" onBlur={(e) => setBidAmount(e.target.value)} type="text" />
+                            </div>
+                            <div className="col-md-1 d-flex align-items-center currency" >
+                                USD
+                            </div>
+                        </div>
+
                     </div>
                     <div className="col-md-6">
-                        <h6>This project will be delivered in</h6>
-                        <input className="form-control" type="number" defaultValue={projectDelivered} onBlur={(e) => setProjectDelivered(e.target.value)} />
+                        <h6 style={{ fontWeight: '700' }}>This project will be delivered in</h6>
+                        <div className="row">
+                            <div className="col-md-10 day-field">
+                                <input className="form-control" type="number" onBlur={(e) => setProjectDelivered(e.target.value)} />
+                            </div>
+                            <div className="col-md-2 days d-flex align-items-center">
+                                Days
+                            </div>
+                        </div>
+
                     </div>
                     {/* <small>Paid to you: $140.00 - $14.00 fee = $126.00</small> */}
                 </div>
