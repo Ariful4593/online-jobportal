@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './Qualification.css';
-const Qualification = ({ handleEditQualification, profileId }) => {
+// import Loader from "react-loader-spinner";
+
+
+const Qualification = ({ handleEditQualification, profileId, loadExperienceData }) => {
 
     const [userProfileData, setUserProfileData] = useState([]);
     const [proposalUser, setProposalUser] = useState([]);
     const getLoginData = JSON.parse(localStorage.getItem('userLoginInfo'));
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/userLoginData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -19,8 +22,15 @@ const Qualification = ({ handleEditQualification, profileId }) => {
 
             })
         return () => { isMounted = false }
-    }, []);
+    }, [loadExperienceData]);
 
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+        if (counter < 3) {
+            setTimeout(() => setCounter(counter + 1), 1000);
+        }
+    })
 
     return (
         <div className="qualification-block">
@@ -42,31 +52,37 @@ const Qualification = ({ handleEditQualification, profileId }) => {
             <div className="single-row-block">
                 <div className="row">
                     {
-                        !profileId ? <div className="col-12 qualification-image-area">
-
-                            {
-                                userProfileData && (userProfileData.certificate && userProfileData.certificateStartYear && userProfileData.certificateSummary && userProfileData.organization) ? <React.Fragment>
-                                    <h5>{userProfileData.certificate}</h5>
-                                    <p>{userProfileData.organization}</p>
-                                    <p>{userProfileData.certificateStartYear}</p>
-                                    <p>{userProfileData.certificateSummary}</p>
-                                </React.Fragment>
-                                    : <p>No qualifications have been added yet.</p>
-                            }
-                        </div>
-                            :
+                        userProfileData && (userProfileData.certificate && userProfileData.certificateStartYear && userProfileData.certificateSummary && userProfileData.organization) ?
                             <div className="col-12 qualification-image-area">
-
                                 {
-                                    proposalUser && (proposalUser.certificate && proposalUser.certificateStartYear && proposalUser.certificateSummary && proposalUser.organization) ? <React.Fragment>
-                                        <h5>{proposalUser.certificate}</h5>
-                                        <p>{proposalUser.organization}</p>
-                                        <p>{proposalUser.certificateStartYear}</p>
-                                        <p>{proposalUser.certificateSummary}</p>
+                                    !profileId ? <React.Fragment>
+                                        {
+                                            userProfileData && (userProfileData.certificate && userProfileData.certificateStartYear && userProfileData.certificateSummary && userProfileData.organization) ? <React.Fragment>
+                                                <h5>{userProfileData.certificate}</h5>
+                                                <p>{userProfileData.organization}</p>
+                                                <p>{userProfileData.certificateStartYear}</p>
+                                                <p>{userProfileData.certificateSummary}</p>
+                                            </React.Fragment>
+                                                : <p>No qualifications have been added yet.</p>
+                                        }
                                     </React.Fragment>
-                                        : <p>No qualifications have been added yet.</p>
+                                        :
+                                        <React.Fragment>
+                                            {
+                                                proposalUser && (proposalUser.certificate && proposalUser.certificateStartYear && proposalUser.certificateSummary && proposalUser.organization) ? <React.Fragment>
+                                                    <h5>{proposalUser.certificate}</h5>
+                                                    <p>{proposalUser.organization}</p>
+                                                    <p>{proposalUser.certificateStartYear}</p>
+                                                    <p>{proposalUser.certificateSummary}</p>
+                                                </React.Fragment>
+                                                    : <p>No qualifications have been added yet.</p>
+                                            }
+                                        </React.Fragment>
                                 }
                             </div>
+                            :
+                            <p>No education have been added yet.</p>
+                            // (counter > 3 ? <p>No education have been added yet.</p> :<Loader type="Circles" color="#00BFFF" height={40} width={40} /> )
                     }
 
 

@@ -13,7 +13,7 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/userLoginData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -32,13 +32,13 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
         newData.describeProposal = describeProposal;
 
 
-        fetch('http://localhost:4000/placeBid', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/placeBid', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userData._id, proposalId: proposalId })
         }).then(res => res.json())
             .then(data => {
-                
+
                 if (data) {
                     setDetails('proposal');
                     setConfetti(true);
@@ -60,29 +60,31 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
                 </div>
                 <p>Bid Details</p>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-12 col-lg-6">
                         <h6 style={{ fontWeight: '700' }}><label htmlFor="">Bid Amount</label></h6>
-                        <div className="row">
-                            <div className="col-md-1 d-flex align-items-center bid-amount" >
-                                $
-                            </div>
-                            <div className="col-md-10 bid-amount-field">
-                                <input className="form-control" onBlur={(e) => setBidAmount(e.target.value)} type="text" />
-                            </div>
-                            <div className="col-md-1 d-flex align-items-center currency" >
-                                USD
-                            </div>
+                        <div className="input-group">
+                            <input className="form-control" onBlur={(e) => setBidAmount(e.target.value)} type="text" />
+                            <button className="bg-dark text-white" disabled>USD</button>
+                        </div>
+
+                    </div>
+
+                    <div className="col-12 col-lg-6">
+                        <h6 style={{ fontWeight: '700' }}>This project will be delivered in</h6>
+                        <div className="input-group">
+                        <input className="form-control" type="number" onBlur={(e) => setProjectDelivered(e.target.value)} />
+                            <button className="bg-dark text-white" disabled>Days</button>
                         </div>
 
                     </div>
                     <div className="col-md-6">
-                        <h6 style={{ fontWeight: '700' }}>This project will be delivered in</h6>
+
                         <div className="row">
                             <div className="col-md-10 day-field">
-                                <input className="form-control" type="number" onBlur={(e) => setProjectDelivered(e.target.value)} />
+                                
                             </div>
                             <div className="col-md-2 days d-flex align-items-center">
-                                Days
+                                
                             </div>
                         </div>
 

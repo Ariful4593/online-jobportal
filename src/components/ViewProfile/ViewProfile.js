@@ -9,7 +9,7 @@ const ViewProfile = () => {
     const { profileId } = useParams();
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/getPostProject')
+        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -23,7 +23,7 @@ const ViewProfile = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/userLoginData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
         .then(res => res.json())
         .then(data => {
             const userData = data.find(item => item._id === profileId);

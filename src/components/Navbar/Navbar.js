@@ -69,7 +69,7 @@ const Navbar = () => {
     // const handleNotification = (e) => {
     //     setModal(true);
     //     setNotifications(e.currentTarget);
-    //     fetch('http://localhost:4000/seenUnseen', {
+    //     fetch('https://warm-anchorage-86355.herokuapp.com/seenUnseen', {
     //         method: 'POST',
     //         headers: { 'Content-Type': 'application/json' },
     //         body: JSON.stringify({ seenUnseenState: 'Seen', uniqueId: notificationsData.uniqueId })

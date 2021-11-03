@@ -3,7 +3,7 @@ import './ProjectDetailsTitleArea.css';
 
 const ProjectDetailsTitleArea = ({ singlePostData }) => {
     const classArray = ['badge badge-primary text-primary', 'badge badge-secondary text-secondary', 'badge badge-success text-success', 'badge badge-danger text-danger', 'badge badge-warning text-warning']
-    const { budget, title, skillData } = singlePostData;
+    const { budget,  skillData, description } = singlePostData;
     const [newState, setNewState] = useState([])
     useEffect(() => {
         setNewState(skillData)
@@ -11,10 +11,10 @@ const ProjectDetailsTitleArea = ({ singlePostData }) => {
     return (
         <div className="project-details-title-area">
             <div className="row ">
-                <div className="col-sm-9 details-left">
+                <div className="col-12 col-sm-6 col-md-7 col-lg-8">
                     <h3 className="project-details-title">Project Details</h3>
                 </div>
-                <div className="col-sm-3 details-right">
+                <div className="col-12 col-sm-6 col-md-5 col-lg-4 bidding-block">
                     <h5 className="bidding-price">{budget}</h5>
                     <small className="bidding">BIDDING ENDS IN 6 DAYS, 23 HOURS</small>
                 </div>
@@ -22,7 +22,7 @@ const ProjectDetailsTitleArea = ({ singlePostData }) => {
             </div>
             <div className="row project-details-description-area">
                 <div className="col-12">
-                    <p>{title}</p>
+                    <p>{description}</p>
 
                     <div className="skill-area">
                         {

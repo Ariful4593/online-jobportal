@@ -3,7 +3,7 @@ import './EditEducation.css';
 import countryName from '../../../../fakedata/editEducationData/country';
 import universityName from '../../../../fakedata/editEducationData/university';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditEducation = ({ handleEditEducationSave }) => {
+const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
 
 
     const [country, setCountry] = useState('');
@@ -15,11 +15,12 @@ const EditEducation = ({ handleEditEducationSave }) => {
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const editEducationSave = () => {
-        fetch('http://localhost:4000/editEducation', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/editEducation', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ countryName: country, universityName: university, degree: degree, startYear: startYear, endYear: endYear, id: getUserLoginInfo._id })
-        })
+        }).then(res => res.json())
+        .then(data => setLoadExperienceData(data))
         handleEditEducationSave();
     }
     return (

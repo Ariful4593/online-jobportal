@@ -62,14 +62,15 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
 
-        var date = new Date().getDate();
-        var year = new Date().getFullYear();
-        var month = new Date().getMonth() + 1;
-        var hours = new Date().getHours();
-        var minutes = new Date().getMinutes();
+        // var date = new Date().getDate();
+        // var year = new Date().getFullYear();
+        // var month = new Date().getMonth() + 1;
+        // var hours = new Date().getHours();
+        // var minutes = new Date().getMinutes();
+        const inSeconds = new Date().getTime();
         const formData = new FormData();
 
-        formData.append('date', year + "-" + month + "-" + date + "T" + hours + ":" + minutes)
+        formData.append('date', inSeconds)
         formData.append('file', file);
         formData.append('name', userInfo.name);
         formData.append('email', userInfo.email);
@@ -88,14 +89,14 @@ const YesPostMyProject = ({ budgetState, budgetData, file }) => {
         formData.append('skillData', JSON.stringify(loginInfo.skillData));
         formData.append('projectType', loginInfo.projectType ? loginInfo.projectType : '');
         formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
+        formData.append('payType', loginInfo.payType ? loginInfo.payType : '');
+        
         formData.append('postType', loginInfo.postType ? loginInfo.postType : '');
         formData.append('howLongRunContestDay', loginInfo.howLongRunContestDay ? loginInfo.howLongRunContestDay : '');
         formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
         formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-        console.log(formData)
-        console.log(loginInfo)
-        fetch('http://localhost:4000/userData', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/userData', {
             method: 'POST',
             body: formData
         })

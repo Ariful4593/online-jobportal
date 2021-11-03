@@ -24,7 +24,7 @@ const SinglePost = ({ id, userId }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/clientPlaceData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/clientPlaceData')
             .then(res => res.json())
             .then(data => {
                 sessionStorage.setItem('clientData', JSON.stringify(data))

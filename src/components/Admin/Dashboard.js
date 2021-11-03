@@ -5,7 +5,7 @@ const Dashboard = ({ service }) => {
 
     const handleChange = (e) => {
         setPending(!pending)
-        fetch('http://localhost:4000/update', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/update', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

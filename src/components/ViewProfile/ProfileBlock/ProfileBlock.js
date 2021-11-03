@@ -12,11 +12,11 @@ const ProfileBlock = ({ userData, profileId }) => {
     const {value6} = useContext(collectionContext);
     const [userAuth, ] = value6;
 
-    const { name } = JSON.parse(localStorage.getItem('userLoginInfo'))
 
-    const loginData = userAuth.find(data => data.name === name);
+    
 
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+    const loginData = userAuth.find(data => data.name === userLoginInfo.name);
     useEffect(() => {
         const finalData = userData.find(data => data.email === userLoginInfo.email);
         
@@ -84,17 +84,18 @@ const ProfileBlock = ({ userData, profileId }) => {
         }
     }, [postData])
 
+    const [isPhoto, setIsPhoto] = useState(false)
     const handlePhoto = (e) => {
         const newFile = e.target.files[0];
         const formData = new FormData();
         formData.append('file', newFile)
         formData.append('_id', loginData._id)
-        fetch('http://localhost:4000/editPhoto', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/editPhoto', {
             method: 'POST',
             body: formData,
         })
             .then(res => res.json())
-            .then(data => console.log("Data updated"))
+            .then(data => setIsPhoto(true));
     }
 
     const [rightSide, setRightSide] = useState(false)
@@ -110,7 +111,7 @@ const ProfileBlock = ({ userData, profileId }) => {
                     </React.Fragment>
                 }
                 <div className="row">
-                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} postData={postData} setRightSide={setRightSide} profileId={profileId} />
+                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} postData={postData} setRightSide={setRightSide} profileId={profileId} isPhoto={isPhoto} />
                     <RightSide rightSide={rightSide} profileId={profileId} />
                 </div>
             </div>

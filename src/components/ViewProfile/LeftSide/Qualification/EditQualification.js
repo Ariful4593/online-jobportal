@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './EditQualification.css';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditQualification = ({ handleEditQualificationSave }) => {
+const EditQualification = ({ handleEditQualificationSave, setLoadExperienceData }) => {
 
     const [certificate, setCertificate] = useState('');
     const [organization, setOrganization] = useState('');
@@ -11,11 +11,12 @@ const EditQualification = ({ handleEditQualificationSave }) => {
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     const saveEditQualification = () => {
-        fetch('http://localhost:4000/editQualification', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/editQualification', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ certificate: certificate, organization: organization, certificateSummary: summary, certificateStartYear: startYear, id: getUserLoginInfo._id })
-        })
+        }).then(res => res.json())
+            .then(data => setLoadExperienceData(data))
         handleEditQualificationSave();
     }
     return (

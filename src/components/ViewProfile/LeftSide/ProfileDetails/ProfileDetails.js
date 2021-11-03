@@ -11,28 +11,27 @@ import upload_image from '../../../../images/upload image/upload_image.png';
 import Loader from "react-loader-spinner";
 
 
-const ProfileDetails = ({ editProfile, profileId }) => {
+const ProfileDetails = ({ editProfile, profileId, saveData }) => {
 
 
-    const [userProfileData, setUserProfileData] = useState([]);
     const [proposalUser, setProposalUser] = useState([]);
     const getUserLogin = JSON.parse(localStorage.getItem('userLoginInfo'));
 
 
     useEffect(() => {
         let isMounted = true;
-        fetch("http://localhost:4000/userLoginData")
+        fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
                     const userData = data.find(item => item.email === getUserLogin.email);
                     const proposalUserData = data.find(item => item._id === profileId);
                     setProposalUser(proposalUserData)
-                    setUserProfileData(userData)
+                    localStorage.setItem('userLoginInfo', JSON.stringify(userData));
                 }
             })
         return () => { isMounted = false }
-    }, []);
+    }, [saveData]);
 
     const proposalUserImage = proposalUser ? proposalUser.imageFile : '';
     const now = new Date();
@@ -41,27 +40,27 @@ const ProfileDetails = ({ editProfile, profileId }) => {
     return (
         <div className="profile-details">
             {
-                !proposalUser && userProfileData && <div className="row">
-                    <div className="col-12 col-sm-4">
+                !proposalUser && getUserLogin && <div className="row">
+                    <div className="col-12 col-sm-4 profile-block-area">
                         {
-                            userProfileData && userProfileData.imageFile && userProfileData.imageFile.img ?
-                                <img className="w-100 profile-image" style={{ height: '276px' }} src={`data:image/png;base64,${userProfileData.imageFile.img}`} alt="" />
+                            getUserLogin && getUserLogin.imageFile && getUserLogin.imageFile.img ?
+                                <img className="profile-image" style={{ height: '276px' }} src={`data:image/png;base64,${getUserLogin.imageFile.img}`} alt="" />
                                 :
-                                <img className="w-100 profile-image" style={{ height: '276px' }} src={`${upload_image}`} alt="" />
+                                <img className="profile-image" style={{ height: '276px' }} src={`${upload_image}`} alt="" />
                         }
 
                         <div className="row mt-4 online-area" >
-                            <h4 className="profile-name">{userProfileData && userProfileData.name}</h4>
+                            <h4 className="profile-name">{getUserLogin && getUserLogin.name}</h4>
 
                             <p className="online"><RiRadioButtonLine style={{ color: 'green' }} /> I'm Online!</p>
 
-                            <h6><HiOutlineCurrencyDollar />  ${userProfileData && userProfileData.profileEdit && (userProfileData.profileEdit.hourlyRate ? userProfileData.profileEdit.hourlyRate : '')} USD / Hour</h6>
+                            <h6><HiOutlineCurrencyDollar />  ${getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.hourlyRate ? getUserLogin.profileEdit.hourlyRate : '')} USD / Hour</h6>
 
                             <p><FaFlag />  Chittagong Bangladesh</p>
 
                             <p><AiOutlineClockCircle /> It's currently {`${hours}:${minutes}`} {hours > 12 ? 'PM' : 'AM'} here</p>
 
-                            <p><HiBadgeCheck /> Joined April 9, 2021</p>
+                            <p><HiBadgeCheck /> {`Joined ${getUserLogin && getUserLogin.joiningDate}`} </p>
 
                             <p><GiSelfLove /> 0 Recommendations</p>
                         </div>
@@ -69,7 +68,7 @@ const ProfileDetails = ({ editProfile, profileId }) => {
                     <div className="col-12 col-sm-8 mt-2">
                         <div className="row">
                             <div className="col-sm-6 edit-profile-name">
-                                <h4 className="">{(userProfileData && userProfileData.name)}</h4>
+                                <h4 className="">{(getUserLogin && getUserLogin.name)}</h4>
                             </div>
                             <ul className="verificaion-item-p">
                                 {
@@ -91,7 +90,7 @@ const ProfileDetails = ({ editProfile, profileId }) => {
 
 
                         {
-                            <h6 className="user-pro-title">{userProfileData && userProfileData.profileEdit && (userProfileData.profileEdit.headline ? userProfileData.profileEdit.headline : '')}</h6>
+                            <h6 className="user-pro-title">{getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.headline ? getUserLogin.profileEdit.headline : '')}</h6>
                         }
 
 
@@ -125,7 +124,7 @@ const ProfileDetails = ({ editProfile, profileId }) => {
                         </div>
 
                         <br />
-                        <p>{userProfileData && userProfileData.profileEdit && (userProfileData.profileEdit.summery ? userProfileData.profileEdit.summery : '')}</p>
+                        <p>{getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.summery ? getUserLogin.profileEdit.summery : '')}</p>
                     </div>
                 </div>
             }
@@ -153,7 +152,7 @@ const ProfileDetails = ({ editProfile, profileId }) => {
 
                             <p><AiOutlineClockCircle /> It's currently {`${hours}:${minutes}`} {hours > 12 ? 'PM' : 'AM'} here</p>
 
-                            <p><HiBadgeCheck /> Joined April 9, 2021</p>
+                            <p><HiBadgeCheck /> {`Joined ${proposalUser && proposalUser.joiningDate}`}</p>
 
                             <p><GiSelfLove /> 0 Recommendations</p>
                         </div>

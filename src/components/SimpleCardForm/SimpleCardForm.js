@@ -29,7 +29,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
     useEffect(() => {
         let isMounted = true;
         setAccountType('basic')
-        fetch("http://localhost:4000/userLoginData")
+        fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -134,7 +134,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                     setLoginInfo(newLoginInfo)
 
 
-                    fetch('http://localhost:4000/userLogin', {
+                    fetch('https://warm-anchorage-86355.herokuapp.com/userLogin', {
                         method: 'POST',
                         headers: { 'Content-type': 'application/json' },
                         body: JSON.stringify(newLoginInfo)

@@ -1,3 +1,22 @@
+@media screen and (max-width: 1178px) and (min-width: 1033px){
+    .bid-amount{
+        background: darkgray;
+        margin-left: 13px !important;
+    }
+    .bid-amount-field{
+        padding-left: 0 !important;
+        padding-right: 0px !important;
+        width: 250px !important;
+    }
+    .day-field{
+        padding-right: 0px !important;
+    }
+    .days{
+        background: darkgray;
+        width: 58 px !important;
+    }
+  }
+
 .project-bid{
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
     background: #fff;
@@ -13,23 +32,23 @@
     text-align-last: end;
     margin-top: 11px !important;
 }
-.bid-amount{
+/* .bid-amount{
     background: darkgray;
     margin-left: 13px !important;
-}
+} */
 .currency{
     background: darkgray;
     width: 58px !important;
 }
-.bid-amount-field{
+/* .bid-amount-field{
     padding-left: 0 !important;
     padding-right: 0px !important;
     width: 300px !important;
-}
-.day-field{
+} */
+/* .day-field{
     padding-right: 0px !important;
 }
 .days{
     background: darkgray;
     width: 58 px !important;
-}
+} */

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EditExperience.css';
 import month from '../../../../fakedata/editExperienceData/month';
 import year from '../../../../fakedata/editExperienceData/year';
-const EditExperience = ({ handleExperienceSave }) => {
+const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
 
     const [title, setTitle] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -15,10 +15,13 @@ const EditExperience = ({ handleExperienceSave }) => {
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const saveButton = () => {
-        fetch('http://localhost:4000/editExperience', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/editExperience', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: getUserLoginInfo._id })
+        }).then(res => res.json())
+        .then(data => {
+            setLoadExperienceData(data);
         })
         handleExperienceSave()
     }

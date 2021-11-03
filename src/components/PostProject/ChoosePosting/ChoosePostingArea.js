@@ -19,6 +19,7 @@ const ChoosePostingArea = ({postingBgColor, currentCategory, handleCategory, set
 
         const postType = { ...loginInfo };
         postType.payingStatus = data.payTitle;
+        postType.payType = pay;
         setLoginInfo(postType);
     }
 

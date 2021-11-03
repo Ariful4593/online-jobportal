@@ -43,7 +43,7 @@
     float: left;
     width: 16.66%;
 }
-@media screen and (max-width: 332px) and (min-width: 0px){
+@media screen and (max-width: 400px) and (min-width: 0px){
     .job-state{
         width: 40% !important;
     }
@@ -51,6 +51,12 @@
         font-size: 13px;
         padding-left: 0px !important;
         width: 60% !important;
+    }
+    .profile-image{
+        height: 185px !important;
+    }
+    .profile-block-area{
+        text-align: center;
     }
     
     
@@ -79,10 +85,14 @@
     
     
 }
-@media screen and (max-width: 575px) and (min-width: 333px){
+@media screen and (max-width: 575px) and (min-width: 401px){
     
-    
-    
+    .profile-block-area{
+        text-align: center;
+    }
+    .profile-image{
+        height: 185px !important;
+    }
     
 
     .job-status{
@@ -121,8 +131,11 @@
     .profile-image{
         padding: 0px !important;
         border-radius: 50%;
+        height: 185px !important;
     }
-    
+    .profile-block-area{
+        text-align: center;
+    }
     
 
     .job-status{

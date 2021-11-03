@@ -10,7 +10,10 @@ import EditProfile from './EditProfile/EditProfile';
 import EditExperience from './AddExperience/EditExperience';
 import EditEducation from './Education/EditEducation';
 import EditQualification from './Qualification/EditQualification';
-const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId }) => {
+
+
+
+const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId, isPhoto }) => {
     const [editProfileBtn, setEditProfileBtn] = useState(true);
     const [profileSaveBtn, setProfileSaveBtn] = useState(false);
     const [editExperience, setEditExperience] = useState(true);
@@ -18,7 +21,9 @@ const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId }) => {
     const [editEducation, setEditEducation] = useState(true);
     const [editEducationSave, setEditEducationSave] = useState(false);
     const [editQualificaton, setQualification] = useState(true);
-    const [editQualificationSave, setEditQualificationSave] = useState(false)
+    const [editQualificationSave, setEditQualificationSave] = useState(false);
+    const [saveData, setSaveData] = useState(false);
+    const [loadExperienceData, setLoadExperienceData] = useState(false);
 
     useEffect(() => {
         setCoverPhotoBtn(false)
@@ -30,22 +35,22 @@ const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId }) => {
         setEditProfileBtn(false);
         setRightSide(true);
         setProfileSaveBtn(true);
-        setCoverPhotoBtn(true)
+        setCoverPhotoBtn(true);
     }
 
     const profileSave = () => {
-        setProfileSaveBtn(false)
-        setEditProfileBtn(true)
-        setCoverPhotoBtn(false)
+        setProfileSaveBtn(false);
+        setEditProfileBtn(true);
+        setCoverPhotoBtn(false);
     }
 
     const handleEditExperience = () => {
         setEditExperience(false);
-        setExperienceSave(true)
+        setExperienceSave(true);
     }
     const handleExperienceSave = () => {
         setEditExperience(true);
-        setExperienceSave(false)
+        setExperienceSave(false);
     }
 
     const handleEditEducation = () => {
@@ -60,45 +65,47 @@ const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId }) => {
 
     const handleEditQualification = () => {
         setQualification(false);
-        setEditQualificationSave(true)
+        setEditQualificationSave(true);
     }
 
     const handleEditQualificationSave = () => {
         setQualification(true);
-        setEditQualificationSave(false)
+        setEditQualificationSave(false);
     }
 
 
-    
+
+
+
     return (
         <div className="col-lg-9 left-side">
             {
-                editProfileBtn && <ProfileDetails editProfile={editProfile} postData={postData} profileId={profileId} />
+                editProfileBtn && <ProfileDetails editProfile={editProfile} postData={postData} profileId={profileId} saveData={saveData} />
             }
             {
-                !profileId && profileSaveBtn && <EditProfile profileSave={profileSave} postData={postData} />
+                !profileId && profileSaveBtn && <EditProfile profileSave={profileSave} postData={postData} isPhoto={isPhoto} setSaveData={setSaveData} />
             }
             <Reviews />
             {
-                editExperience && <AddExperience handleEditExperience={handleEditExperience} postData={postData} profileId={profileId} />
+                editExperience && <AddExperience handleEditExperience={handleEditExperience} postData={postData} profileId={profileId} loadExperienceData={loadExperienceData} />
             }
             {
-                !profileId && experienceSave && <EditExperience handleExperienceSave={handleExperienceSave} postData={postData} />
-            }
-
-
-            {
-                editEducation && <Education handleEditEducation={handleEditEducation} postData={postData} profileId={profileId} />
-            }
-            {
-                !profileId && editEducationSave && <EditEducation handleEditEducationSave={handleEditEducationSave} postData={postData} />
+                !profileId && experienceSave && <EditExperience handleExperienceSave={handleExperienceSave} postData={postData} setLoadExperienceData={setLoadExperienceData} />
             }
 
+
             {
-                editQualificaton && <Qualification handleEditQualification={handleEditQualification} postData={postData} profileId={profileId} />
+                editEducation && <Education handleEditEducation={handleEditEducation} postData={postData} profileId={profileId} loadExperienceData={loadExperienceData} />
             }
             {
-                !profileId && editQualificationSave && <EditQualification handleEditQualificationSave={handleEditQualificationSave} postData={postData} />
+                !profileId && editEducationSave && <EditEducation handleEditEducationSave={handleEditEducationSave} postData={postData} setLoadExperienceData={setLoadExperienceData} />
+            }
+
+            {
+                editQualificaton && <Qualification handleEditQualification={handleEditQualification} postData={postData} profileId={profileId} loadExperienceData={loadExperienceData} />
+            }
+            {
+                !profileId && editQualificationSave && <EditQualification handleEditQualificationSave={handleEditQualificationSave} postData={postData} setLoadExperienceData={setLoadExperienceData}/>
             }
             <Publication profileId={profileId} />
         </div>

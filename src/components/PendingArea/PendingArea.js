@@ -9,7 +9,7 @@ const PendingArea = () => {
     const { postId } = useParams();
 
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-    fetch('http://localhost:4000/statusUpdate', {
+    fetch('https://warm-anchorage-86355.herokuapp.com/statusUpdate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -18,7 +18,7 @@ const PendingArea = () => {
     })
     const [notifications, setNotifications] = useState({})
     useEffect(() => {
-        fetch('http://localhost:4000/getPostProject')
+        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
             .then(res => res.json())
             .then(data => {
                 const postList = data.find(item => item.email === userLoginInfo.email);

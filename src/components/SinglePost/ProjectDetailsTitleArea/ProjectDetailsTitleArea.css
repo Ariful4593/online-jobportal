@@ -1,9 +1,9 @@
-.details-left{
+/* .details-left{
     width: 60% !important;
 }
 .details-right{
     width: 40% !important;
-}
+} */
 .project-details-title-area{
     padding: 10px;
     border-bottom: 1px solid lightcoral;
@@ -37,3 +37,9 @@
     cursor: pointer;
     margin: 5px 5px 5px 0px;
 }
+
+@media screen and (min-width: 576px){
+    .bidding-block{
+        text-align: end !important;
+    }
+ }

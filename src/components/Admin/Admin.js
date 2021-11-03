@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
 const Admin = () => {
     const classes = useStyles();
 
-    const [userData, setUserData] = useState([])
+    const [, setUserData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:4000/getUserData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/getUserData')
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])

@@ -22,7 +22,7 @@ const Verification = ({ profileId }) => {
     const [userData, setUserData] = useState([]);
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/userLoginData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -41,7 +41,7 @@ const Verification = ({ profileId }) => {
             if (code === null) return;
             e.confirm(code).then((res) => {
                 setVerified(true);
-                fetch('http://localhost:4000/phoneVerify', {
+                fetch('https://warm-anchorage-86355.herokuapp.com/phoneVerify', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ verify: 'Verified', id: loginData._id })

@@ -8,9 +8,15 @@
         margin-left: auto;
     }
     .project-title{
-        height: 110px;
+        height: 150px;
         background-color: #0e1724;
         
+    }
+    .details{
+        border-bottom: 3px solid;
+    }
+    .proposals{
+        border-bottom: 3px solid;
     }
     .project-title h1{
         color: #f7f7f7;
@@ -74,8 +80,14 @@
         margin-right: auto;
         margin-left: auto;
     }
+    .details{
+        border-bottom: 3px solid;
+    }
+    .proposals{
+        border-bottom: 3px solid;
+    }
     .project-title{
-        height: 110px;
+        height: 150px;
         background-color: #0e1724;
     }
     

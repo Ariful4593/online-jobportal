@@ -11,7 +11,7 @@ const Proposal = ({ id, setBiddingCount }) => {
     const [retract, setRetract] = useState(false);
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/getPostProject')
+        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -30,7 +30,7 @@ const Proposal = ({ id, setBiddingCount }) => {
 
     const retractPost = (docId, proposalId) => {
         setRetract(true)
-        fetch('http://localhost:4000/retractPost', {
+        fetch('https://warm-anchorage-86355.herokuapp.com/retractPost', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ _id: docId, proposalId: proposalId }),

@@ -59,6 +59,7 @@
         transition: all .1s ease-in;
         font-size: 16px;
         line-height: 1.4;
+        display: none;
     }
     .search-results{
         padding: 0px 10px 10px 10px;
@@ -96,6 +97,7 @@
         transition: all .1s ease-in;
         font-size: 16px;
         line-height: 1.4;
+        display: block;
     }
        
 }
@@ -117,6 +119,9 @@
     }
     .search-project-area{
         width: 57% !important;
+    }
+    .product-price{
+        text-align: left;
     }
     .project-header{
         border-bottom: 1px solid #DEDEDE;
@@ -141,10 +146,10 @@
     .project-area{
         box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
         padding: 0 !important;
-        width: 30% !important;
+        width: 25% !important;
     }
     .search-project-area{
-        width: 70% !important;
+        width: 75% !important;
     }
     .project-header{
         border-bottom: 1px solid #DEDEDE;

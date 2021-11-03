@@ -1,6 +1,6 @@
 import React from 'react';
 import NextButton from '../NextButton/NextButton';
-import UploadFiles from '../UploadFiles/UploadFiles';
+// import UploadFiles from '../UploadFiles/UploadFiles';
 
 const ProjectFullForm = ({  post, counter, setCounter, handleBlur, count, handleFileChange }) => {
     return (
@@ -22,7 +22,7 @@ const ProjectFullForm = ({  post, counter, setCounter, handleBlur, count, handle
             <p className="character-counter"><small style={{fontWeight: 'bold'}}>Now {post.description.length} character. It should be 31 - 4000 character</small></p>
             <br /><br />
 
-            <UploadFiles handleFileChange={handleFileChange} />
+            {/* <UploadFiles handleFileChange={handleFileChange} /> */}
             {
                 count > 30 && post.title.length > 5 && counter < 1 && <NextButton counter={counter} setCounter={setCounter} />
             }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Education.css';
-const Education = ({ handleEditEducation, profileId }) => {
+import Loader from "react-loader-spinner";
+
+
+const Education = ({ handleEditEducation, profileId, loadExperienceData }) => {
 
 
     const [userProfileData, setUserProfileData] = useState([]);
@@ -8,7 +11,7 @@ const Education = ({ handleEditEducation, profileId }) => {
     const getLoginData = JSON.parse(localStorage.getItem('userLoginInfo'));
     useEffect(() => {
         let isMounted = true;
-        fetch('http://localhost:4000/userLoginData')
+        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
@@ -20,8 +23,15 @@ const Education = ({ handleEditEducation, profileId }) => {
 
             })
         return () => { isMounted = false }
-    }, []);
+    }, [loadExperienceData]);
 
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+        if (counter < 3) {
+            setTimeout(() => setCounter(counter + 1), 1000);
+        }
+    });
     return (
         <div className="education-block">
             <div className="single-add-block">
@@ -42,31 +52,39 @@ const Education = ({ handleEditEducation, profileId }) => {
             <div className="single-row-block">
                 <div className="row">
                     {
-                        !profileId ? <div className="col-12 education-image-area">
-                            <h5>{userProfileData && userProfileData.degree}</h5>
-                            {
-                                userProfileData && (userProfileData.universityName && userProfileData.countryName && userProfileData.startYear && userProfileData.endYear) ? <React.Fragment>
-                                    <p>
-                                        {`${userProfileData.universityName}, ${userProfileData.countryName}`}
-                                    </p>
-                                    <p>{userProfileData.startYear} - {userProfileData.endYear}</p>
-                                </React.Fragment> : <p>No education have been added yet.</p>
-                            }
-
-                        </div>
-                            :
+                        userProfileData && (userProfileData.universityName && userProfileData.countryName && userProfileData.startYear && userProfileData.endYear) ?
                             <div className="col-12 education-image-area">
-                                <h5>{proposalUser && proposalUser.degree ? proposalUser.degree : ''}</h5>
                                 {
-                                    proposalUser && (proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) ? <React.Fragment>
-                                        <p>
-                                            {`${proposalUser.universityName}, ${proposalUser.countryName}`}
-                                        </p>
-                                        <p>{proposalUser.startYear} - {proposalUser.endYear}</p>
-                                    </React.Fragment> : <p>No education have been added yet.</p>
+                                    !profileId ?
+                                        <React.Fragment>
+                                            <h5>{userProfileData && userProfileData.degree}</h5>
+                                            {
+                                                userProfileData && (userProfileData.universityName && userProfileData.countryName && userProfileData.startYear && userProfileData.endYear) ? <React.Fragment>
+                                                    <p>
+                                                        {`${userProfileData.universityName}, ${userProfileData.countryName}`}
+                                                    </p>
+                                                    <p>{userProfileData.startYear} - {userProfileData.endYear}</p>
+                                                </React.Fragment> : <p>No education have been added yet.</p>
+                                            }
+                                        </React.Fragment>
+                                        :
+                                        <React.Fragment>
+                                            <h5>{proposalUser && proposalUser.degree ? proposalUser.degree : ''}</h5>
+                                            {
+                                                proposalUser && (proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) ? <React.Fragment>
+                                                    <p>
+                                                        {`${proposalUser.universityName}, ${proposalUser.countryName}`}
+                                                    </p>
+                                                    <p>{proposalUser.startYear} - {proposalUser.endYear}</p>
+                                                </React.Fragment> : <p>No education have been added yet.</p>
+                                            }
+                                        </React.Fragment>
                                 }
 
                             </div>
+                            :
+
+                            (counter > 3 ?  <p>No education have been added yet.</p> :<Loader type="Circles" color="#00BFFF" height={40} width={40} />)
                     }
 
                 </div>
