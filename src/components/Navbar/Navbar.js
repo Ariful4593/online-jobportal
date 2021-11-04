@@ -12,8 +12,13 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import freelancerLogo from '../../images/trusted/freelancer-logo-light.svg'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
+import { AiFillDatabase } from "react-icons/ai";
+import { SiPostman } from "react-icons/si";
+
+
+
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
@@ -65,30 +70,30 @@ const Navbar = () => {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-    // const handleNotification = (e) => {
-    //     setModal(true);
-    //     setNotifications(e.currentTarget);
-    //     fetch('https://warm-anchorage-86355.herokuapp.com/seenUnseen', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ seenUnseenState: 'Seen', uniqueId: notificationsData.uniqueId })
-    //     })
-    // }
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
     };
 
     const handleMenuClose = () => {
         setAnchorEl(null);
-        // setNotifications(null);
-        // setModal(false);
         handleMobileMenuClose();
     };
 
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+
+
+    let history = useHistory()
+
+    const signout = () => {
+        history.push("/login")
+        localStorage.removeItem("userLoginInfo");
+    }
+    const signIn = () => {
+        history.push("/");
+    }
+    
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -101,9 +106,6 @@ const Navbar = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            {/* <MenuItem onClick={handleMenuClose}>
-                <Link to="account" className="text-dark">Account</Link>
-            </MenuItem> */}
             <MenuItem onClick={handleMenuClose}>
                 <Link to="/view-profile" className="text-dark" >View Profile</Link>
             </MenuItem>
@@ -123,6 +125,14 @@ const Navbar = () => {
             <MenuItem onClick={handleMenuClose}>
                 <Link to="/settings" className="text-dark">Settings</Link>
             </MenuItem>
+            {
+                userLoginInfo ? <MenuItem onClick={handleMenuClose}>
+                    <button className="btn text-dark p-0" onClick={signout}>Sign Out</button>
+                </MenuItem> : <MenuItem onClick={handleMenuClose}>
+                    <button className="btn text-dark p-0" onClick={signIn}>Sign In</button>
+                </MenuItem>
+            }
+
         </Menu>
     );
 
@@ -137,6 +147,15 @@ const Navbar = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="/postedJob" className="text-dark" ><AiFillDatabase /> Browse Project</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+                <Link to="/postProject" className="text-dark" >
+                    <SiPostman /> Post Project
+                </Link>
+            </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">

@@ -7,12 +7,12 @@ const AddLocation = () => {
                 <li>
                     <h6>Specific Location</h6>
                 </li>
+                <div className="input-group" style={{paddingRight: '10px'}}>
+                    <input type="text" className="form-control" name="" placeholder="Add Location" id="" />
+                    <button className="btn btn-primary text-white" disabled>Add</button>
+                </div>
                 <li>
-                    <input type="text" className="add-location" name="" placeholder="Add Location" id="" />
-                    <input type="button" className="add-location-btn" value="Add" />
-                </li>
-                <li>
-                    <button className="clear-location">Clear Location</button>
+                    <button className="clear-location" disabled>Clear Location</button>
                 </li>
             </ul>
             <hr className="hr" />

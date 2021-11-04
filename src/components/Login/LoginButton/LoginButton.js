@@ -13,7 +13,7 @@ const LoginButton = ({newUser, setNewUser}) => {
                     <div className='login-qstn'>
                         <span style={{color: 'white'}}>Don't have an account? </span>
                         <span className='pl-1'>
-                            <span style={{ cursor: 'pointer', color: 'orange', fontSize: '22px' }} onClick={() => setNewUser(!newUser)}>
+                            <span style={{ cursor: 'pointer', color: 'orange', fontSize: '16px' }} onClick={() => setNewUser(!newUser)}>
                                 Create an account
                             </span>
                         </span>

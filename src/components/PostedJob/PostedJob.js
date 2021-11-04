@@ -34,6 +34,8 @@ const PostedJob = () => {
                 const afterFilterData = data.postInfo.filter(item => Object.values(item).join(" ").toLowerCase().includes(search.toLowerCase()))
                 if (afterFilterData.length > 0) {
                     setSearchResult(afterFilterData)
+                }else{
+                    return <p>Sorry your post not found!</p>
                 }
                 return afterFilterData;
             });
@@ -43,12 +45,32 @@ const PostedJob = () => {
         }
     }, [getData, search])
 
+    const [pricingPost, setPricingPost] = useState('');
+    const list = [];
+    useEffect(() => {
+        if (pricingPost) {
+            getData.filter((data) => {
+                const test = data.postInfo.find(item => Object.values(item).join("").toLowerCase().includes(pricingPost.toLowerCase()));
+                if(test){
+                    list.push(test)
+                    setSearchResult(list)
+                }else{
+                    return <p>Sorry your post not found!</p>
+                }
+                return 0;
+            })            
+            
+        }
+        else {
+            setSearchResult(getData);
+        }
+    }, [getData, pricingPost])
     return (
         <div className="job-post-area">
             <div className="row">
                 <div className="col-12 col-md-3 project-area" >
                     <div className="project-header">
-                        <LeftSidebar />
+                        <LeftSidebar setPricingPost={setPricingPost} />
                     </div>
                 </div>
                 <div className="col-12 col-md-9 search-project-area">
@@ -59,7 +81,7 @@ const PostedJob = () => {
                             </div>
                         </div>
                         {
-                            search.length < 1 ? getData.map((data) => {
+                         searchResult.length === getData.length && search.length < 1 ? getData.map((data) => {
                                 return (
                                     data.postInfo.map((item, index) => {
                                         TimeAgo.addLocale(en);
@@ -113,7 +135,7 @@ const PostedJob = () => {
 
                                                         }
                                                         <span style={{ marginLeft: '20px' }}><HiAdjustments />
-                                                            {/* {`${data.biddingPeople.length} Bids`} */}
+                                                            {`${data.biddingPeople && data.biddingPeople.length} Bids`}
                                                         </span> <small style={{ marginLeft: '20px' }}> <span style={{ color: '#5dc26a' }}>Open </span>
                                                             {`${minutesAgo}`}
                                                         </small></p>

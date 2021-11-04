@@ -18,6 +18,7 @@ import JobPostedArea from "./components/JobPostedArea/JobPostedArea";
 import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
 import PostProjectArea from "./components/PostProject/PostProjectArea";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ViewBidInsights from "./components/ViewBidInsights/ViewBidInsights";
 
 export const collectionContext = createContext()
 function App() {
@@ -87,6 +88,10 @@ function App() {
           <PrivateRoute path="/settings">
             <SettingsPage />
           </PrivateRoute>
+          <PrivateRoute path="/bidinsights">
+            <ViewBidInsights />
+          </PrivateRoute>
+
         </Switch>
       </Router>
     </collectionContext.Provider>

@@ -3,11 +3,26 @@ import './ProjectDetailsTitleArea.css';
 
 const ProjectDetailsTitleArea = ({ singlePostData }) => {
     const classArray = ['badge badge-primary text-primary', 'badge badge-secondary text-secondary', 'badge badge-success text-success', 'badge badge-danger text-danger', 'badge badge-warning text-warning']
-    const { budget,  skillData, description } = singlePostData;
+    const { budget, skillData, description } = singlePostData;
     const [newState, setNewState] = useState([])
     useEffect(() => {
         setNewState(skillData)
-    }, [skillData])
+    }, [skillData]);
+
+    var date = new Date();
+    const [hours, setHours] = useState(168);
+    const [minutes, setMinutes] = useState(1440);
+    const [seconds, setSeconds] = useState(86400);
+    // let hours = 168 - date.getHours();
+    // let minutes = 1440 - date.getMinutes();
+    // let seconds = 86400 - date.getSeconds();
+    // console.log(hours / 24, minutes / 60, seconds / 60);
+    useEffect(() => {
+        setHours((hours - (date.getHours()).toFixed()) / 24);
+        setMinutes((minutes - (date.getMinutes()).toFixed()) / 60);
+        setSeconds((seconds - (date.getSeconds()).toFixed()) / 60);
+    }, [])
+    console.log(hours, minutes, seconds);
     return (
         <div className="project-details-title-area">
             <div className="row ">

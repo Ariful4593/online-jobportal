@@ -21,17 +21,7 @@ const SinglePost = ({ id, userId }) => {
             return post;
         })
     }, [])
-
-
-    useEffect(() => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/clientPlaceData')
-            .then(res => res.json())
-            .then(data => {
-                sessionStorage.setItem('clientData', JSON.stringify(data))
-            })
-    }, [])
-
-    
+   
 
     useEffect(() => {
         setDetails('details');

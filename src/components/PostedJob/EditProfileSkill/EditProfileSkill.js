@@ -18,7 +18,7 @@ const EditProfileSkill = () => {
                     {
                         editProfileSkillData.skill.map((data, index) => (
                             <li key={index}>
-                                <input type="checkbox" name="checkox" /> <label htmlFor="">{data}</label>
+                                <input type="checkbox" name="checkox" disabled /> <label htmlFor="">{data}</label>
                             </li>
                         ))
                     }
