@@ -7,6 +7,8 @@ import { collectionContext } from '../../../App';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ProjectType from '../ProjectType/ProjectType';
+import { newLoginData , handleProjectTypeData} from '../PostProjectDriver/PostProjectDriver';
+
 
 const Budget = ({ file, setCounter, price }) => {
     const { value1 } = useContext(collectionContext)
@@ -23,25 +25,13 @@ const Budget = ({ file, setCounter, price }) => {
     }, [])
 
     useEffect(() => {
-        const newLoginInfo = { ...loginInfo };
-        newLoginInfo.currencyName = rate;
-        newLoginInfo.budget = limit;
-        newLoginInfo.projectId = projectId;
-        newLoginInfo.status = 'Pending';
-        setLoginInfo(newLoginInfo)
+        newLoginData(loginInfo, rate, limit, projectId, setLoginInfo);
     }, [rate, limit])
 
 
     const [currentCategory, setCurrentCategory] = useState('');
     const [projectTypeBgColor, setProjectTypeBgColor] = useState('')
-    const handleProjectType = (type, data) => {
-        setCurrentCategory(type);
-        setProjectTypeBgColor(type);
-
-        const newProjectType = { ...loginInfo };
-        newProjectType.projectType = data.chooseProjectTitle;
-        setLoginInfo(newProjectType)
-    }
+    const handleProjectType = (type, data) => handleProjectTypeData(type, data,setCurrentCategory, setProjectTypeBgColor, loginInfo, setLoginInfo);
     return (
         <React.Fragment>
             <div className="budget col-12">

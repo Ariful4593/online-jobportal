@@ -9,12 +9,17 @@ import en from 'javascript-time-ago/locale/en';
 import { RiComputerFill } from "react-icons/ri";
 import { HiAdjustments } from "react-icons/hi";
 import { AiFillClockCircle } from "react-icons/ai";
-
+import { handleProjectType, handleSearchType } from './PostedJobDriver/PostedJobDriver'
 
 
 const PostedJob = () => {
 
-    const [getData, setGetdata] = useState([])
+    const [getData, setGetdata] = useState([]);
+    const [search, setSearch] = useState('')
+    const [searchResult, setSearchResult] = useState([])
+    const [pricingPost, setPricingPost] = useState('');
+    const list = [];
+    
     useEffect(() => {
         fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
             .then(res => res.json())//data.filter(post => post.status === 'Approved')
@@ -25,41 +30,20 @@ const PostedJob = () => {
     }, []);
 
 
-    const [search, setSearch] = useState('')
-    const [searchResult, setSearchResult] = useState([])
-
+    
     useEffect(() => {
         if (search !== '') {
-            getData.filter((data) => {
-                const afterFilterData = data.postInfo.filter(item => Object.values(item).join(" ").toLowerCase().includes(search.toLowerCase()))
-                if (afterFilterData.length > 0) {
-                    setSearchResult(afterFilterData)
-                }else{
-                    return <p>Sorry your post not found!</p>
-                }
-                return afterFilterData;
-            });
+            handleSearchType(getData, search, setSearchResult);
         }
         else {
             setSearchResult(getData);
         }
     }, [getData, search])
 
-    const [pricingPost, setPricingPost] = useState('');
-    const list = [];
+    
     useEffect(() => {
         if (pricingPost) {
-            getData.filter((data) => {
-                const test = data.postInfo.find(item => Object.values(item).join("").toLowerCase().includes(pricingPost.toLowerCase()));
-                if(test){
-                    list.push(test)
-                    setSearchResult(list)
-                }else{
-                    return <p>Sorry your post not found!</p>
-                }
-                return 0;
-            })            
-            
+            handleProjectType(getData, pricingPost, setSearchResult, list);
         }
         else {
             setSearchResult(getData);
@@ -81,7 +65,7 @@ const PostedJob = () => {
                             </div>
                         </div>
                         {
-                         searchResult.length === getData.length && search.length < 1 ? getData.map((data) => {
+                            searchResult.length === getData.length && search.length < 1 ? getData.map((data) => {
                                 return (
                                     data.postInfo.map((item, index) => {
                                         TimeAgo.addLocale(en);

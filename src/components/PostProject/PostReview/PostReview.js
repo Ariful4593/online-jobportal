@@ -6,21 +6,24 @@ import YesPostMyProject from '../YesPostMyProject/YesPostMyProject';
 import { collectionContext } from '../../../App';
 import StringManipulation from '../../StringManipulation/StringManipulation';
 import { useEffect } from 'react';
+import { budgetStateData } from '../PostProjectDriver/PostProjectDriver';
+
+
 const PostReview = ({ contestType, file, currentCategory }) => {
+
+
     const { value1 } = useContext(collectionContext)
     const [loginInfo] = value1;
     const { title, description, skillData } = loginInfo;
-
+    const budgetData = StringManipulation(loginInfo.budget);
     const [budgetState, setBudgetState] = useState({})
 
     useEffect(() => {
-        const newBudgetState = { ...budgetState };
-        newBudgetState.currency = loginInfo.currencyName;
-        newBudgetState.price = loginInfo.budget;
-        setBudgetState(newBudgetState)
+        budgetStateData(budgetState, loginInfo, setBudgetState);
+    }, [loginInfo.budget, loginInfo.currencyName]);
+    
 
-    }, [loginInfo.budget, loginInfo.currencyName])
-    const budgetData = StringManipulation(loginInfo.budget);
+
     return (
         <React.Fragment>
             {
@@ -59,10 +62,10 @@ const PostReview = ({ contestType, file, currentCategory }) => {
                 </div>
 
             }
-            <YesPostMyProject 
-            file={file}
-            budgetState={budgetState}
-            budgetData={budgetData}
+            <YesPostMyProject
+                file={file}
+                budgetState={budgetState}
+                budgetData={budgetData}
             />
         </React.Fragment>
     );

@@ -5,20 +5,18 @@ import { collectionContext } from '../../App';
 import freelancerlogo from '../../images/trusted/freelancer-logo-light.svg';
 import './PostProject.css';
 import ProjectForm from './ProjectForm/ProjectForm';
+import { loginInfoFnc } from './PostProjectDriver/PostProjectDriver';
+
 const PostProject = () => {
+
     const { value1 } = useContext(collectionContext)
     const [loginInfo, setLoginInfo] = value1;
     const [file, setFile] = useState(null);
-
-
-
-
     const [count, setCount] = useState(0);
     const [post, setPost] = useState({
         title: '',
         description: ''
     })
-
 
     const handleFileChange = useCallback((e) => {
         const newFile = e.target.files[0];
@@ -41,15 +39,8 @@ const PostProject = () => {
     }, [post.description, post.title])
     const uniqueId = Math.random().toString(36).substring(7);
 
-
     useEffect(() => {
-        const newLoginInfo = { ...loginInfo };
-        newLoginInfo.title = post.title;
-        newLoginInfo.description = post.description;
-        newLoginInfo.uniqueId = uniqueId;
-        const description = post.description;
-        setCount(description.length)
-        setLoginInfo(newLoginInfo);
+        loginInfoFnc(loginInfo, post, uniqueId, setCount, setLoginInfo);
     }, [post.description])
 
     return (

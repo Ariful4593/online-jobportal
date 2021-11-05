@@ -22,7 +22,7 @@ const ProjectDetailsTitleArea = ({ singlePostData }) => {
         setMinutes((minutes - (date.getMinutes()).toFixed()) / 60);
         setSeconds((seconds - (date.getSeconds()).toFixed()) / 60);
     }, [])
-    console.log(hours, minutes, seconds);
+    // console.log(hours, minutes, seconds);
     return (
         <div className="project-details-title-area">
             <div className="row ">

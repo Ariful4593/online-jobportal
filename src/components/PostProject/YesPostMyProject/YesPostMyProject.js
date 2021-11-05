@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import PostPolicy from '../PostPolicy/PostPolicy'
+import { handleClickOpenFnc } from '../PostProjectDriver/PostProjectDriver';
+
 
 const styles = (theme) => ({
     root: {
@@ -56,58 +58,12 @@ const DialogActions = withStyles((theme) => ({
 const YesPostMyProject = ({ budgetState, budgetData, file }) => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo] = value1;
-
+    const history = useHistory();
     const userInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-
     const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
+    const handleClickOpen = () => handleClickOpenFnc(file, userInfo, loginInfo, budgetData, budgetState, setOpen);
 
-        // var date = new Date().getDate();
-        // var year = new Date().getFullYear();
-        // var month = new Date().getMonth() + 1;
-        // var hours = new Date().getHours();
-        // var minutes = new Date().getMinutes();
-        const inSeconds = new Date().getTime();
-        const formData = new FormData();
-
-        formData.append('date', inSeconds)
-        formData.append('file', file);
-        formData.append('name', userInfo.name);
-        formData.append('email', userInfo.email);
-        formData.append('password', userInfo.password);
-        formData.append('accountType', userInfo.accountType);
-        formData.append('isLoggedIn', userInfo.isLoggedIn);
-        formData.append('paymentData', userInfo.paymentData);
-
-        formData.append('title', loginInfo.title);
-        formData.append('description', loginInfo.description);
-        formData.append('status', loginInfo.status);
-        formData.append('projectId', loginInfo.projectId);
-        formData.append('uniqueId', loginInfo.uniqueId);
-        formData.append('budget', budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`);
-        formData.append('currencyName', loginInfo.currencyName);
-        formData.append('skillData', JSON.stringify(loginInfo.skillData));
-        formData.append('projectType', loginInfo.projectType ? loginInfo.projectType : '');
-        formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
-        formData.append('payType', loginInfo.payType ? loginInfo.payType : '');
-        
-        formData.append('postType', loginInfo.postType ? loginInfo.postType : '');
-        formData.append('howLongRunContestDay', loginInfo.howLongRunContestDay ? loginInfo.howLongRunContestDay : '');
-        formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
-        formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
-
-        fetch('https://warm-anchorage-86355.herokuapp.com/userData', {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => {
-                console.error(error)
-            })
-        setOpen(true);
-    };
-    const history = useHistory()
+    
     const handleClose = () => {
         setOpen(false);
         history.push(`/pendingArea/${loginInfo.projectId}/${loginInfo.uniqueId}`);

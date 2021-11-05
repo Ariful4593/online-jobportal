@@ -5,24 +5,16 @@ import RequiredSkill from '../RequiredSkill/RequiredSkill';
 import './ProjectForm.css';
 import ProjectFullForm from './ProjectFullForm';
 import { collectionContext } from '../../../App';
+import { handleCategoryData } from '../PostProjectDriver/PostProjectDriver';
 const ProjectForm = ({ count, handleBlur, post, handleFileChange, file }) => {
 
     const { value1 } = useContext(collectionContext);
     const [loginInfo, setLoginInfo] = value1;
-
-
     const [counter, setCounter] = useState(0);
     const [currentCategory, setCurrentCategory] = useState('');
-    const [postingBgColor, setPostingBgColor] = useState('')
-    const handleCategory = (categoryType, data) => {
-        setCurrentCategory(categoryType)
-        setPostingBgColor(categoryType);
-
-
-        const postType = { ...loginInfo };
-        postType.postType = data.choosePostTitle;
-        setLoginInfo(postType);
-    }
+    const [postingBgColor, setPostingBgColor] = useState('');
+    
+    const handleCategory = (categoryType, data) => handleCategoryData(categoryType, data, setCurrentCategory, setPostingBgColor, loginInfo, setLoginInfo);
 
     return (
         <div className="col-12 choose-project-area">

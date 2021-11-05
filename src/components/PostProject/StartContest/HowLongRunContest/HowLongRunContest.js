@@ -4,18 +4,20 @@ import { useState } from 'react';
 import { collectionContext } from '../../../../App';
 import WhatTypeOfContestRun from '../WhatTypeOfContestRun/WhatTypeOfContestRun';
 import './HowLongRunContest.css';
-const HowLongRunContest = ({bgColor, handleWhatTypeContestRun, urgentCategory, contestType, file }) => {
+import { longContestFnc } from '../../PostProjectDriver/PostProjectDriver';
 
-    const { value1 } = useContext(collectionContext)
+
+const HowLongRunContest = ({ bgColor, handleWhatTypeContestRun, urgentCategory, contestType, file }) => {
+
+    const { value1 } = useContext(collectionContext);
     const [loginInfo, setLoginInfo] = value1;
-
-    const [howLongRunContest, setHowLongRunContest] = useState(0)
+    const [howLongRunContest, setHowLongRunContest] = useState(0);
 
     useEffect(() => {
-        const newLongRunContest = { ...loginInfo };
-        newLongRunContest.howLongRunContestDay = howLongRunContest;
-        setLoginInfo(newLongRunContest)
-    }, [howLongRunContest])
+        longContestFnc(loginInfo, howLongRunContest, setLoginInfo);
+    }, [howLongRunContest]);
+
+
     return (
         <div className="row how-long-run-area">
             {

@@ -5,25 +5,19 @@ import HowLongRunContest from '../HowLongRunContest/HowLongRunContest';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { collectionContext } from '../../../../App';
+import { handleWhatTypeContestRunData } from '../../PostProjectDriver/PostProjectDriver';
+
+
 const UrgentContest = ({ urgentBgColor, urgentCategory, handleUrgent, file }) => {
 
     const { value1 } = useContext(collectionContext);
     const [loginInfo, setLoginInfo] = value1;
+    const priceArray = ['not-urgent', 'urgent'];
+    const [bgColor, setBgColor] = useState('');
+    const [contestType, setContestType] = useState('');
+    const handleWhatTypeContestRun = (contestRun, data) => handleWhatTypeContestRunData(contestRun, data, setContestType, setBgColor, loginInfo, setLoginInfo);
 
-
-    const priceArray = ['not-urgent', 'urgent']
-
-    const [bgColor, setBgColor] = useState('')
-    const [contestType, setContestType] = useState('')
-    const handleWhatTypeContestRun = (contestRun, data) => {
-        setContestType(contestRun)
-        setBgColor(contestRun)
-
-        const newTypesOfContestRun = { ...loginInfo };
-        newTypesOfContestRun.whatTypeContestRun = data.whatTypeOfContestTitle;
-        setLoginInfo(newTypesOfContestRun)
-
-    }
+    
     return (
         <div className="is-urgent-area col-12">
 

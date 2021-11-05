@@ -4,44 +4,28 @@ import UrgentContest from './UrgentContest/UrgentContest';
 import startContestRate from '../../../fakedata/postProjectData/startContestRate';
 import { useEffect } from 'react';
 import { collectionContext } from '../../../App';
+import { handleUrgentFnc, startNewContestStateFnc } from '../PostProjectDriver/PostProjectDriver';
+
+
 const StartContest = ({ setCounter, file }) => {
 
-    const { value1 } = useContext(collectionContext)
+    const { value1 } = useContext(collectionContext);
     const [loginInfo, setLoginInfo] = value1;
-
     const projectId = Math.random().toString(36).substring(7);
-
     const [rate, setRate] = useState('');
     const [currency, setCurrency] = useState('');
-    const [urgentCategory, setUrgentCategory] = useState('')
-    const [urgentBgColor, setUrgentBgColor] = useState('')
+    const [urgentCategory, setUrgentCategory] = useState('');
+    const [urgentBgColor, setUrgentBgColor] = useState('');
 
     useEffect(() => {
         setRate('190')
         setCurrency('USD')
     }, [])
 
+    const handleUrgent = (urgent, data) => handleUrgentFnc(urgent, data, setUrgentCategory, setUrgentBgColor, loginInfo, setLoginInfo);
 
-
-    const handleUrgent = (urgent, data) => {
-        setUrgentCategory(urgent)
-        setUrgentBgColor(urgent)
-
-        const newStartContestState = { ...loginInfo };
-        newStartContestState.days = data.urgentContestTitle
-        setLoginInfo(newStartContestState);
-    }
-
-    
-
-    
     useEffect(() => {
-        const newStartContestState = { ...loginInfo };
-        newStartContestState.currencyName = currency;
-        newStartContestState.budget = rate;
-        newStartContestState.projectId = projectId;
-        newStartContestState.status = 'Pending';
-        setLoginInfo(newStartContestState)
+        startNewContestStateFnc(loginInfo, currency, rate, projectId, setLoginInfo);
     }, [rate, currency])
 
     return (

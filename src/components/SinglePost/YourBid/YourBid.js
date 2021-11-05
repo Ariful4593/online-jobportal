@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './YourBid.css';
 import { Link } from 'react-router-dom';
+import { newUserBid } from '../SinglePostDriver/SinglePostDriver';
+
+
 const YourBid = () => {
     let getSessionData = JSON.parse(sessionStorage.getItem('data'));
     let getUserData = JSON.parse(localStorage.getItem('userLoginInfo'));
@@ -8,19 +11,7 @@ const YourBid = () => {
     const [userBid, setUserBid] = useState([])
     let bidList = [];
     useEffect(() => {
-        getSessionData.filter(data => {
-            data.postInfo.filter(item => (
-                item.biddingPeople && item.biddingPeople.filter(emailFound => {
-                    const test = emailFound.email === getUserData.email;
-                    if (test) {
-                        bidList.push(item)
-                        setUserBid(bidList);
-                    }
-                    return 0;
-                })
-            ));
-            return 0;
-        });
+        newUserBid(getSessionData, getUserData, bidList, setUserBid);
     }, [])
     return (
         <div className="your-bid-area mt-4">

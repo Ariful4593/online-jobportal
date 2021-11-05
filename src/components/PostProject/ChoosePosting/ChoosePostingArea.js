@@ -5,23 +5,15 @@ import choosePostingData from '../../../fakedata/postProjectData/choosePostingDa
 import HowToPay from '../HowToPay/HowToPay';
 import StartContest from '../StartContest/StartContest';
 import './ChoosePostingArea.css';
-const ChoosePostingArea = ({postingBgColor, currentCategory, handleCategory, setCounter, file }) => {
+import { handlePayData } from '../PostProjectDriver/PostProjectDriver';
+const ChoosePostingArea = ({ postingBgColor, currentCategory, handleCategory, setCounter, file }) => {
     const { value1 } = useContext(collectionContext);
     const [loginInfo, setLoginInfo] = value1;
-
     const categoryArray = ['post-project', 'start-contest'];
-
-    const [payBgColor, setPayBgColor] = useState('')
+    const [payBgColor, setPayBgColor] = useState('');
     const [price, setPrice] = useState('');
-    const handlePay = (pay, data) => {
-        setPrice(pay)
-        setPayBgColor(pay)
 
-        const postType = { ...loginInfo };
-        postType.payingStatus = data.payTitle;
-        postType.payType = pay;
-        setLoginInfo(postType);
-    }
+    const handlePay = (pay, data) => handlePayData(pay, data, setPrice, setPayBgColor, loginInfo, setLoginInfo);
 
     return (
         <div className="col-sm-12 mt-4">
@@ -37,7 +29,7 @@ const ChoosePostingArea = ({postingBgColor, currentCategory, handleCategory, set
                         <div className={`col-md-6  ${categoryArray[index]}`}
                             key={index}
                             onClick={() => handleCategory(categoryArray[index], data)}
-                            style={{background: `${postingBgColor === categoryArray[index] ? '#f0f0f0' : ''}`}}
+                            style={{ background: `${postingBgColor === categoryArray[index] ? '#f0f0f0' : ''}` }}
                         >
                             <div className="row d-flex align-items-center">
                                 <div className="col-md-4 text-center">
@@ -61,7 +53,7 @@ const ChoosePostingArea = ({postingBgColor, currentCategory, handleCategory, set
                     file={file}
                     handlePay={handlePay}
                     payBgColor={payBgColor}
-                    />
+                />
             }
             {
                 currentCategory === 'start-contest' && <StartContest setCounter={setCounter} file={file} />

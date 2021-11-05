@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectBid.css';
 import Confetti from 'react-confetti';
+import { placeBidFnc } from '../SinglePostDriver/SinglePostDriver';
+
 const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
 
     const [bidAmount, setBidAmount] = useState(singlePost.budget);
@@ -8,9 +10,9 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
     const [describeProposal, setDescribeProposal] = useState('');
     const [confetti, setConfetti] = useState(false);
     // const { width, height } = useWindowSize();
-
     const [userData, setUserData] = useState([])
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+    
     useEffect(() => {
         let isMounted = true;
         fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
@@ -25,30 +27,8 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
     }, [])
 
     const proposalId = Math.random().toString(36).substring(7);
-    const placeBid = () => {
-        const newData = { ...singlePost };
-        newData.bidAmount = bidAmount;
-        newData.projectDelivered = projectDelivered;
-        newData.describeProposal = describeProposal;
-
-
-        fetch('https://warm-anchorage-86355.herokuapp.com/placeBid', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userData._id, proposalId: proposalId })
-        }).then(res => res.json())
-            .then(data => {
-
-                if (data) {
-                    setDetails('proposal');
-                    setConfetti(true);
-                } else {
-                    alert('Hey! You already bidded for this project. Please see proposal area.');
-                    setDetails('proposal');
-                }
-
-            })
-    }
+    const placeBid = () => placeBidFnc(singlePost, bidAmount, projectDelivered, describeProposal, userId, id, userLoginInfo, userData, proposalId, setDetails, setConfetti);
+    
     return (
         <div className="project-bid mt-4">
             {
@@ -72,7 +52,7 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
                     <div className="col-12 col-lg-6">
                         <h6 style={{ fontWeight: '700' }}>This project will be delivered in</h6>
                         <div className="input-group">
-                        <input className="form-control" type="number" onBlur={(e) => setProjectDelivered(e.target.value)} />
+                            <input className="form-control" type="number" onBlur={(e) => setProjectDelivered(e.target.value)} />
                             <button className="bg-dark text-white" disabled>Days</button>
                         </div>
 
@@ -81,10 +61,10 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
 
                         <div className="row">
                             <div className="col-md-10 day-field">
-                                
+
                             </div>
                             <div className="col-md-2 days d-flex align-items-center">
-                                
+
                             </div>
                         </div>
 
