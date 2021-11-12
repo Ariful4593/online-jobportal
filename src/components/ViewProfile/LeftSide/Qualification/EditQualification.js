@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import './EditQualification.css';
 import year from '../../../../fakedata/editExperienceData/year';
+import { saveEditQualificationFnc } from '../../ProfileDriver/ProfileDriver';
+import { collectionContext } from '../../../../App';
+import Loader from "react-loader-spinner";
+
+
 const EditQualification = ({ handleEditQualificationSave, setLoadExperienceData }) => {
 
     const [certificate, setCertificate] = useState('');
     const [organization, setOrganization] = useState('');
     const [summary, setSummary] = useState('');
     const [startYear, setStartYear] = useState('')
+    const [dots, setDots] = useState(false);
+    const { value9 } = useContext(collectionContext);
+    const [, setUpdateStatus] = value9;
 
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
     const saveEditQualification = () => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/editQualification', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ certificate: certificate, organization: organization, certificateSummary: summary, certificateStartYear: startYear, id: getUserLoginInfo._id })
-        }).then(res => res.json())
-            .then(data => setLoadExperienceData(data))
-        handleEditQualificationSave();
+        setDots(true);
+        saveEditQualificationFnc(certificate, organization, summary, startYear, getUserLoginInfo, setLoadExperienceData, handleEditQualificationSave, setUpdateStatus);
     }
     return (
         <div className="row experience-details-block">
@@ -60,7 +63,7 @@ const EditQualification = ({ handleEditQualificationSave, setLoadExperienceData 
                 <div className="col-12 mt-3 mb-3" style={{ textAlignLast: 'end' }}>
                     <button className="cancel-button" onClick={() => handleEditQualificationSave()} >Cancel</button>
 
-                    <button className="save-button" onClick={() => saveEditQualification()}>Save</button>
+                    <button className="save-button" disabled={(certificate && organization && summary && startYear) ? false: true} onClick={() => saveEditQualification()}>{dots ? <Loader type="ThreeDots" color="#00BFFF" height={30} width={40} /> : 'Save'}</button>
                 </div>
             </div>
         </div>

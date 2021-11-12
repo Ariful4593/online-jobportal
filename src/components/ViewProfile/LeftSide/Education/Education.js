@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Education.css';
 import Loader from "react-loader-spinner";
+import { educationFnc } from '../../ProfileDriver/ProfileDriver';
+import { collectionContext } from '../../../../App';
+
+const Education = ({ handleEditEducation, profileId, postData }) => {
 
 
-const Education = ({ handleEditEducation, profileId, loadExperienceData }) => {
-
-
-    const [userProfileData, setUserProfileData] = useState([]);
+    const { countryName, degree, endYear, startYear, universityName } = postData;
+    const { value7 } = useContext(collectionContext);
+    const [profileData,] = value7;
     const [proposalUser, setProposalUser] = useState([]);
-    const getLoginData = JSON.parse(localStorage.getItem('userLoginInfo'));
     useEffect(() => {
-        let isMounted = true;
-        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
-            .then(res => res.json())
-            .then(data => {
-                if (isMounted) {
-                    const editEducationData = data.find(item => item._id === getLoginData._id);
-                    const proposalUserData = data.find(item => item._id === profileId);
-                    setProposalUser(proposalUserData ? proposalUserData.editEducation : []);
-                    setUserProfileData(editEducationData ? editEducationData.editEducation : []);
-                }
-
-            })
-        return () => { isMounted = false }
-    }, [loadExperienceData]);
+        educationFnc(profileData, profileId, setProposalUser);
+    }, []);
 
     const [counter, setCounter] = useState(0);
 
@@ -51,42 +41,35 @@ const Education = ({ handleEditEducation, profileId, loadExperienceData }) => {
             <hr />
             <div className="single-row-block">
                 <div className="row">
-                    {
-                        userProfileData && (userProfileData.universityName && userProfileData.countryName && userProfileData.startYear && userProfileData.endYear) ?
-                            <div className="col-12 education-image-area">
-                                {
-                                    !profileId ?
-                                        <React.Fragment>
-                                            <h5>{userProfileData && userProfileData.degree}</h5>
-                                            {
-                                                userProfileData && (userProfileData.universityName && userProfileData.countryName && userProfileData.startYear && userProfileData.endYear) ? <React.Fragment>
-                                                    <p>
-                                                        {`${userProfileData.universityName}, ${userProfileData.countryName}`}
-                                                    </p>
-                                                    <p>{userProfileData.startYear} - {userProfileData.endYear}</p>
-                                                </React.Fragment> : <p>No education have been added yet.</p>
-                                            }
-                                        </React.Fragment>
-                                        :
-                                        <React.Fragment>
-                                            <h5>{proposalUser && proposalUser.degree ? proposalUser.degree : ''}</h5>
-                                            {
-                                                proposalUser && (proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) ? <React.Fragment>
-                                                    <p>
-                                                        {`${proposalUser.universityName}, ${proposalUser.countryName}`}
-                                                    </p>
-                                                    <p>{proposalUser.startYear} - {proposalUser.endYear}</p>
-                                                </React.Fragment> : <p>No education have been added yet.</p>
-                                            }
-                                        </React.Fragment>
-                                }
+                    <div className="col-12 education-image-area">
+                        {
+                            proposalUser.length < 1 ?
+                                <React.Fragment>
+                                    <h5>{degree}</h5>
+                                    {
+                                        (universityName && countryName && startYear && endYear)? <React.Fragment>
+                                            <p>
+                                                {`${universityName}, ${countryName}`}
+                                            </p>
+                                            <p>{startYear} - {endYear}</p>
+                                        </React.Fragment> : postData ? <p>No education have been added yet</p> : <Loader type="Circles" color="#00BFFF" height={40} width={40} />
+                                    }
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                    <h5>{(proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) && proposalUser.degree}</h5>
+                                    {
+                                        (proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) ? <React.Fragment>
+                                            <p>
+                                                {`${proposalUser.universityName}, ${proposalUser.countryName}`}
+                                            </p>
+                                            <p>{proposalUser.startYear} - {proposalUser.endYear}</p>
+                                        </React.Fragment> : <p>No education have been added yet.</p>
+                                    }
+                                </React.Fragment>
+                        }
 
-                            </div>
-                            :
-
-                            (counter > 3 ?  <p>No education have been added yet.</p> :<Loader type="Circles" color="#00BFFF" height={40} width={40} />)
-                    }
-
+                    </div>
                 </div>
             </div>
 

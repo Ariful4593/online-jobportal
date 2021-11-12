@@ -4,85 +4,21 @@ import './ProfileBlock.css';
 import LeftSide from '../LeftSide/LeftSide';
 import Footer from '../../Footer/Footer';
 import { collectionContext } from '../../../App';
+import { profileBlockFnc } from '../ProfileDriver/ProfileDriver';
 
-
-const ProfileBlock = ({ userData, profileId }) => {
+const ProfileBlock = ({ profileId }) => {
     const [coverPhotoBtn, setCoverPhotoBtn] = useState(false);
     const [postData, setPostData] = useState('');
-    const {value6} = useContext(collectionContext);
-    const [userAuth, ] = value6;
-
-
-    
-
+    const [rightSide, setRightSide] = useState(false);
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+    const { value6, value7 } = useContext(collectionContext);
+    const [userAuth,] = value6;
+    const [profileData,] = value7;
     const loginData = userAuth.find(data => data.name === userLoginInfo.name);
+    
     useEffect(() => {
-        const finalData = userData.find(data => data.email === userLoginInfo.email);
-        
-        if (finalData) {
-            const { profileEdit, imageFile, name, _id, editExperience, editEducation, editQualification } = finalData;
-            const { headline, summery, hourlyRate } = profileEdit;
-
-            const { experienceTitle, companyName, jobStartMonth, jobStartYear, jobEndMonth, jobEndYear, jobSummary } = editExperience;
-
-            const { countryName, universityName, degree, startYear, endYear } = editEducation;
-            const { certificate, organization, certificateSummary, certificateStartYear } = editQualification;
-            const { img } = imageFile
-            if (headline || img) {
-                setPostData({
-                    userName: name,
-                    id: _id,
-                    headline: headline,
-                    summery: summery,
-                    hourlyRate: hourlyRate,
-                    img: img,
-                    experienceTitle: experienceTitle,
-                    companyName: companyName,
-                    jobStartMonth: jobStartMonth,
-                    jobStartYear: jobStartYear,
-                    jobEndMonth: jobEndMonth,
-                    jobEndYear: jobEndYear,
-                    jobSummary: jobSummary,
-                    countryName: countryName,
-                    universityName: universityName,
-                    degree: degree,
-                    startYear: startYear,
-                    endYear: endYear,
-                    certificate: certificate,
-                    organization: organization,
-                    certificateSummary: certificateSummary,
-                    certificateStartYear: certificateStartYear
-
-                })
-            } else {
-                setPostData({
-                    userName: name,
-                    id: _id,
-                    headline: '',
-                    summery: '',
-                    hourlyRate: '',
-                    img: '',
-                    experienceTitle: experienceTitle,
-                    companyName: companyName,
-                    jobStartMonth: jobStartMonth,
-                    jobStartYear: jobStartYear,
-                    jobEndMonth: jobEndMonth,
-                    jobEndYear: jobEndYear,
-                    jobSummary: jobSummary,
-                    countryName: countryName,
-                    universityName: universityName,
-                    degree: degree,
-                    startYear: startYear,
-                    endYear: endYear,
-                    certificate: certificate,
-                    organization: organization,
-                    certificateSummary: certificateStartYear,
-                    certificateStartYear: certificateStartYear
-                })
-            }
-        }
-    }, [postData])
+        profileBlockFnc(profileData, userLoginInfo, setPostData);
+    }, [profileData])
 
     const [isPhoto, setIsPhoto] = useState(false)
     const handlePhoto = (e) => {
@@ -98,7 +34,7 @@ const ProfileBlock = ({ userData, profileId }) => {
             .then(data => setIsPhoto(true));
     }
 
-    const [rightSide, setRightSide] = useState(false)
+    
     return (
         <React.Fragment>
             <div className="container main-profile-block">

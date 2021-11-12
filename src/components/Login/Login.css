@@ -37,6 +37,7 @@
         url('../../images/login\ page\ bg.jpg');
         background-size: contain;
         background-repeat: no-repeat;
+        height: 300px;
     }
     .btn-area{
         text-align: center;

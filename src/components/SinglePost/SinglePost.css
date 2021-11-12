@@ -8,7 +8,7 @@
         margin-left: auto;
     }
     .project-title{
-        height: 150px;
+        height: 115px;
         background-color: #0e1724;
         
     }
@@ -18,10 +18,15 @@
     .proposals{
         border-bottom: 3px solid;
     }
-    .project-title h1{
-        color: #f7f7f7;
+    .post-title{
+        font-size: 15px;
+        color: white;
+        margin-top: 20px;
+    }
+    .type-area{
+        color: #f7f7f7 !important;
         margin: 20px 0px 0px 0px;
-        font-size: 24px;
+        font-size: 17px;
         line-height: 1.33;
     }
     .project-details-area{
@@ -87,13 +92,18 @@
         border-bottom: 3px solid;
     }
     .project-title{
-        height: 150px;
+        height: 130px;
         background-color: #0e1724;
     }
     
-    .project-title h1{
-        color: #f7f7f7;
-        margin: 35px 0px 0px 0px;
+    .post-title{
+        font-size: 20px;
+        color: white;
+        margin-top: 20px;
+    }
+    .type-area{
+        color: #f7f7f7 !important;
+        margin: 20px 0px 0px 0px;
         font-size: 24px;
         line-height: 1.33;
     }
@@ -135,8 +145,14 @@
         background-color: #0e1724;
         padding-left: 55px !important;
     }
-    .project-title h1{
-        color: #f7f7f7;
+    
+    .post-title{
+        color: white;
+        font-size: 25px;
+        margin-top: 20px;
+    }
+    .type-area{
+        color: #f7f7f7 !important;
         margin: 35px 0px 0px 0px;
         font-size: 24px;
         line-height: 1.33;

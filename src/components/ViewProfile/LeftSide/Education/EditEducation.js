@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './EditEducation.css';
 import countryName from '../../../../fakedata/editEducationData/country';
 import universityName from '../../../../fakedata/editEducationData/university';
 import year from '../../../../fakedata/editExperienceData/year';
+import { editEducationSaveFnc } from '../../ProfileDriver/ProfileDriver';
+import { collectionContext } from '../../../../App';
+import Loader from "react-loader-spinner";
+
+
 const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
 
 
@@ -11,17 +16,16 @@ const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
     const [degree, setDegree] = useState('');
     const [startYear, setStartYear] = useState('');
     const [endYear, setEndYear] = useState('');
+    const { value9 } = useContext(collectionContext);
+    const [, setUpdateStatus] = value9;
+    const [dots, setDots] = useState(false);
 
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const editEducationSave = () => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/editEducation', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ countryName: country, universityName: university, degree: degree, startYear: startYear, endYear: endYear, id: getUserLoginInfo._id })
-        }).then(res => res.json())
-        .then(data => setLoadExperienceData(data))
-        handleEditEducationSave();
+        setDots(true);
+        editEducationSaveFnc(country, university, degree, startYear, endYear, getUserLoginInfo, setLoadExperienceData, handleEditEducationSave, setUpdateStatus, handleEditEducationSave);
+        
     }
     return (
         <div className="row experience-details-block">
@@ -101,7 +105,7 @@ const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
             <div className="row">
                 <div className="col-12 mt-3 mb-3" style={{ textAlignLast: 'end' }}>
                     <button className="cancel-button" onClick={() => handleEditEducationSave()}>Cancel</button>
-                    <button className="save-button" onClick={() => editEducationSave()}>Save</button>
+                    <button className="save-button" disabled={(country && university && degree && startYear && endYear) ? false : true} onClick={() => editEducationSave()}>{dots ? <Loader type="ThreeDots" color="#00BFFF" height={30} width={40} /> : 'Save'}</button>
                 </div>
             </div>
         </div>

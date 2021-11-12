@@ -12,7 +12,6 @@ import EditEducation from './Education/EditEducation';
 import EditQualification from './Qualification/EditQualification';
 
 
-
 const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId, isPhoto }) => {
     const [editProfileBtn, setEditProfileBtn] = useState(true);
     const [profileSaveBtn, setProfileSaveBtn] = useState(false);
@@ -24,6 +23,7 @@ const LeftSide = ({ setCoverPhotoBtn, postData, setRightSide, profileId, isPhoto
     const [editQualificationSave, setEditQualificationSave] = useState(false);
     const [saveData, setSaveData] = useState(false);
     const [loadExperienceData, setLoadExperienceData] = useState(false);
+    
 
     useEffect(() => {
         setCoverPhotoBtn(false)

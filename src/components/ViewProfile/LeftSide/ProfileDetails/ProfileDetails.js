@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ProfileDetails.css';
 import { HiOutlineCurrencyDollar, HiBadgeCheck } from 'react-icons/hi';
 import { FaFlag } from 'react-icons/fa';
@@ -9,58 +9,51 @@ import verificationTypeData from '../../../../fakedata/viewProfileData/rightSide
 import { Link } from 'react-router-dom';
 import upload_image from '../../../../images/upload image/upload_image.png';
 import Loader from "react-loader-spinner";
+import { profileDetailsFnc } from '../../ProfileDriver/ProfileDriver';
+import { collectionContext } from '../../../../App';
 
 
-const ProfileDetails = ({ editProfile, profileId, saveData }) => {
+
+const ProfileDetails = ({ editProfile, profileId, saveData, postData }) => {
 
 
+    const { value7 } = useContext(collectionContext);
+    const { userName, headline, hourlyRate, summery, joiningDate, img } = postData;
+    const [profileData,] = value7;
     const [proposalUser, setProposalUser] = useState([]);
     const getUserLogin = JSON.parse(localStorage.getItem('userLoginInfo'));
-
-
-    useEffect(() => {
-        let isMounted = true;
-        fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
-            .then(res => res.json())
-            .then(data => {
-                if (isMounted) {
-                    const userData = data.find(item => item.email === getUserLogin.email);
-                    const proposalUserData = data.find(item => item._id === profileId);
-                    setProposalUser(proposalUserData)
-                    localStorage.setItem('userLoginInfo', JSON.stringify(userData));
-                }
-            })
-        return () => { isMounted = false }
-    }, [saveData]);
-
     const proposalUserImage = proposalUser ? proposalUser.imageFile : '';
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes();
+
+    useEffect(() => {
+        profileDetailsFnc(profileData, getUserLogin, profileId, setProposalUser);
+    }, [profileData]);
     return (
         <div className="profile-details">
             {
-                !proposalUser && getUserLogin && <div className="row">
+                (proposalUser.length < 1 && postData) ? <div className="row">
                     <div className="col-12 col-sm-4 profile-block-area">
                         {
-                            getUserLogin && getUserLogin.imageFile && getUserLogin.imageFile.img ?
-                                <img className="profile-image" style={{ height: '276px' }} src={`data:image/png;base64,${getUserLogin.imageFile.img}`} alt="" />
+                            img ?
+                                <img className="profile-image" style={{ height: '276px' }} src={`data:image/png;base64,${img}`} alt="" />
                                 :
                                 <img className="profile-image" style={{ height: '276px' }} src={`${upload_image}`} alt="" />
                         }
 
                         <div className="row mt-4 online-area" >
-                            <h4 className="profile-name">{getUserLogin && getUserLogin.name}</h4>
+                            <h4 className="profile-name">{postData && userName}</h4>
 
                             <p className="online"><RiRadioButtonLine style={{ color: 'green' }} /> I'm Online!</p>
 
-                            <h6><HiOutlineCurrencyDollar />  ${getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.hourlyRate ? getUserLogin.profileEdit.hourlyRate : '')} USD / Hour</h6>
+                            <h6><HiOutlineCurrencyDollar />  ${postData && hourlyRate} USD / Hour</h6>
 
                             <p><FaFlag />  Chittagong Bangladesh</p>
 
                             <p><AiOutlineClockCircle /> It's currently {`${hours}:${minutes}`} {hours > 12 ? 'PM' : 'AM'} here</p>
 
-                            <p><HiBadgeCheck /> {`Joined ${getUserLogin && getUserLogin.joiningDate}`} </p>
+                            <p><HiBadgeCheck /> {`Joined ${postData && joiningDate}`} </p>
 
                             <p><GiSelfLove /> 0 Recommendations</p>
                         </div>
@@ -68,7 +61,7 @@ const ProfileDetails = ({ editProfile, profileId, saveData }) => {
                     <div className="col-12 col-sm-8 mt-2">
                         <div className="row">
                             <div className="col-sm-6 edit-profile-name">
-                                <h4 className="">{(getUserLogin && getUserLogin.name)}</h4>
+                                <h4 className="">{(postData && userName)}</h4>
                             </div>
                             <ul className="verificaion-item-p">
                                 {
@@ -81,7 +74,7 @@ const ProfileDetails = ({ editProfile, profileId, saveData }) => {
 
                             </ul>
                             {
-                                !proposalUser && <div className="col-12 col-sm-6 profile-edit-profile-button">
+                                proposalUser && <div className="col-12 col-sm-6 profile-edit-profile-button">
                                     <button className="" onClick={() => editProfile()}>Edit Profile</button>
                                 </div>
                             }
@@ -90,7 +83,7 @@ const ProfileDetails = ({ editProfile, profileId, saveData }) => {
 
 
                         {
-                            <h6 className="user-pro-title">{getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.headline ? getUserLogin.profileEdit.headline : '')}</h6>
+                            <h6 className="user-pro-title">{headline}</h6>
                         }
 
 
@@ -124,14 +117,10 @@ const ProfileDetails = ({ editProfile, profileId, saveData }) => {
                         </div>
 
                         <br />
-                        <p>{getUserLogin && getUserLogin.profileEdit && (getUserLogin.profileEdit.summery ? getUserLogin.profileEdit.summery : '')}</p>
+                        <p>{summery}</p>
                     </div>
                 </div>
-            }
-
-
-            {/* Proposal user */}
-            {
+                :
                 proposalUser && <div className="row">
                     <div className="col-12 col-sm-4">
                         {
@@ -219,7 +208,12 @@ const ProfileDetails = ({ editProfile, profileId, saveData }) => {
                         <p>{proposalUser && proposalUser.profileEdit && (proposalUser.profileEdit.summery ? proposalUser.profileEdit.summery : '')}</p>
                     </div>
                 </div>
+
             }
+
+
+            {/* Proposal user */}
+            
         </div>
     );
 };

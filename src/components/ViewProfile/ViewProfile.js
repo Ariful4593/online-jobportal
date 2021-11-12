@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ProfileBg from './ProfileBg/ProfileBg';
 import { useParams } from 'react-router-dom';
+import { collectionContext } from '../../App';
 
 
 const ViewProfile = () => {
-    const [userData, setUserData] = useState([]);
+    const { value7, value8, value9 } = useContext(collectionContext);
+    const [, setProfileData] = value7;
+    const [, setGetPostData] = value8;
+    const [updateStatus,] = value9;
+
 
     const { profileId } = useParams();
     useEffect(() => {
@@ -13,26 +18,21 @@ const ViewProfile = () => {
             .then(res => res.json())
             .then(data => {
                 if (isMounted) {
-                    setUserData(data)
+                    setGetPostData(data)
                 }
             })
         return () => { isMounted = false };
     }, [])
 
-    const [userProfile, setUserProfile] = useState([]);
-
 
     useEffect(() => {
         fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
         .then(res => res.json())
-        .then(data => {
-            const userData = data.find(item => item._id === profileId);
-            setUserProfile(userData)
-        })
-    }, [])
+        .then(data => setProfileData(data))
+    }, [updateStatus])
     return (
         <div >
-            <ProfileBg userData={userData} profileId={profileId} userProfile={userProfile} />
+            <ProfileBg profileId={profileId}/>
         </div>
     );
 };

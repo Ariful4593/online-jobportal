@@ -19,7 +19,6 @@ import SinglePostArea from "./components/SinglePostArea/SinglePostArea";
 import PostProjectArea from "./components/PostProject/PostProjectArea";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ViewBidInsights from "./components/ViewBidInsights/ViewBidInsights";
-
 export const collectionContext = createContext()
 function App() {
 
@@ -30,6 +29,9 @@ function App() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [rate, setRate] = useState('');
+  const [profileData, setProfileData] = useState([]);
+  const [getPostData, setGetPostData] = useState([]);
+  const [updateStatus, setUpdateStatus] = useState(false);
 
 
   useEffect(() => {
@@ -46,6 +48,9 @@ function App() {
       value4: [description, setDescription],
       value5: [rate, setRate],
       value6: [userAuth, setUserAuth],
+      value7: [profileData, setProfileData],
+      value8: [getPostData, setGetPostData],
+      value9: [updateStatus, setUpdateStatus],
     }}>
       <Router>
         <Navbar />

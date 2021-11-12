@@ -34,10 +34,11 @@ const SinglePost = ({ id, userId }) => {
         <div className="single-post">
             <div className="row">
                 <div className="col-12 project-title">
-                    <h1>{singlePost.title}</h1>
+                    <h1 className="post-title">{singlePost.title}</h1>
                     <div className="col-12 project-proposal">
-                        <h1>
-                            <span style={{ cursor: 'pointer' }} className={`${details === 'details' ? 'details' : ''}`} onClick={() => handleEvent('details')}>Details</span> <span style={{ cursor: 'pointer' }} className={`${details === 'proposal' ? 'proposals' : ''}`} onClick={() => handleEvent('proposal')} >Proposal</span></h1>
+
+                        <h2 className="type-area">
+                            <span style={{ cursor: 'pointer' }} className={`${details === 'details' ? 'details' : ''}`} onClick={() => handleEvent('details')}>Details</span> <span style={{ cursor: 'pointer' }} className={`${details === 'proposal' ? 'proposals' : ''}`} onClick={() => handleEvent('proposal')} >Proposal</span></h2>
                     </div>
                 </div>
 

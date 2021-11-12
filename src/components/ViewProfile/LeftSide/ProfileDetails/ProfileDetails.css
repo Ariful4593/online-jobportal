@@ -182,6 +182,7 @@
     .profile-image{
         padding: 0px !important;
         border-radius: 50%;
+        width: 100% !important;
     }
     
     .online-area{

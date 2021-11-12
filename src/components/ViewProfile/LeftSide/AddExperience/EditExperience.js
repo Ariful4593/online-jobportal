@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './EditExperience.css';
 import month from '../../../../fakedata/editExperienceData/month';
 import year from '../../../../fakedata/editExperienceData/year';
+import { collectionContext } from '../../../../App';
+import Loader from "react-loader-spinner";
+
+
 const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
 
     const [title, setTitle] = useState('');
@@ -10,20 +14,29 @@ const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
     const [startYear, setStartYear] = useState('');
     const [endMonth, setEndMonth] = useState('');
     const [endYear, setEndYear] = useState('');
-    const [summary, setSummary] = useState('')
+    const [summary, setSummary] = useState('');
+    const [dots, setDots] = useState(false);
+    const { value9 } = useContext(collectionContext);
+    const [, setUpdateStatus] = value9;
 
 
     const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const saveButton = () => {
+        setDots(true);
         fetch('https://warm-anchorage-86355.herokuapp.com/editExperience', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: getUserLoginInfo._id })
         }).then(res => res.json())
-        .then(data => {
-            setLoadExperienceData(data);
-        })
-        handleExperienceSave()
+            .then(data => {
+                setUpdateStatus(true);
+                setLoadExperienceData(data);
+                setTimeout(() => {
+                    handleExperienceSave();
+                }, 4000);
+
+            })
+
     }
     return (
         <div className="row experience-details-block">
@@ -105,7 +118,7 @@ const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
             <div className="row">
                 <div className="col-12 mt-3 mb-3" style={{ textAlignLast: 'end' }}>
                     <button className="cancel-button" onClick={() => handleExperienceSave()}>Cancel</button>
-                    <button className="save-button" onClick={() => saveButton()}>Save</button>
+                    <button className="save-button" disabled={(title && companyName && startMonth && startYear && endMonth && endYear && summary) ? false : true} onClick={() => saveButton()}>{dots ? <Loader type="ThreeDots" color="#00BFFF" height={30} width={40} /> : 'Save'}</button>
                 </div>
             </div>
         </div>
