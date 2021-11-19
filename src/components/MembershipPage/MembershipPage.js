@@ -6,6 +6,7 @@ import PricePlan from './PricePlan/PricePlan';
 import TryAmemberShip from './TryAmemberShip/TryAmemberShip';
 
 const MembershipPage = () => {
+    document.title = "Freelancers || Membership";
     return (
         <div>
             <TryAmemberShip />

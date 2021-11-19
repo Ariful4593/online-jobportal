@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 const ViewBidInsights = () => {
 
     const getUserData = JSON.parse(localStorage.getItem('userLoginInfo'));
-    const [userBid, setUserBid] = useState([])
+    const [userBid, setUserBid] = useState([]);
+    document.title = "Freelancers || Bid Insides";
     let bidList = [];
 
     useEffect(() => {

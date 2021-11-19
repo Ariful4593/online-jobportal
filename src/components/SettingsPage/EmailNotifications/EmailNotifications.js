@@ -21,7 +21,7 @@ const EmailNotifications = () => {
             <div className="col-sm-6 email-block">
                 <h4>Email</h4>
                 <h6 className="email">Email Address*</h6>
-                <input type="text" className="form-control" placeholder="Enter your email" />
+                <input type="email" className="form-control" placeholder="Enter your email" />
             </div>
             <div className="col-sm-6 password-block">
                 <h6 className="password">Enter Current Password (if changing email)</h6>
@@ -45,10 +45,10 @@ const EmailNotifications = () => {
             <div className="col-lg-12 digest-email">
                 <h4>Digest emails for your posted projects</h4>
                 <small><Switch
-                    checked={state.checkedA}
+                    // checked={state.checkedA}
                     onChange={handleChange}
                     color="primary"
-                    name="checkedB"
+                    name="checkedB1"
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                 /> When a bid is placed / updated / retracted on your project</small>
                 <br />
@@ -72,10 +72,10 @@ const EmailNotifications = () => {
             <div className="col-lg-12 email-for-latest-project-posted">
                 <h4>Emails for latest projects posted</h4>
                 <small><Switch
-                    checked={state.checkedB}
+                    // checked={state.checkedB}
                     onChange={handleChange}
                     color="primary"
-                    name="checkedB"
+                    name="checkedB2"
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                 /> When a project gets posted that matches my selected skills</small>
                 <br />
@@ -95,17 +95,17 @@ const EmailNotifications = () => {
             <div className="col-12 email-for-ltest-local-job">
                 <h4>Emails for latest local jobs</h4>
                 <h6><Switch
-                    checked={state.checkedA}
+                    // checked={state.checkedA}
                     onChange={handleChange}
                     color="primary"
-                    name="checkedB"
+                    name="checkedB3"
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                 /> SMS notification when an employer is interested in hiring me</h6>
                 <h6><Switch
-                    checked={state.checkedB}
+                    // checked={state.checkedB}
                     onChange={handleChange}
                     color="primary"
-                    name="checkedB"
+                    name="checkedB4"
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                 /> When a local job in my area gets posted</h6>
 

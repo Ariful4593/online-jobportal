@@ -1,15 +1,16 @@
-.profile-details{
+.setting-details{
     max-width: 100%;
     width: 100%;
     padding-right: var(--bs-gutter-x,.75rem);
     padding-left: var(--bs-gutter-x,.75rem);
     margin-right: auto;
     margin-left: auto;
-    /* margin-top: 40px !important; */
+    margin-top: 40px !important;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%), 0 2px 4px 0 rgb(0 0 0 / 12%);
 }
 
 @media screen and (max-width: 575px) and (min-width: 0px){
-    .profile-details{
+    .setting-details{
         max-width: 100%;
         width: 100%;
         padding-right: var(--bs-gutter-x,.75rem);

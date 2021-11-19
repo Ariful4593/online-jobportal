@@ -7,9 +7,9 @@ import './SettingsPage.css';
 
 const SettingsPage = () => {
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0);
+    document.title = "Freelancers || Settings";
     const handleCount = (number) => {
-        console.log(number)
         setCount(number)
     }
 
@@ -22,21 +22,21 @@ const SettingsPage = () => {
                 return <EmailNotifications />;
 
             case 2:
-                return ('Hellow 2');
+                return ('Comming Soon...');
 
             case 3:
-                return ("Hellow 3");
+                return ("Comming Soon...");
 
             case 4:
-                return ('Hellow 4');
+                return ('Comming Soon...');
 
             case 5:
-                return ('Hellow 5');
+                return ('Comming Soon...');
             case 6:
-                return ('Hellow 6');
+                return ('Comming Soon...');
 
             case 7:
-                return ('Hellow 7');
+                return ('Comming Soon...');
 
             default:
                 return ('Page not found')
@@ -48,9 +48,9 @@ const SettingsPage = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3">
-                        <Menubar handleCount={handleCount} />
+                        <Menubar count={count} handleCount={handleCount} />
                     </div>
-                    <div className="col-md-9 profile-details">
+                    <div className="col-md-9 setting-details">
                         {
                             getStepContent(count)
                         }

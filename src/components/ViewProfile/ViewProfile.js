@@ -9,6 +9,7 @@ const ViewProfile = () => {
     const [, setProfileData] = value7;
     const [, setGetPostData] = value8;
     const [updateStatus,] = value9;
+    document.title = "Freelancers || View Profile";
 
 
     const { profileId } = useParams();

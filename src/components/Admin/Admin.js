@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Admin = () => {
     const classes = useStyles();
-
+    document.title = "Admin || Dashboard";
     const [, setUserData] = useState([])
     useEffect(() => {
         fetch('https://warm-anchorage-86355.herokuapp.com/getUserData')

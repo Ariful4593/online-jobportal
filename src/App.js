@@ -33,14 +33,20 @@ function App() {
   const [getPostData, setGetPostData] = useState([]);
   const [updateStatus, setUpdateStatus] = useState(false);
   const [signIn, setSignIn] = useState(false);
-
+  document.title = "Hire Freelancers & Find Freelancers";
 
   useEffect(() => {
+    let isMounted = true;
     fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
       .then(res => res.json())
-      .then(data => { setUserAuth(data) })
+      .then(data => {
+        if (isMounted) {
+          setUserAuth(data)
+        }
+      })
+    return () => { isMounted = false };
   }, []);
-  
+
   return (
     <collectionContext.Provider value={{
       value1: [loginInfo, setLoginInfo],

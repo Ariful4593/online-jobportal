@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer';
 import PostedJob from '../PostedJob/PostedJob';
 
 const JobPostedArea = () => {
+    document.title = "Freelancers || All Posted Job";
     return (
         <div>
             <PostedJob/>
