@@ -7,21 +7,23 @@ import './SinglePost.css';
 import YourBid from './YourBid/YourBid';
 import TotalBid from './TotalBid/TotalBid';
 const SinglePost = ({ id, userId }) => {
-    var getSessionData = JSON.parse(sessionStorage.getItem('data'));
     const [singlePost, setSinglePost] = useState({})
     const [details, setDetails] = useState('');
     const [biddingCount, setBiddingCount] = useState(0);
 
     useEffect(() => {
-        getSessionData.find(data => {
-            const post = data.postInfo.find(td => td.projectId === id)
-            if (post) {
-                setSinglePost(post)
-            }
-            return post;
-        })
-    }, [])
-   
+        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
+            .then(res => res.json())
+            .then(data => {
+                data.find(userData => {
+                    const post = userData.postInfo.find(td => td.projectId === id)
+                    if (post) {
+                        setSinglePost(post)
+                    }
+                    return post;
+                })
+            })
+    }, []);
 
     useEffect(() => {
         setDetails('details');

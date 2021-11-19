@@ -1,6 +1,6 @@
 import React from 'react';
-
-const LoginButton = ({newUser, setNewUser}) => {
+import Loader from "react-loader-spinner";
+const LoginButton = ({newUser, setNewUser, dots}) => {
     return (
         <div>
             <input
@@ -26,7 +26,7 @@ const LoginButton = ({newUser, setNewUser}) => {
                         <span style={{color: 'white'}}>Already have an account? </span>
                         <span className='pl-1'>
                             <span style={{ color: 'orange', cursor: 'pointer', fontSize: '20px' }} onClick={() => setNewUser(!newUser)}>
-                                Login
+                                 {dots ? <Loader type="Circles" color="#00BFFF" height={40} width={40} /> : 'Login'}
                             </span>
                         </span>
                     </div>

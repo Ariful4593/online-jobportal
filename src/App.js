@@ -32,6 +32,7 @@ function App() {
   const [profileData, setProfileData] = useState([]);
   const [getPostData, setGetPostData] = useState([]);
   const [updateStatus, setUpdateStatus] = useState(false);
+  const [signIn, setSignIn] = useState(false);
 
 
   useEffect(() => {
@@ -39,7 +40,7 @@ function App() {
       .then(res => res.json())
       .then(data => { setUserAuth(data) })
   }, []);
-
+  
   return (
     <collectionContext.Provider value={{
       value1: [loginInfo, setLoginInfo],
@@ -51,6 +52,7 @@ function App() {
       value7: [profileData, setProfileData],
       value8: [getPostData, setGetPostData],
       value9: [updateStatus, setUpdateStatus],
+      value10: [signIn, setSignIn],
     }}>
       <Router>
         <Navbar />

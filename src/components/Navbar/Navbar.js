@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,7 +16,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 import { AiFillDatabase } from "react-icons/ai";
 import { SiPostman } from "react-icons/si";
-
+import { collectionContext } from '../../App';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,9 @@ const Navbar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-
+    const {  value9, value10 } = useContext(collectionContext);
+    const [, setUpdateStatus] = value9;
+    const [, setSignIn] = value10;
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -87,10 +89,13 @@ const Navbar = () => {
     let history = useHistory()
 
     const signout = () => {
-        history.push("/login")
+        setUpdateStatus(true);
+        setSignIn(true);
+        history.push("/login");
         localStorage.removeItem("userLoginInfo");
     }
     const signIn = () => {
+        setSignIn(true);
         history.push("/");
     }
     

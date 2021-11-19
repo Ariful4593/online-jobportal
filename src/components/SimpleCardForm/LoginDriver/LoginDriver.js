@@ -1,9 +1,8 @@
 //SimpleCardForm
 
-export const notNewUserFnc = (newUser, user, userLogin, employer, setLoginInfo, history, jobSeaker, stripe, elements) => {
+export const notNewUserFnc = (newUser, user, userLogin, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location) => {
     if (!newUser && user.name && user.email && user.password) {
         const loginUser = userLogin.find(userData => userData.name === user.name && userData.email === user.email && userData.password === user.password)
-
         try {
             if (loginUser && employer) {
                 const newLoginInfo = { ...loginUser };
@@ -19,7 +18,16 @@ export const notNewUserFnc = (newUser, user, userLogin, employer, setLoginInfo, 
                 localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
 
                 return history.push('postedJob')
-            } else {
+            }
+            else if (loginUser && (signIn || location.pathname === '/login')) {
+                const newLoginInfo = { ...loginUser };
+                newLoginInfo.isLoggedIn = true;
+                setLoginInfo(newLoginInfo);
+                localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+
+                return history.push('postedJob')
+            }
+            else {
                 alert("Sorry! your password or email address doesn't match on the database")
             }
         } catch (err) {

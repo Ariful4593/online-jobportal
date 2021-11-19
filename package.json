@@ -25,6 +25,7 @@
     "react-hook-form": "^7.9.0",
     "react-icons": "^4.2.0",
     "react-loader-spinner": "^4.0.0",
+    "react-loading-skeleton": "^3.0.1",
     "react-otp-input": "^2.4.0",
     "react-phone-number-input": "^3.1.38",
     "react-router-dom": "^5.2.0",

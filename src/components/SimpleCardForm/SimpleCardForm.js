@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import { collectionContext } from '../../App';
 import './SimpleCardForm.css';
 import NewClient from '../Login/ClientVerify/NewClient';
@@ -13,8 +13,10 @@ import { notNewUserFnc, cardElementFnc } from './LoginDriver/LoginDriver';
 
 const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
-    const { value1 } = useContext(collectionContext)
+    const { value1, value6, value10 } = useContext(collectionContext)
     const [loginInfo, setLoginInfo] = value1;
+    const [signIn,] = value10;
+    const [userAuth] = value6;
     const stripe = useStripe();
     const elements = useElements();
     const history = useHistory()
@@ -27,7 +29,11 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
         password: '',
     })
     const [accountType, setAccountType] = useState('')
-    const [userLogin, setUserLogin] = useState([])
+    const [, setUserLogin] = useState([]);
+    const location = useLocation();
+
+
+
     useEffect(() => {
         let isMounted = true;
         setAccountType('basic')
@@ -39,9 +45,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                 }
             })
         return () => { isMounted = false };
-    }, [user])
-
-
+    }, [])
 
     const handleBlur = (e) => {
         let isFieldValid
@@ -65,14 +69,48 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
         // Block native form submission.
         event.preventDefault();
 
-        notNewUserFnc(newUser, user, userLogin, employer, setLoginInfo, history, jobSeaker, stripe, elements);
+        notNewUserFnc(newUser, user, userAuth, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location);
 
-        cardElementFnc(elements, CardElement, stripe, user, accountType, seterrorMessage, setSuccessMessage, cardData, userLogin, loginInfo, setLoginInfo, jobSeaker, history, employer);
+        cardElementFnc(elements, CardElement, stripe, user, accountType, seterrorMessage, setSuccessMessage, cardData, userAuth, loginInfo, setLoginInfo, jobSeaker, history, employer);
     };
 
+    // const handleKeypress = e => {
+    //     if (e.keyCode === 13) {
+    //         handleSubmit();
+    //     }
+    // };
 
     return (
         <div>
+            {
+                (signIn || location.pathname === '/login') && (!employer && !jobSeaker) && <form id="form" onSubmit={handleSubmit}>
+                    <div className='form-field w-100 p-4 m-0'>
+                        <h4 className='text-center text-white mb-5 ml-3'>
+                            {newUser ? 'Created an account' : 'Login'}
+                        </h4>
+
+                        <NewClient
+                            newUser={newUser}
+                            handleBlur={handleBlur}
+                            accountType={accountType}
+                            setAccountType={setAccountType}
+                            CardElement={CardElement}
+                        />
+
+
+                        {/* Not new user */}
+
+                        <ExistingClient
+                            newUser={newUser}
+                            handleBlur={handleBlur}
+                        />
+                        <LoginButton
+                            newUser={newUser}
+                            setNewUser={setNewUser}
+                        />
+                    </div>
+                </form>
+            }
             <div>
                 {
                     employer &&
@@ -97,12 +135,6 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                                 newUser={newUser}
                                 handleBlur={handleBlur}
                             />
-
-                            {/* <p className='text-left mb-2 px-3'>
-                        <span className='float-right'>
-                            <Link to="/">Forgot Password ?</Link>
-                        </span>
-                    </p> */}
                             <LoginButton
                                 newUser={newUser}
                                 setNewUser={setNewUser}
@@ -131,12 +163,6 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                                 newUser={newUser}
                                 handleBlur={handleBlur}
                             />
-
-                            {/* <p className='text-left mb-2 px-3'>
-                        <span className='float-right'>
-                            <Link to="/">Forgot Password ?</Link>
-                        </span>
-                    </p> */}
                             <LoginButton
                                 newUser={newUser}
                                 setNewUser={setNewUser}

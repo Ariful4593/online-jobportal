@@ -2,26 +2,32 @@ import React, { useState, useEffect } from 'react';
 
 
 const ViewBidInsights = () => {
-    let getSessionData = JSON.parse(sessionStorage.getItem('data'));
-    let getUserData = JSON.parse(localStorage.getItem('userLoginInfo'));
 
+    const getUserData = JSON.parse(localStorage.getItem('userLoginInfo'));
     const [userBid, setUserBid] = useState([])
     let bidList = [];
+
     useEffect(() => {
-        getSessionData.filter(data => {
-            data.postInfo.filter(item => (
-                item.biddingPeople && item.biddingPeople.filter(emailFound => {
-                    const test = emailFound.email === getUserData.email;
-                    if (test) {
-                        bidList.push(item)
-                        setUserBid(bidList);
-                    }
+        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
+            .then(res => res.json())
+            .then(data => {
+                data.filter(userData => {
+                    userData.postInfo.filter(item => (
+                        item.biddingPeople && item.biddingPeople.filter(emailFound => {
+                            const test = emailFound.email === getUserData.email;
+                            if (test) {
+                                bidList.push(item)
+                                setUserBid(bidList);
+                            }
+                            return 0;
+                        })
+                    ));
                     return 0;
-                })
-            ));
-            return 0;
-        });
-    }, [])
+                });
+            })
+    }, []);
+
+    
     return (
         <div className="accordion" id="accordionExample">
             {

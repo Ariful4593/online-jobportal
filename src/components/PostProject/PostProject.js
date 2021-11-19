@@ -40,7 +40,11 @@ const PostProject = () => {
     const uniqueId = Math.random().toString(36).substring(7);
 
     useEffect(() => {
-        loginInfoFnc(loginInfo, post, uniqueId, setCount, setLoginInfo);
+        let isMounted = true;
+        if (isMounted) {
+            loginInfoFnc(loginInfo, post, uniqueId, setCount, setLoginInfo);
+        }
+        return () => { isMounted = false }
     }, [post.description])
 
     return (
