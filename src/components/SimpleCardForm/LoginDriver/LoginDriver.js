@@ -1,38 +1,50 @@
 //SimpleCardForm
 
-export const notNewUserFnc = (newUser, user, userLogin, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location) => {
+export const notNewUserFnc = (newUser, user, userLogin, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location, setDots) => {
     if (!newUser && user.name && user.email && user.password) {
-        const loginUser = userLogin.find(userData => userData.name === user.name && userData.email === user.email && userData.password === user.password)
-        try {
-            if (loginUser && employer) {
-                const newLoginInfo = { ...loginUser };
-                newLoginInfo.isLoggedIn = true;
-                setLoginInfo(newLoginInfo);
-                localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
-                history.push('postproject');
-            }
-            else if (loginUser && jobSeaker) {
-                const newLoginInfo = { ...loginUser };
-                newLoginInfo.isLoggedIn = true;
-                setLoginInfo(newLoginInfo);
-                localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+        
+        fetch('https://warm-anchorage-86355.herokuapp.com/checkIsUser', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ name: user.name, email: user.email, password: user.password })
 
-                return history.push('postedJob')
-            }
-            else if (loginUser && (signIn || location.pathname === '/login')) {
-                const newLoginInfo = { ...loginUser };
-                newLoginInfo.isLoggedIn = true;
-                setLoginInfo(newLoginInfo);
-                localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data && employer) {
+                    const newLoginInfo = { ...data };
+                    newLoginInfo.isLoggedIn = true;
+                    setLoginInfo(newLoginInfo);
+                    localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+                    history.push('postproject');
+                }
+                else if (data && jobSeaker) {
+                    const newLoginInfo = { ...data };
+                    newLoginInfo.isLoggedIn = true;
+                    setLoginInfo(newLoginInfo);
+                    localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
 
-                return history.push('postedJob')
-            }
-            else {
-                alert("Sorry! your password or email address doesn't match on the database")
-            }
-        } catch (err) {
-            // alert(err.message)
-        }
+                    return history.push('postedJob')
+                }
+                else if (data && (signIn || location.pathname === '/login')) {
+                    const newLoginInfo = { ...data };
+                    newLoginInfo.isLoggedIn = true;
+                    setLoginInfo(newLoginInfo);
+                    localStorage.setItem('userLoginInfo', JSON.stringify(newLoginInfo));
+
+                    return history.push('postedJob')
+                }
+                else {
+                    setDots(false)
+                    alert("Sorry! your password or email address doesn't match on the database")
+                }
+            })
+            .catch(err => alert("Sorry! your password or email address doesn't match on the database"))
+        // try {
+
+        // } catch (err) {
+        //     // alert(err.message)
+        // }
 
 
     } else if (!stripe || !elements) {

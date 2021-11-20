@@ -31,6 +31,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
     const [accountType, setAccountType] = useState('')
     const [, setUserLogin] = useState([]);
     const location = useLocation();
+    const [dots, setDots] = useState(false);
 
 
 
@@ -65,11 +66,13 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
             setLoginInfo(newUserInfo)
         }
     }
+    
     const handleSubmit = async (event) => {
+        setDots(true);
         // Block native form submission.
         event.preventDefault();
 
-        notNewUserFnc(newUser, user, userAuth, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location);
+        notNewUserFnc(newUser, user, userAuth, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location, setDots);
 
         cardElementFnc(elements, CardElement, stripe, user, accountType, seterrorMessage, setSuccessMessage, cardData, userAuth, loginInfo, setLoginInfo, jobSeaker, history, employer);
     };
@@ -107,6 +110,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                         <LoginButton
                             newUser={newUser}
                             setNewUser={setNewUser}
+                            dots={dots}
                         />
                     </div>
                 </form>
@@ -138,6 +142,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                             <LoginButton
                                 newUser={newUser}
                                 setNewUser={setNewUser}
+                                dots={dots}
                             />
                         </div>
                     </form>
@@ -166,6 +171,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                             <LoginButton
                                 newUser={newUser}
                                 setNewUser={setNewUser}
+                                dots={dots}
                             />
                         </div>
                     </form>
