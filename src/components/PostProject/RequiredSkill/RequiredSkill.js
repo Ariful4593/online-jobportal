@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useContext, useCallback } from 'react';
 import { collectionContext } from '../../../App';
 import NextButton from '../NextButton/NextButton';
@@ -10,6 +10,11 @@ const defaultValue = ["HTML5", "CSS3"];
 const RequiredSkill = ({ setCounter }) => {
     const { value1 } = useContext(collectionContext)
     const [loginInfo, setLoginInfo] = value1;
+    useEffect(() => {
+        const skill = { ...loginInfo };
+        skill.skillData = defaultValue;
+        setLoginInfo(skill)
+    },[])
     const handleBlur = useCallback((e) => {
         const skill = { ...loginInfo };
         skill.skillData = e
