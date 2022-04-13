@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './EditExperience.css';
 import month from '../../../../fakedata/editExperienceData/month';
 import year from '../../../../fakedata/editExperienceData/year';
@@ -6,7 +6,7 @@ import { collectionContext } from '../../../../App';
 import Loader from "react-loader-spinner";
 
 
-const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
+const EditExperience = ({ handleExperienceSave }) => {
 
     const [title, setTitle] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -16,25 +16,31 @@ const EditExperience = ({ handleExperienceSave, setLoadExperienceData }) => {
     const [endYear, setEndYear] = useState('');
     const [summary, setSummary] = useState('');
     const [dots, setDots] = useState(false);
-    const { value9 } = useContext(collectionContext);
+    const { value7, value9 } = useContext(collectionContext);
+    const [profileData, setProfileData] = value7;
     const [, setUpdateStatus] = value9;
 
+    useEffect(() => {
+        setTitle(profileData[0].editExperience.experienceTitle);
+        setCompanyName(profileData[0].editExperience.companyName);
+        setStartMonth(profileData[0].editExperience.jobStartMonth);
+        setStartYear(profileData[0].editExperience.jobStartYear);
+        setEndMonth(profileData[0].editExperience.jobEndMonth);
+        setEndYear(profileData[0].editExperience.jobEndYear);
+        setSummary(profileData[0].editExperience.jobSummary);
+    }, [])
 
-    const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const saveButton = () => {
         setDots(true);
-        fetch('https://warm-anchorage-86355.herokuapp.com/editExperience', {
+        fetch('https://online-jobplace.herokuapp.com/editExperience', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: getUserLoginInfo._id })
+            body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: profileData[0]._id })
         }).then(res => res.json())
             .then(data => {
+                setProfileData(data);
                 setUpdateStatus(true);
-                setLoadExperienceData(data);
-                setTimeout(() => {
-                    handleExperienceSave();
-                }, 4000);
-
+                handleExperienceSave();                
             })
 
     }

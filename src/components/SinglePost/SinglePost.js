@@ -6,23 +6,39 @@ import Proposal from './Proposal/Proposal';
 import './SinglePost.css';
 import YourBid from './YourBid/YourBid';
 import TotalBid from './TotalBid/TotalBid';
+import { useHistory } from 'react-router-dom';
 const SinglePost = ({ id, userId }) => {
     const [singlePost, setSinglePost] = useState({})
     const [details, setDetails] = useState('');
     const [biddingCount, setBiddingCount] = useState(0);
-
+    const history = useHistory();
     useEffect(() => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
-            .then(res => res.json())
-            .then(data => {
-                data.find(userData => {
-                    const post = userData.postInfo.find(td => td.projectId === id)
-                    if (post) {
-                        setSinglePost(post)
-                    }
-                    return post;
-                })
+        let isMounted = true;
+        fetch('https://online-jobplace.herokuapp.com/getPostProject', {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+                else if (res.status === 401) {
+                    history.push('/login');
+                }
             })
+            .then(data => {
+                if (isMounted) {
+                    data.find(userData => {
+                        const post = userData.postInfo.find(td => td.projectId === id)
+                        if (post) {
+                            setSinglePost(post)
+                        }
+                        return post;
+                    })
+                }
+            })
+        return () => { isMounted = false };
     }, []);
 
     useEffect(() => {
@@ -62,7 +78,7 @@ const SinglePost = ({ id, userId }) => {
                     <div className="col-md-3 ">
                         {
                             details === 'proposal' ?
-                                <TotalBid biddingCount={biddingCount}/>
+                                <TotalBid biddingCount={biddingCount} />
                                 :
                                 <React.Fragment>
                                     <AboutTheClient />

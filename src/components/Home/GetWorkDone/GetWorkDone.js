@@ -3,7 +3,7 @@ import './GetWorkDone.css';
 import getWorkDoneData from '../../../fakedata/homePageData/getWorkDoneData';
 const GetWorkDone = () => {
     return (
-        <div className="row get-work-done">
+        <div className="row get-work-done mb-5">
             <h4 className="get-work-done-title">Get work done in over 1800 different categories</h4>
 
             {

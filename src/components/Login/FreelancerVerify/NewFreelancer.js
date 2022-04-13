@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewFreelancer.css'
-const NewFreelancer = ({ newUser, handleBlur, CardElement }) => {
+const NewFreelancer = ({ newUser, handleBlur }) => {
     return (
         <div>
             {newUser && (
@@ -36,15 +36,6 @@ const NewFreelancer = ({ newUser, handleBlur, CardElement }) => {
                     required
                 />
             )}
-            {
-                newUser &&
-                <div>
-                    <label htmlFor="" className="text-white">Enter Stripe Payment Number</label>
-                    <br /><br />
-                    <CardElement required className="w-100" />
-                </div>
-
-            }
         </div>
     );
 };

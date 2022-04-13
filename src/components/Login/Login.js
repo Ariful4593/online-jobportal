@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import worldMobile from '../../images/globe-mobile.jpg';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import SimpleCardForm from '../SimpleCardForm/SimpleCardForm';
 import './Login.css';
 import Home from '../Home/Home';
@@ -10,25 +8,36 @@ import { collectionContext } from '../../App';
 const Login = () => {
     // eslint-disable-next-line no-unused-vars
     const [card, setCard] = useState()
-    const [employer, setEmployer] = useState(false);
-    const [jobSeaker, setJobSeaker] = useState(false);
-    const { value10 } = useContext(collectionContext)
-    const handleEmployer = () => {
+
+    const { value10, value11, value12 } = useContext(collectionContext);
+    const [employer, setEmployer] = value11;
+    const [jobSeaker, setJobSeaker] = value12;
+    const [current, setCurrent] = useState('');
+
+
+    useEffect(() => {
+        setCurrent('hire-freelancer')
+    }, [])
+
+    const handleEmployer = (type) => {
         setEmployer(true)
         setJobSeaker(false)
+        setCurrent(type)
+        console.log(employer)
     }
-    const handleJobseaker = () => {
+    const handleJobseaker = (type) => {
         setJobSeaker(true)
         setEmployer(false)
+        setCurrent(type)
+        console.log(jobSeaker)
     }
     const [signIn,] = value10;
-    const [stripePromise] = useState(() => loadStripe(('pk_test_51HZp7VIFvbZO7xjYzMuCl9Dg8ITpUsSOwQX6LSfH45broJINKMrTNjw0Ls4TvaruUP9P94xnOO3fX3pXcQeJ1mkp00YyPWDvqq')))
 
     const cardData = (cardInfo) => {
         setCard(cardInfo)
     }
 
-    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
+    const userLoginInfo = JSON.parse(localStorage.getItem('token'))
 
     return (
         <React.Fragment>
@@ -41,14 +50,17 @@ const Login = () => {
                         {
                             !userLoginInfo && <React.Fragment>
                                 <div className="btn-area">
-                                    <button className="btn hire-freelancer" onClick={() => handleEmployer()}>Hire a Freelancer</button>
-                                    <button className="btn find-work" onClick={() => handleJobseaker()}>Earn Money Freelancing</button>
+                                    {/* current */}
+                                    <button
+                                        className={`btn ${current === 'hire-freelancer' ? 'hire-freelancer' : 'find-work'}`}
+                                        onClick={() => handleEmployer('hire-freelancer')}>Hire a Freelancer</button>
+                                    <button
+                                        className={`btn ${current === 'find-work' ? 'hire-freelancer' : 'find-work'}`}
+                                        onClick={() => handleJobseaker('find-work')}>Earn Money Freelancing</button>
                                 </div>
 
                                 <div className="create-form mt-5 mb-5">
-                                    <Elements stripe={stripePromise}>
-                                        <SimpleCardForm cardData={cardData} employer={employer} jobSeaker={jobSeaker}></SimpleCardForm>
-                                    </Elements>
+                                    <SimpleCardForm cardData={cardData} employer={employer} jobSeaker={jobSeaker}></SimpleCardForm>
                                 </div>
                             </React.Fragment>
                         }

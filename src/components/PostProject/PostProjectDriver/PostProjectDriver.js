@@ -92,18 +92,13 @@ export const startNewContestStateFnc = (loginInfo, currency, rate, projectId, se
 }
 
 //From YesPostMyProject.js
-export const handleClickOpenFnc = (file, userInfo, loginInfo, budgetData, budgetState, setOpen) => {
+export const handleClickOpenFnc = (userInfo, loginInfo, budgetData, budgetState, setOpen) => {
     const inSeconds = new Date().getTime();
     const formData = new FormData();
 
     formData.append('date', inSeconds)
-    formData.append('file', file);
-    formData.append('name', userInfo.name);
-    formData.append('email', userInfo.email);
-    formData.append('password', userInfo.password);
-    formData.append('accountType', userInfo.accountType);
-    formData.append('isLoggedIn', userInfo.isLoggedIn);
-    formData.append('paymentData', userInfo.paymentData);
+    formData.append('name', userInfo[0].name);
+    formData.append('email', userInfo[0].email);
 
     formData.append('title', loginInfo.title);
     formData.append('description', loginInfo.description);
@@ -122,8 +117,11 @@ export const handleClickOpenFnc = (file, userInfo, loginInfo, budgetData, budget
     formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
     formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-    fetch('https://warm-anchorage-86355.herokuapp.com/userData', {
+    fetch('https://online-jobplace.herokuapp.com/userData', {
         method: 'POST',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: formData
     })
         .then(res => res.json())

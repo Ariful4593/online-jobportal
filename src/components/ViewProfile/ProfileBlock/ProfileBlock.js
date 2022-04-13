@@ -1,40 +1,41 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import RightSide from '../RightSide/RightSide';
 import './ProfileBlock.css';
 import LeftSide from '../LeftSide/LeftSide';
 import Footer from '../../Footer/Footer';
 import { collectionContext } from '../../../App';
-import { profileBlockFnc } from '../ProfileDriver/ProfileDriver';
 
 const ProfileBlock = ({ profileId }) => {
     const [coverPhotoBtn, setCoverPhotoBtn] = useState(false);
-    const [postData, setPostData] = useState('');
     const [rightSide, setRightSide] = useState(false);
-    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-    const { value6, value7 } = useContext(collectionContext);
-    const [userAuth,] = value6;
-    const [profileData,] = value7;
-    const loginData = userAuth.find(data => data.name === userLoginInfo.name);
-    
-    useEffect(() => {
-        profileBlockFnc(profileData, userLoginInfo, setPostData);
-    }, [profileData])
+    const { value7, value9 } = useContext(collectionContext);
+    const [, setUpdateStatus] = value9;
+    const [profileData, setProfileData] = value7;
+    const [isPhoto, setIsPhoto] = useState(false);
+    const [loader, setLoader] = useState(false);
 
-    const [isPhoto, setIsPhoto] = useState(false)
+
+
     const handlePhoto = (e) => {
+        setLoader(true);
         const newFile = e.target.files[0];
         const formData = new FormData();
         formData.append('file', newFile)
-        formData.append('_id', loginData._id)
-        fetch('https://warm-anchorage-86355.herokuapp.com/editPhoto', {
+        formData.append('_id', profileData[0]._id)
+        fetch('https://online-jobplace.herokuapp.com/editPhoto', {
             method: 'POST',
             body: formData,
         })
             .then(res => res.json())
-            .then(data => setIsPhoto(true));
+            .then(data => {
+                setProfileData(data)
+                setIsPhoto(true);
+                setUpdateStatus(true);
+                setLoader(false)
+            });
     }
 
-    
+
     return (
         <React.Fragment>
             <div className="container main-profile-block">
@@ -47,7 +48,7 @@ const ProfileBlock = ({ profileId }) => {
                     </React.Fragment>
                 }
                 <div className="row">
-                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} postData={postData} setRightSide={setRightSide} profileId={profileId} isPhoto={isPhoto} />
+                    <LeftSide setCoverPhotoBtn={setCoverPhotoBtn} setRightSide={setRightSide} profileId={profileId} isPhoto={isPhoto} loader={loader} />
                     <RightSide rightSide={rightSide} profileId={profileId} />
                 </div>
             </div>

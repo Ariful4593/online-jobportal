@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './EditEducation.css';
 import countryName from '../../../../fakedata/editEducationData/country';
 import universityName from '../../../../fakedata/editEducationData/university';
@@ -8,7 +8,7 @@ import { collectionContext } from '../../../../App';
 import Loader from "react-loader-spinner";
 
 
-const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
+const EditEducation = ({ handleEditEducationSave }) => {
 
 
     const [country, setCountry] = useState('');
@@ -16,16 +16,23 @@ const EditEducation = ({ handleEditEducationSave, setLoadExperienceData }) => {
     const [degree, setDegree] = useState('');
     const [startYear, setStartYear] = useState('');
     const [endYear, setEndYear] = useState('');
-    const { value9 } = useContext(collectionContext);
+    const { value7, value9 } = useContext(collectionContext);
     const [, setUpdateStatus] = value9;
+    const [profileData, setProfileData] = value7;
     const [dots, setDots] = useState(false);
 
+    useEffect(() => {
+        setCountry(profileData[0].editEducation.countryName);
+        setUniversity(profileData[0].editEducation.universityName);
+        setDegree(profileData[0].editEducation.degree);
+        setStartYear(profileData[0].editEducation.startYear);
+        setEndYear(profileData[0].editEducation.endYear);
+    }, [])
 
-    const getUserLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'))
     const editEducationSave = () => {
         setDots(true);
-        editEducationSaveFnc(country, university, degree, startYear, endYear, getUserLoginInfo, setLoadExperienceData, handleEditEducationSave, setUpdateStatus, handleEditEducationSave);
-        
+        editEducationSaveFnc(country, university, degree, startYear, endYear, profileData, setUpdateStatus, handleEditEducationSave, setProfileData);
+
     }
     return (
         <div className="row experience-details-block">

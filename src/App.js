@@ -22,7 +22,7 @@ import ViewBidInsights from "./components/ViewBidInsights/ViewBidInsights";
 export const collectionContext = createContext()
 function App() {
 
-  // https://warm-anchorage-86355.herokuapp.com/
+  // https://online-jobplace.herokuapp.com/
   const [userAuth, setUserAuth] = useState([]);
   const [loginInfo, setLoginInfo] = useState({});
   const [userName, setUserName] = useState('');
@@ -33,19 +33,13 @@ function App() {
   const [getPostData, setGetPostData] = useState([]);
   const [updateStatus, setUpdateStatus] = useState(false);
   const [signIn, setSignIn] = useState(false);
+  const [employer, setEmployer] = useState(false);
+  const [jobSeaker, setJobSeaker] = useState(false);
   document.title = "Hire Freelancers & Find Freelancers";
 
   useEffect(() => {
-    let isMounted = true;
-    fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
-      .then(res => res.json())
-      .then(data => {
-        if (isMounted) {
-          setUserAuth(data)
-        }
-      })
-    return () => { isMounted = false };
-  }, []);
+    setEmployer(true)
+  }, [])
 
   return (
     <collectionContext.Provider value={{
@@ -59,6 +53,8 @@ function App() {
       value8: [getPostData, setGetPostData],
       value9: [updateStatus, setUpdateStatus],
       value10: [signIn, setSignIn],
+      value11: [employer, setEmployer],
+      value12: [jobSeaker, setJobSeaker],
     }}>
       <Router>
         <Navbar />
@@ -79,7 +75,7 @@ function App() {
           <PrivateRoute userAuth={userAuth} path="/adminPanel">
             <Admin />
           </PrivateRoute>
-          <PrivateRoute userAuth={userAuth} path="/postedJob">
+          <PrivateRoute path="/postedJob">
             <JobPostedArea />
           </PrivateRoute>
           <PrivateRoute path="/singlePost/:id/:userId">
@@ -101,7 +97,7 @@ function App() {
           <PrivateRoute path="/settings">
             <SettingsPage />
           </PrivateRoute>
-          <PrivateRoute path="/bidinsights">
+          <PrivateRoute path="/bid-insight">
             <ViewBidInsights />
           </PrivateRoute>
 

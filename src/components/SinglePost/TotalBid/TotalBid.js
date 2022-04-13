@@ -10,7 +10,7 @@ const TotalBid = ({ biddingCount }) => {
             </div>
             <div className="col-6 col-md-6">
                 <h6 className="mb-0">Avg bid</h6>
-                <p className="mb-0">{biddingCount.length === 0 ? '$0.00 USD' : `$${price/biddingCount.length}.00 USD`}</p>
+                <p className="mb-0">{biddingCount.length === 0 ? '$0.00 USD' : `$${(price/biddingCount.length).toFixed(2)} USD`}</p>
             </div>
         </div>
     );

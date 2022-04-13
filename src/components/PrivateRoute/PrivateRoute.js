@@ -1,24 +1,18 @@
 import React from 'react';
-import { useContext } from 'react';
 import {
     Route,
     Redirect,
 } from "react-router-dom";
-import { collectionContext } from '../../App';
-const PrivateRoute = ({ userAuth, children, ...rest }) => {
-    const { value1 } = useContext(collectionContext)
-    const [loginInfo] = value1;
-
-    const loginUser = userAuth && userAuth.find(user => user.name === loginInfo.name && user.email === loginInfo.email && user.password === loginInfo.password)
+const PrivateRoute = ({ children, ...rest }) => {
 
 
-    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
+    const userLoginInfo = JSON.parse(localStorage.getItem('token'));
     return (
 
         <Route
             {...rest}
             render={({ location }) =>
-                (loginUser || userLoginInfo) ? (
+                (userLoginInfo) ? (
                     children
                 ) : (
                     <Redirect

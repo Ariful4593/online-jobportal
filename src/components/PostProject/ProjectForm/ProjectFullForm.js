@@ -20,7 +20,6 @@ const ProjectFullForm = ({  post, counter, setCounter, handleBlur, count, handle
             <textarea rows="4" className="form-control" placeholder="Describe your project here..." name="description" onChange={handleBlur}></textarea>
 
             <p className="character-counter"><small style={{fontWeight: 'bold'}}>Now {post.description.length} character. It should be 31 - 4000 character</small></p>
-            <br /><br />
 
             {/* <UploadFiles handleFileChange={handleFileChange} /> */}
             {

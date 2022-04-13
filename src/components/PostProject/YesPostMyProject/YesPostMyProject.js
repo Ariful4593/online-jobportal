@@ -55,15 +55,18 @@ const DialogActions = withStyles((theme) => ({
         padding: theme.spacing(1),
     },
 }))(MuiDialogActions);
-const YesPostMyProject = ({ budgetState, budgetData, file }) => {
-    const { value1 } = useContext(collectionContext)
+const YesPostMyProject = ({ budgetState, budgetData, userInfo }) => {
+    const { value1 } = useContext(collectionContext);
     const [loginInfo] = value1;
     const history = useHistory();
-    const userInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => handleClickOpenFnc(file, userInfo, loginInfo, budgetData, budgetState, setOpen);
 
-    
+    const [open, setOpen] = React.useState(false);
+
+
+
+    const handleClickOpen = () => handleClickOpenFnc(userInfo, loginInfo, budgetData, budgetState, setOpen);
+
+
     const handleClose = () => {
         setOpen(false);
         history.push(`/pendingArea/${loginInfo.projectId}/${loginInfo.uniqueId}`);

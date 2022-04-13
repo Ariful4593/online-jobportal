@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { budgetStateData } from '../PostProjectDriver/PostProjectDriver';
 
 
-const PostReview = ({ contestType, file, currentCategory }) => {
+const PostReview = ({ contestType, userInfo, currentCategory }) => {
 
 
     const { value1 } = useContext(collectionContext)
@@ -21,7 +21,7 @@ const PostReview = ({ contestType, file, currentCategory }) => {
     useEffect(() => {
         budgetStateData(budgetState, loginInfo, setBudgetState);
     }, [loginInfo.budget, loginInfo.currencyName]);
-    
+
 
 
     return (
@@ -63,9 +63,9 @@ const PostReview = ({ contestType, file, currentCategory }) => {
 
             }
             <YesPostMyProject
-                file={file}
                 budgetState={budgetState}
                 budgetData={budgetData}
+                userInfo={userInfo}
             />
         </React.Fragment>
     );

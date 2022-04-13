@@ -15,7 +15,7 @@ const Reviews = () => {
             <div className="single-row-block">
                 <div className="row">
                     <div className="col-12 review-image-area">
-                        <img className="w-100" src={reviewImage} alt="" />
+                        <img className="w-100 h-auto" src={reviewImage} alt="" />
                         <h6>No reviews to see here!</h6>
                     </div>
                 </div>

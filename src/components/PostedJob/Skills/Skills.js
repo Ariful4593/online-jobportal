@@ -1,6 +1,5 @@
 import React from 'react';
 import './Skills.css';
-// import skillData from '../../../fakedata/postedJobData/skillData';
 
 const Skills = ({ skillData, postedjob }) => {
     return (

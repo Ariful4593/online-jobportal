@@ -3,20 +3,20 @@ import React from 'react';
 const ExistingClient = ({ newUser,handleBlur }) => {
     return (
         <div>
-            {!newUser && (
+            {/* {!newUser && (
                 <input
                     className='mb-2 w-100 enter-name'
-                    onBlur={handleBlur}
+                    onChange={handleBlur}
                     type='text'
                     name='name'
                     placeholder='Enter Your Name'
                     required
                 />
-            )}
+            )} */}
             {
                 !newUser && <input
                     className='mb-2 w-100 enter-email'
-                    onBlur={handleBlur}
+                    onChange={handleBlur}
                     type='email'
                     name='email'
                     placeholder='Enter email'
@@ -26,8 +26,8 @@ const ExistingClient = ({ newUser,handleBlur }) => {
 
             {
                 !newUser && <input
-                    className='mb-2 w-100 enter-pass'
-                    onBlur={handleBlur}
+                    className=' w-100 enter-pass'
+                    onChange={handleBlur}
                     type='password'
                     name='password'
                     placeholder='Enter password'

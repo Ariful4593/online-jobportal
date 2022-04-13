@@ -6,10 +6,10 @@ export const placeBidFnc = (singlePost, bidAmount, projectDelivered, describePro
     newData.describeProposal = describeProposal;
 
 
-    fetch('https://warm-anchorage-86355.herokuapp.com/placeBid', {
+    fetch('https://online-jobplace.herokuapp.com/placeBid', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userData._id, proposalId: proposalId })
+        body: JSON.stringify({ userId: userId, id: id, name: userLoginInfo.name, email: userLoginInfo.email, bidAmount: newData.bidAmount, projectDelivered: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userLoginInfo._id, proposalId: proposalId })
     }).then(res => res.json())
         .then(data => {
 

@@ -2,38 +2,29 @@ import React, { useEffect, useContext } from 'react';
 import ProfileBg from './ProfileBg/ProfileBg';
 import { useParams } from 'react-router-dom';
 import { collectionContext } from '../../App';
-
+import '../../spinner.css';
+import {  getSingleUserByEmail } from '../../Driver';
 
 const ViewProfile = () => {
-    const { value7, value8, value9 } = useContext(collectionContext);
-    const [, setProfileData] = value7;
-    const [, setGetPostData] = value8;
+    const { value7, value9 } = useContext(collectionContext);
+    const [profileData, setProfileData] = value7;
     const [updateStatus,] = value9;
     document.title = "Freelancers || View Profile";
 
-
     const { profileId } = useParams();
-    useEffect(() => {
-        let isMounted = true;
-        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
-            .then(res => res.json())
-            .then(data => {
-                if (isMounted) {
-                    setGetPostData(data)
-                }
-            })
-        return () => { isMounted = false };
-    }, [])
 
-
+    //Get user data via email
     useEffect(() => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
-        .then(res => res.json())
-        .then(data => setProfileData(data))
-    }, [updateStatus])
+        getSingleUserByEmail(setProfileData);
+    }, [updateStatus && profileData])
+
     return (
-        <div >
-            <ProfileBg profileId={profileId}/>
+        <div>
+            {
+                profileData.length > 0 ? <ProfileBg profileId={profileId} /> :
+                    <div className="loading">Loading&#8230;</div>
+            }
+
         </div>
     );
 };

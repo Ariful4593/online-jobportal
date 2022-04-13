@@ -8,9 +8,11 @@ const PendingArea = () => {
     const history = useHistory();
     const { postId } = useParams();
 
-    fetch('https://warm-anchorage-86355.herokuapp.com/statusUpdate', {
+    fetch('https://online-jobplace.herokuapp.com/statusUpdate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify({
             postId: postId,
         })

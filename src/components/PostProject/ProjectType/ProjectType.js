@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProjectType.css';
 import projectTypeData from '../../../fakedata/postProjectData/projectTypeData';
 import PostReview from '../PostReview/PostReview';
-const ProjectType = ({projectTypeBgColor, file, currentCategory, handleProjectType }) => {
+import { getSingleUserByEmail } from '../../../Driver';
+const ProjectType = ({ projectTypeBgColor, currentCategory, handleProjectType }) => {
 
-
-
-
-    const categoryArray = ['standard-project', 'recruiter-contest']
+    const [userInfo, setUserInfo] = useState([])
+    //Get user info via email
+    useEffect(() => {
+        getSingleUserByEmail(setUserInfo);
+    }, [])
+    const categoryArray = ['standard-project', 'recruiter-contest'];
     return (
         <React.Fragment>
             <div className="project-posting-area">
@@ -20,7 +23,7 @@ const ProjectType = ({projectTypeBgColor, file, currentCategory, handleProjectTy
                                     <div className={`col-md-6 ${categoryArray[index]}`}
                                         key={index}
                                         onClick={() => handleProjectType(categoryArray[index], data)}
-                                        style={{background: `${projectTypeBgColor === categoryArray[index] ? '#f0f0f0' : ''}`}}
+                                        style={{ background: `${projectTypeBgColor === categoryArray[index] ? '#f0f0f0' : ''}` }}
                                     >
                                         <div className="row d-flex align-items-center">
                                             <div className="col-md-4 text-center">
@@ -40,10 +43,10 @@ const ProjectType = ({projectTypeBgColor, file, currentCategory, handleProjectTy
                 </div>
             </div>
             {
-                currentCategory === 'standard-project' && <PostReview file={file} />
+                currentCategory === 'standard-project' && <PostReview userInfo={userInfo} />
             }
             {
-                currentCategory === 'recruiter-contest' && <PostReview file={file} currentCategory={currentCategory} />
+                currentCategory === 'recruiter-contest' && <PostReview userInfo={userInfo} currentCategory={currentCategory} />
             }
         </React.Fragment>
     );

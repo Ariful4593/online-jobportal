@@ -1,20 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './Education.css';
-import Loader from "react-loader-spinner";
-import { educationFnc } from '../../ProfileDriver/ProfileDriver';
 import { collectionContext } from '../../../../App';
+import MyEducation from './MyEducation';
+import RandomEducation from './RandomEducation';
 
-const Education = ({ handleEditEducation, profileId, postData }) => {
+const Education = ({ handleEditEducation, profileId, proposalUser }) => {
 
-
-    const { countryName, degree, endYear, startYear, universityName } = postData;
     const { value7 } = useContext(collectionContext);
     const [profileData,] = value7;
-    const [proposalUser, setProposalUser] = useState([]);
-    useEffect(() => {
-        educationFnc(profileData, profileId, setProposalUser);
-    }, []);
-
     const [counter, setCounter] = useState(0);
 
     useEffect(() => {
@@ -43,30 +36,10 @@ const Education = ({ handleEditEducation, profileId, postData }) => {
                 <div className="row">
                     <div className="col-12 education-image-area">
                         {
-                            proposalUser.length < 1 ?
-                                <React.Fragment>
-                                    <h5>{degree}</h5>
-                                    {
-                                        (universityName && countryName && startYear && endYear)? <React.Fragment>
-                                            <p>
-                                                {`${universityName}, ${countryName}`}
-                                            </p>
-                                            <p>{startYear} - {endYear}</p>
-                                        </React.Fragment> : postData ? <p>No education have been added yet</p> : <Loader type="Circles" color="#00BFFF" height={40} width={40} />
-                                    }
-                                </React.Fragment>
+                            proposalUser.length < 1 && profileData.length > 0 && !profileId ?
+                                <MyEducation profileData={profileData} />
                                 :
-                                <React.Fragment>
-                                    <h5>{(proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) && proposalUser.degree}</h5>
-                                    {
-                                        (proposalUser.universityName && proposalUser.countryName && proposalUser.startYear && proposalUser.endYear) ? <React.Fragment>
-                                            <p>
-                                                {`${proposalUser.universityName}, ${proposalUser.countryName}`}
-                                            </p>
-                                            <p>{proposalUser.startYear} - {proposalUser.endYear}</p>
-                                        </React.Fragment> : <p>No education have been added yet.</p>
-                                    }
-                                </React.Fragment>
+                                <RandomEducation proposalUser={proposalUser} />
                         }
 
                     </div>

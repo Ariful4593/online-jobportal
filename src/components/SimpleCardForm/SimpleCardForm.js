@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import React, { useContext, useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom"
 import { collectionContext } from '../../App';
 import './SimpleCardForm.css';
@@ -8,45 +7,22 @@ import ExistingClient from '../Login/ClientVerify/ExistingClient';
 import NewFreelancer from '../Login/FreelancerVerify/NewFreelancer'
 import ExistingFreelancer from '../Login/FreelancerVerify/ExistingFreelancer';
 import LoginButton from '../Login/LoginButton/LoginButton';
-import { notNewUserFnc, cardElementFnc } from './LoginDriver/LoginDriver';
 
+const SimpleCardForm = ({ employer, jobSeaker }) => {
 
-const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
-
-    const { value1, value6, value10 } = useContext(collectionContext)
-    const [loginInfo, setLoginInfo] = value1;
+    const { value10 } = useContext(collectionContext)
     const [signIn,] = value10;
-    const [userAuth] = value6;
-    const stripe = useStripe();
-    const elements = useElements();
     const history = useHistory()
     const [newUser, setNewUser] = useState(false);
-    const [, seterrorMessage] = useState(null);
-    const [, setSuccessMessage] = useState(null);
     const [user, setUser] = useState({
         name: '',
         email: '',
         password: '',
     })
-    const [accountType, setAccountType] = useState('')
-    const [, setUserLogin] = useState([]);
+    const [accountType, setAccountType] = useState('');
     const location = useLocation();
     const [dots, setDots] = useState(false);
 
-
-
-    useEffect(() => {
-        let isMounted = true;
-        setAccountType('basic')
-        fetch("https://warm-anchorage-86355.herokuapp.com/userLoginData")
-            .then(res => res.json())
-            .then(data => {
-                if (isMounted) {
-                    setUserLogin(data)
-                }
-            })
-        return () => { isMounted = false };
-    }, [])
 
     const handleBlur = (e) => {
         let isFieldValid
@@ -60,21 +36,54 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
             isFieldValid = e.target.value
         }
         if (isFieldValid) {
-            const newUserInfo = { ...user, ...loginInfo }
+            const newUserInfo = { ...user }
             newUserInfo[e.target.name] = e.target.value
             setUser(newUserInfo)
-            setLoginInfo(newUserInfo)
         }
     }
-    
+
     const handleSubmit = async (event) => {
-        setDots(true);
-        // Block native form submission.
         event.preventDefault();
+        setDots(true);
+        if (!user.name) {
+            fetch('https://online-jobplace.herokuapp.com/userLoginInfo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then((res) => res.json())
+                .then(data => {
+                    localStorage.setItem('token', JSON.stringify(data.token));
+                    setDots(false);
+                    if (data && employer) {
+                        return history.push('/postproject');
+                    }
+                    else if (data && jobSeaker) {
+                        return history.push('/postedJob')
+                    } else {
+                        localStorage.removeItem("token");
+                        return alert('Password matching failed or user may not exists.')
+                    }
+                })
+        } else {
+            fetch('https://online-jobplace.herokuapp.com/userSignup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            }).then((res) => res.json())
+                .then(data => {
+                    setDots(false);
+                    if (employer) {
+                        return history.push('/postproject');
+                    }
+                    else if (jobSeaker) {
+                        return history.push('/postedJob')
+                    }
+                })
+        }
 
-        notNewUserFnc(newUser, user, userAuth, employer, setLoginInfo, history, jobSeaker, stripe, elements, signIn, location, setDots);
-
-        cardElementFnc(elements, CardElement, stripe, user, accountType, seterrorMessage, setSuccessMessage, cardData, userAuth, loginInfo, setLoginInfo, jobSeaker, history, employer);
     };
 
     // const handleKeypress = e => {
@@ -85,6 +94,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
 
     return (
         <div>
+
             {
                 (signIn || location.pathname === '/login') && (!employer && !jobSeaker) && <form id="form" onSubmit={handleSubmit}>
                     <div className='form-field w-100 p-4 m-0'>
@@ -97,7 +107,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                             handleBlur={handleBlur}
                             accountType={accountType}
                             setAccountType={setAccountType}
-                            CardElement={CardElement}
+                        // CardElement={CardElement}
                         />
 
 
@@ -129,7 +139,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                                 handleBlur={handleBlur}
                                 accountType={accountType}
                                 setAccountType={setAccountType}
-                                CardElement={CardElement}
+                            // CardElement={CardElement}
                             />
 
 
@@ -160,7 +170,7 @@ const SimpleCardForm = ({ cardData, employer, jobSeaker }) => {
                             <NewFreelancer
                                 newUser={newUser}
                                 handleBlur={handleBlur}
-                                CardElement={CardElement}
+                            // CardElement={CardElement}
                             />
 
 

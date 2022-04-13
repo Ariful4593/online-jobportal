@@ -3,7 +3,7 @@ import React from 'react';
 const ExistingFreelancer = ({ newUser, handleBlur }) => {
     return (
         <div>
-            {!newUser && (
+            {/* {!newUser && (
                 <input
                     className='mb-2 w-100 enter-name'
                     onBlur={handleBlur}
@@ -12,7 +12,7 @@ const ExistingFreelancer = ({ newUser, handleBlur }) => {
                     placeholder='Enter Your Name'
                     required
                 />
-            )}
+            )} */}
             {
                 !newUser && <input
                     className='mb-2 w-100 enter-email'
@@ -26,7 +26,7 @@ const ExistingFreelancer = ({ newUser, handleBlur }) => {
 
             {
                 !newUser && <input
-                    className='mb-2 w-100 enter-pass'
+                    className='w-100 enter-pass'
                     onBlur={handleBlur}
                     type='password'
                     name='password'

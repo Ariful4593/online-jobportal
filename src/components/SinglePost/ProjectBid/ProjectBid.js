@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './ProjectBid.css';
 import Confetti from 'react-confetti';
 import { placeBidFnc } from '../SinglePostDriver/SinglePostDriver';
+import { useHistory } from 'react-router-dom';
+import { getAuthUser } from '../../../Driver';
 
 const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
 
@@ -9,26 +11,19 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
     const [projectDelivered, setProjectDelivered] = useState('');
     const [describeProposal, setDescribeProposal] = useState('');
     const [confetti, setConfetti] = useState(false);
-    // const { width, height } = useWindowSize();
-    const [userData, setUserData] = useState([])
-    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-    
-    useEffect(() => {
-        let isMounted = true;
-        fetch('https://warm-anchorage-86355.herokuapp.com/userLoginData')
-            .then(res => res.json())
-            .then(data => {
-                if (isMounted) {
-                    const newData = data.find(item => item.email === userLoginInfo.email)
-                    setUserData(newData)
-                }
-            })
-        return () => { isMounted = false };
-    }, [])
+    const [userData] = useState([])
+    const [userLoginInfo, setUserLoginInfo] = useState({})
+    const history = useHistory();
 
+
+    //Get authenticate user
+    useEffect(() => {
+        getAuthUser(setUserLoginInfo, history);
+    }, [])
     const proposalId = Math.random().toString(36).substring(7);
+
     const placeBid = () => placeBidFnc(singlePost, bidAmount, projectDelivered, describeProposal, userId, id, userLoginInfo, userData, proposalId, setDetails, setConfetti);
-    
+
     return (
         <div className="project-bid mt-4">
             {
@@ -85,7 +80,9 @@ const ProjectBid = ({ singlePost, id, userId, setDetails }) => {
                 {
                     bidAmount && projectDelivered && describeProposal && <div className="row place-bid">
                         <div className="col-12 place-bid-area">
-                            <button className="btn btn-danger" onClick={() => placeBid()}>Place bid</button>
+                            <button className="btn btn-danger"
+                                onClick={() => placeBid()}
+                            >Place bid</button>
                         </div>
                     </div>
                 }

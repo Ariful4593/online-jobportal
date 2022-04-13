@@ -46,10 +46,10 @@ const Footer = () => {
                                 <h5>Apps</h5>
                             </li>
                             <li>
-                                <img className="w-100" src={getInTouch1} alt="" />
+                                <img className="w-100 h-100" src={getInTouch1} alt="" />
                             </li>
                             <li className="mt-2">
-                                <img className="w-100" src={getInTouch2} alt="" />
+                                <img className="w-100 h-100" src={getInTouch2} alt="" />
                             </li>
                         </ul>
                     </div>

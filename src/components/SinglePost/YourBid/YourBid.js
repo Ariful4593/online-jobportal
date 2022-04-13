@@ -2,24 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './YourBid.css';
 import { Link } from 'react-router-dom';
 import { newUserBid } from '../SinglePostDriver/SinglePostDriver';
+import { useHistory } from 'react-router-dom';
+import { getPostProjectData } from '../../../Driver';
 
 
 const YourBid = () => {
 
     const getUserData = JSON.parse(localStorage.getItem('userLoginInfo'));
     const [userBid, setUserBid] = useState([])
-    
+
     const [getData, setGetdata] = useState([]);
     let bidList = [];
+    const history = useHistory();
 
+    //Get posted data
     useEffect(() => {
-        fetch('https://warm-anchorage-86355.herokuapp.com/getPostProject')
-            .then(res => res.json())
-            .then(data => {
-                setGetdata(data)
-            })
+        getPostProjectData(setGetdata, history);
     }, []);
 
+    //New user bid
     useEffect(() => {
         newUserBid(getData, getUserData, bidList, setUserBid);
     }, [])

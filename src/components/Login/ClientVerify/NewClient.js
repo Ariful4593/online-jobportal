@@ -6,7 +6,7 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
             {newUser && (
                 <input
                     className='mb-2 w-100 enter-name'
-                    onBlur={handleBlur}
+                    onChange={handleBlur}
                     type='text'
                     name='name'
                     placeholder='Enter Your Name'
@@ -18,7 +18,7 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
             {newUser && (
                 <input
                     className='mb-2 w-100 enter-email'
-                    onBlur={handleBlur}
+                    onChange={handleBlur}
                     type='text'
                     name='email'
                     placeholder='Enter email'
@@ -29,44 +29,13 @@ const NewClient = ({ newUser, handleBlur, accountType, setAccountType, CardEleme
             {newUser && (
                 <input
                     className='mb-2 w-100 enter-pass'
-                    onBlur={handleBlur}
+                    onChange={handleBlur}
                     type='password'
                     name='password'
                     placeholder='Enter password'
                     required
                 />
             )}
-
-            {
-                newUser && <pre style={{ fontFamily: 'system-ui', color: 'white' }}>Account Type: <select name="cars" id="account-type" value={accountType} onChange={(e) => setAccountType(e.target.value)}>
-                    <option value="basic">Basic</option>
-                    <option value="standard">Standard</option>
-                    <option value="premium">Premium</option>
-                </select></pre>
-            }
-            {
-                newUser &&
-                <div>
-                    {
-                        accountType === 'basic' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 10 post job per month!</p>
-                    }
-                    {
-                        accountType === 'standard' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 20 post job per month!</p>
-                    }
-                    {
-                        accountType === 'premium' && <p style={{ color: 'white', marginLeft: '0px' }}>You can 30 post job per month!</p>
-                    }
-                </div>
-            }
-            {
-                newUser &&
-                <div>
-                    <label htmlFor="" className="text-white">Enter Stripe Payment Number</label>
-                    <br /><br />
-                    <CardElement required className="w-100 text-white" />
-                </div>
-
-            }
         </div>
     );
 };

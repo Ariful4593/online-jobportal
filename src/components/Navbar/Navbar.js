@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -58,10 +58,12 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const userLoginInfo = JSON.parse(localStorage.getItem('userLoginInfo'));
-    const {  value9, value10 } = useContext(collectionContext);
+    const token = JSON.parse(localStorage.getItem('token'));
+    const { value9, value10, value11, value12 } = useContext(collectionContext);
     const [, setUpdateStatus] = value9;
     const [, setSignIn] = value10;
+    const [jobSeaker, setJobSeaker] = value12;
+    const [, setEmployer] = value11;
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -88,17 +90,20 @@ const Navbar = () => {
 
     let history = useHistory()
 
-    const signout = () => {
+    const signout = (type) => {
         setUpdateStatus(true);
         setSignIn(true);
+        setJobSeaker(type === 'jobSeaker' ? true : false);
+        setEmployer(type === 'employer' ? true : false);
         history.push("/login");
-        localStorage.removeItem("userLoginInfo");
+        localStorage.removeItem("token");
     }
-    const signIn = () => {
-        setSignIn(true);
+    const signIn = (type) => {
+        setJobSeaker(type === 'jobSeaker' ? true : false);
+        setEmployer(type === 'employer' ? true : false);
         history.push("/");
     }
-    
+
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -131,10 +136,14 @@ const Navbar = () => {
                 <Link to="/settings" className="text-dark">Settings</Link>
             </MenuItem>
             {
-                userLoginInfo ? <MenuItem onClick={handleMenuClose}>
-                    <button className="btn text-dark p-0" onClick={signout}>Sign Out</button>
+                token ? <MenuItem onClick={handleMenuClose}>
+                    <button className="btn text-dark p-0" onClick={
+                        () => signout(jobSeaker ? 'jobSeaker' : 'employer')
+                    }>Sign Out</button>
                 </MenuItem> : <MenuItem onClick={handleMenuClose}>
-                    <button className="btn text-dark p-0" onClick={signIn}>Sign In</button>
+                    <button className="btn text-dark p-0" onClick={
+                        () => signIn(jobSeaker ? 'jobSeaker' : 'employer')
+                    }>Sign In</button>
                 </MenuItem>
             }
 
@@ -198,7 +207,7 @@ const Navbar = () => {
                 <Toolbar>
                     <Typography className={classes.title} variant="h6" noWrap>
                         <Link to="/">
-                            <img style={{ height: '40px' }} className="" src={freelancerLogo} alt="" />
+                            <img style={{ height: '40px' }} className="w-100" src={freelancerLogo} alt="" />
                         </Link>
                     </Typography>
 
@@ -209,7 +218,7 @@ const Navbar = () => {
                     </Typography>
 
                     {
-                        userLoginInfo && userLoginInfo.email && <Typography className={classes.subTitle} variant="h6" noWrap>
+                        token && <Typography className={classes.subTitle} variant="h6" noWrap>
                             <Link to="/postedJob">
                                 Browse Projects
                             </Link>
@@ -219,9 +228,9 @@ const Navbar = () => {
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         {
-                            userLoginInfo && userLoginInfo.email && <Link to="/postProject">
+                            token && <Link to="/postProject">
                                 <div className="btn-area">
-                                    <button className="post-project-btn hire-freelancer">Post Project</button>
+                                    <button className="post-project-btn ">Post Project</button>
                                 </div>
                             </Link>
                         }
@@ -264,31 +273,6 @@ const Navbar = () => {
                     </div>
                 </Toolbar>
             </AppBar>
-
-            {/* {
-                modal && <div className="modal" tabIndex="-1">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Notifications</h5>
-                                <button type="button" className="btn-close" onClick={() => setModal(false)} aria-label="Close"></button>
-                            </div>
-                            {
-                                notificationsData && notificationsData.postInfo.map((data, index) => (
-
-                                    <div className="modal-body border-bottom pb-0" key={index} style={{ cursor: 'pointer' }} >
-                                        <h6>{data.title}</h6>
-                                        <p style={{ margin: '0px', fontSize: '15px' }}>{(data.description).slice(0, 25)}...</p>
-                                        <p style={{ textAlign: 'right', margin: 0 }}><small style={{ fontSize: '13px', fontWeight: '600' }}>{data.date}</small></p>
-                                    </div>
-                                ))
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            } */}
-
             {renderMobileMenu}
             {renderMenu}
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './MakeItReal.css';
 import makeItRealData from '../../../fakedata/homePageData/makeItRealData';
+import { Link } from 'react-router-dom';
 const MakeItReal = () => {
     return (
         <div className="row make-it-real-area">
@@ -27,7 +28,9 @@ const MakeItReal = () => {
 
             <div className="col-12">
                 <div className="view-more-btn">
-                    <button className="btn">View More Projects</button>
+                    <Link to='/postedJob'>
+                        <button className="btn">View More Projects</button>
+                    </Link>
                 </div>
             </div>
             <hr className="make-it-real-hr" />
