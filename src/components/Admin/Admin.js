@@ -30,7 +30,6 @@ const Admin = () => {
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])
-    // console.log(userData)
     return (
         <div className="dashboard mt-2">
             <div className="row">

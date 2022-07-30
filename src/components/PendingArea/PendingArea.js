@@ -11,7 +11,7 @@ const PendingArea = () => {
     fetch('https://online-jobplace.herokuapp.com/statusUpdate', {
         method: 'POST',
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
         body: JSON.stringify({
             postId: postId,

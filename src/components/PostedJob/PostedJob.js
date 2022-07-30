@@ -62,7 +62,7 @@ const PostedJob = () => {
                 </div>
                 <div className="col-12 col-md-9 search-project-area">
                     {
-                        getData.length > 0 ?
+                        getData && getData.length > 0 ?
                             <div className="search-results">
                                 <SearchFeild search={search} setSearch={setSearch} />
                                 {

@@ -4,7 +4,6 @@ const captchaVerifier = () => {
         "recaptcha-container", {
         size: "invisible",
         callback: function (response) {
-            // console.log("Captcha Resolved");
         },
         defaultCountry: "IN",
     }

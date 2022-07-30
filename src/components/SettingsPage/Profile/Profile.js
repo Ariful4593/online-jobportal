@@ -2,13 +2,6 @@ import React from 'react';
 import './Profile.css';
 const Profile = () => {
 
-    // useEffect(() => {
-    //     fetch('https://restcountries.com/v3.1/all')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         data.map(item => console.log(item.name.common))
-    //     })
-    // }, [])
     return (
         <div className="row profile-details-block">
             <div className="col-12 profile-details-title-block">

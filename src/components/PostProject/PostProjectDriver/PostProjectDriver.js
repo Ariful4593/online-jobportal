@@ -107,7 +107,7 @@ export const handleClickOpenFnc = (userInfo, loginInfo, budgetData, budgetState,
     formData.append('uniqueId', loginInfo.uniqueId);
     formData.append('budget', budgetData ? budgetData : `$${budgetState.price}.00 ${budgetState.currency}`);
     formData.append('currencyName', loginInfo.currencyName);
-    formData.append('skillData', JSON.stringify(loginInfo.skillData));
+    formData.append('skillData', loginInfo.skillData);
     formData.append('projectType', loginInfo.projectType ? loginInfo.projectType : '');
     formData.append('payingStatus', loginInfo.payingStatus ? loginInfo.payingStatus : '');
     formData.append('payType', loginInfo.payType ? loginInfo.payType : '');
@@ -117,10 +117,10 @@ export const handleClickOpenFnc = (userInfo, loginInfo, budgetData, budgetState,
     formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
     formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-    fetch('https://online-jobplace.herokuapp.com/userData', {
+    fetch('https://online-jobplace.herokuapp.com/postProject', {
         method: 'POST',
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
         body: formData
     })

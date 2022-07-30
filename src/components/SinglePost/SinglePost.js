@@ -16,7 +16,7 @@ const SinglePost = ({ id, userId }) => {
         let isMounted = true;
         fetch('https://online-jobplace.herokuapp.com/getPostProject', {
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('token')}`
+                'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         })
             .then(res => {

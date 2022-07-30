@@ -23,13 +23,11 @@ const Login = () => {
         setEmployer(true)
         setJobSeaker(false)
         setCurrent(type)
-        console.log(employer)
     }
     const handleJobseaker = (type) => {
         setJobSeaker(true)
         setEmployer(false)
         setCurrent(type)
-        console.log(jobSeaker)
     }
     const [signIn,] = value10;
 

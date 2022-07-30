@@ -56,7 +56,7 @@ export const profileDetailsFnc = (profileId, setProposalUser, setUpdateStatus) =
         async function getData() {
             const response = await fetch(`https://online-jobplace.herokuapp.com/alluser/${profileId}`, {
                 headers: {
-                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                    'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 },
             })
             const data = await response.json();

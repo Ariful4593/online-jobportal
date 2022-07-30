@@ -24,7 +24,7 @@ const Proposal = ({ id, setBiddingCount }) => {
         let isMounted = true;
         fetch('https://online-jobplace.herokuapp.com/getPostProject', {
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('token')}`
+                'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         })
             .then(res => {
@@ -50,12 +50,12 @@ const Proposal = ({ id, setBiddingCount }) => {
         return () => { isMounted = false }
     }, [retract]);
 
-    const retractPost = (docId, proposalId) => {
+    const retractPost = (projectOwnerId, proposalId) => {
         setRetract(true)
         fetch('https://online-jobplace.herokuapp.com/retractPost', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ _id: docId, proposalId: proposalId }),
+            body: JSON.stringify({ projectOwnerId: projectOwnerId, proposalId: proposalId }),
         })
             .then(res => res.json())
             .then(data => setRetract(false))
@@ -78,7 +78,7 @@ const Proposal = ({ id, setBiddingCount }) => {
 
                                                     <h2 style={{ marginBottom: '0px' }}>
                                                         <Link className="proposal-user-link" to={`/proposal-user-profile/${item.userLoginId}`}>
-                                                            {item.name}
+                                                            {item.bidderName}
                                                         </Link>
                                                     </h2>
                                                     <small style={{ fontSize: '16px', fontWeight: 'normal' }} className="bidding">5 star review</small>
@@ -87,14 +87,15 @@ const Proposal = ({ id, setBiddingCount }) => {
                                         </div>
                                         <div className="col-sm-3 details-right">
                                             <h5 className="bidding-price-proposal ">${(Number(item.bidAmount)).toFixed(2)} USD</h5>
-                                            <small style={{ fontSize: '16px', fontWeight: 'normal' }} className="bidding">{`in ${item.projectDelivered} days`}</small>
+                                            <small style={{ fontSize: '16px', fontWeight: 'normal' }} className="bidding">{`in ${item.projectDeliveredInDay} days`}</small>
                                         </div>
                                         <p className="mt-4">{item.describeProposal}</p>
                                         {
                                             userLoginInfo._id === item.userLoginId && <div className="press-next d-flex justify-content-end">
                                                 <div className="row">
                                                     <ul>
-                                                        <button onClick={() => retractPost(item.userId, item.proposalId)}>{retract ? <Loader type="Circles" color="#00BFFF" height={40} width={40} /> : 'Retract your post'}</button>
+                                                        <button onClick={() => retractPost(item.projectOwnerId
+                                                            , item.proposalId)}>{retract ? <Loader type="Circles" color="#00BFFF" height={40} width={40} /> : 'Retract your post'}</button>
                                                     </ul>
                                                 </div>
                                             </div>

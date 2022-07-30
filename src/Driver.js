@@ -2,7 +2,7 @@ export const singleProfileId = async (profileId, setProposalUser) => {
     if (profileId) {
         const response = await fetch(`https://online-jobplace.herokuapp.com/proposal-userData/${profileId}`, {
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('token')}`
+                'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             },
         })
         const data = await response.json();
@@ -14,13 +14,13 @@ export const singleProfileId = async (profileId, setProposalUser) => {
 export const getSingleUserByEmail = async (setUserData) => {
     const response = await fetch(`https://online-jobplace.herokuapp.com/singleUser`, {
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
     })
     const data = await response.json();
     const getDataByEmail = await fetch(`https://online-jobplace.herokuapp.com/singleUserByEmail/${data.email}`, {
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
     })
     const singleUserData = await getDataByEmail.json();
@@ -31,7 +31,7 @@ export const getPostProjectData = (setGetPostData, history) => {
     let isMounted = true;
     fetch(`https://online-jobplace.herokuapp.com/getPostProject`, {
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
     })
         .then(res => {
@@ -54,7 +54,7 @@ export const getAuthUser = (setUser, history) => {
     let isMounted = true;
     fetch('https://online-jobplace.herokuapp.com/singleUser', {
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('token')}`
+            'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
     })
         .then(res => {
