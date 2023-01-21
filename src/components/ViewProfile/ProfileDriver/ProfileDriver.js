@@ -18,7 +18,7 @@ export const userDataFnc1 = (getUserLogin, setUserName, setTitle, setDescription
 
 export const handleEditProfileFnc = (title, description, rate, profileData, profileSave, setUpdateStatus, setProfileData, setLoadingDot) => {
     return (
-        fetch('https://online-jobplace.herokuapp.com/add-profile-info', {
+        fetch('https://online-jobplace-server-production.up.railway.app/add-profile-info', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: title, description: description, rate: rate, id: profileData[0]._id })
@@ -36,7 +36,7 @@ export const handleEditProfileFnc = (title, description, rate, profileData, prof
 
 //From EditEducation.js
 export const editEducationSaveFnc = (country, university, degree, startYear, endYear, profileData, setUpdateStatus, handleEditEducationSave, setProfileData) => {
-    return (fetch('https://online-jobplace.herokuapp.com/editEducation', {
+    return (fetch('https://online-jobplace-server-production.up.railway.app/editEducation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ countryName: country, universityName: university, degree: degree, startYear: startYear, endYear: endYear, id: profileData[0]._id })
@@ -54,7 +54,7 @@ export const editEducationSaveFnc = (country, university, degree, startYear, end
 export const profileDetailsFnc = (profileId, setProposalUser, setUpdateStatus) => {
     try {
         async function getData() {
-            const response = await fetch(`https://online-jobplace.herokuapp.com/alluser/${profileId}`, {
+            const response = await fetch(`https://online-jobplace-server-production.up.railway.app/alluser/${profileId}`, {
                 headers: {
                     'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 },
@@ -73,7 +73,7 @@ export const profileDetailsFnc = (profileId, setProposalUser, setUpdateStatus) =
 
 //From EditQualification.js
 export const saveEditQualificationFnc = (certificate, organization, summary, startYear, profileData, handleEditQualificationSave, setUpdateStatus, setProfileData) => {
-    return (fetch('https://online-jobplace.herokuapp.com/editQualification', {
+    return (fetch('https://online-jobplace-server-production.up.railway.app/editQualification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ certificate: certificate, organization: organization, certificateSummary: summary, certificateStartYear: startYear, id: profileData[0]._id })

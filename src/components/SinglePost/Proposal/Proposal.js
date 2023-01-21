@@ -22,7 +22,7 @@ const Proposal = ({ id, setBiddingCount }) => {
 
     useEffect(() => {
         let isMounted = true;
-        fetch('https://online-jobplace.herokuapp.com/getPostProject', {
+        fetch('https://online-jobplace-server-production.up.railway.app/getPostProject', {
             headers: {
                 'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
@@ -52,7 +52,7 @@ const Proposal = ({ id, setBiddingCount }) => {
 
     const retractPost = (projectOwnerId, proposalId) => {
         setRetract(true)
-        fetch('https://online-jobplace.herokuapp.com/retractPost', {
+        fetch('https://online-jobplace-server-production.up.railway.app/retractPost', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ projectOwnerId: projectOwnerId, proposalId: proposalId }),

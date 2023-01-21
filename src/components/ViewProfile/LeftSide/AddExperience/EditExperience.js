@@ -32,7 +32,7 @@ const EditExperience = ({ handleExperienceSave }) => {
 
     const saveButton = () => {
         setDots(true);
-        fetch('https://online-jobplace.herokuapp.com/editExperience', {
+        fetch('https://online-jobplace-server-production.up.railway.app/editExperience', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ experinceTitle: title, companyName: companyName, jobStartMonth: startMonth, jobStartYear: startYear, jobEndMonth: endMonth, jobEndYear: endYear, jobSummary: summary, id: profileData[0]._id })

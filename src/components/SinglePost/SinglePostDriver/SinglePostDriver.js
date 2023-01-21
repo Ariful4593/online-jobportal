@@ -6,7 +6,7 @@ export const placeBidFnc = (singlePost, bidAmount, projectDelivered, describePro
     newData.describeProposal = describeProposal;
 
 
-    fetch('https://online-jobplace.herokuapp.com/placeBid', {
+    fetch('https://online-jobplace-server-production.up.railway.app/placeBid', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ projectOwnerId: userId, projectId: id, bidderName: userLoginInfo.name, bidderEmail: userLoginInfo.email, bidAmount: newData.bidAmount, projectDeliveredInDay: newData.projectDelivered, describeProposal: newData.describeProposal, userLoginId: userLoginInfo._id, proposalId: proposalId })

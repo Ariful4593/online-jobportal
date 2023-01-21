@@ -16,7 +16,7 @@ export default function IsVerified({ codeData, handleChangeOTP }) {
         window.confirmationResult
             .confirm(opt_number)
             .then((confirmationResult) => {
-                fetch('https://online-jobplace.herokuapp.com/phoneVerify', {
+                fetch('https://online-jobplace-server-production.up.railway.app/phoneVerify', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ verify: 'Verified', id: profileData[0]._id })

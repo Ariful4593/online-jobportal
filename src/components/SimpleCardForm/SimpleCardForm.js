@@ -46,7 +46,7 @@ const SimpleCardForm = ({ employer, jobSeaker }) => {
         event.preventDefault();
         setDots(true);
         if (!user.name) {
-            fetch('https://online-jobplace.herokuapp.com/userLoginInfo', {
+            fetch('https://online-jobplace-server-production.up.railway.app/userLoginInfo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ const SimpleCardForm = ({ employer, jobSeaker }) => {
                     }
                 })
         } else {
-            fetch('https://online-jobplace.herokuapp.com/userSignup', {
+            fetch('https://online-jobplace-server-production.up.railway.app/userSignup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)

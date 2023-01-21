@@ -26,7 +26,7 @@ const Admin = () => {
     document.title = "Admin || Dashboard";
     const [, setUserData] = useState([])
     useEffect(() => {
-        fetch('https://online-jobplace.herokuapp.com/getUserData')
+        fetch('https://online-jobplace-server-production.up.railway.app/getUserData')
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [])

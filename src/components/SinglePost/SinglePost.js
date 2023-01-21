@@ -14,7 +14,7 @@ const SinglePost = ({ id, userId }) => {
     const history = useHistory();
     useEffect(() => {
         let isMounted = true;
-        fetch('https://online-jobplace.herokuapp.com/getPostProject', {
+        fetch('https://online-jobplace-server-production.up.railway.app/getPostProject', {
             headers: {
                 'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             }

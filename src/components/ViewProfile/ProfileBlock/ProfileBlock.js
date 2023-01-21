@@ -22,7 +22,7 @@ const ProfileBlock = ({ profileId }) => {
         const formData = new FormData();
         formData.append('file', newFile)
         formData.append('_id', profileData[0]._id)
-        fetch('https://online-jobplace.herokuapp.com/editPhoto', {
+        fetch('https://online-jobplace-server-production.up.railway.app/editPhoto', {
             method: 'POST',
             body: formData,
         })

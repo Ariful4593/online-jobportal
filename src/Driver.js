@@ -1,6 +1,6 @@
 export const singleProfileId = async (profileId, setProposalUser) => {
     if (profileId) {
-        const response = await fetch(`https://online-jobplace.herokuapp.com/proposal-userData/${profileId}`, {
+        const response = await fetch(`https://online-jobplace-server-production.up.railway.app/proposal-userData/${profileId}`, {
             headers: {
                 'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             },
@@ -12,13 +12,13 @@ export const singleProfileId = async (profileId, setProposalUser) => {
 }
 
 export const getSingleUserByEmail = async (setUserData) => {
-    const response = await fetch(`https://online-jobplace.herokuapp.com/singleUser`, {
+    const response = await fetch(`https://online-jobplace-server-production.up.railway.app/singleUser`, {
         headers: {
             'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
     })
     const data = await response.json();
-    const getDataByEmail = await fetch(`https://online-jobplace.herokuapp.com/singleUserByEmail/${data.email}`, {
+    const getDataByEmail = await fetch(`https://online-jobplace-server-production.up.railway.app/singleUserByEmail/${data.email}`, {
         headers: {
             'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         },
@@ -29,7 +29,7 @@ export const getSingleUserByEmail = async (setUserData) => {
 
 export const getPostProjectData = (setGetPostData, history) => {
     let isMounted = true;
-    fetch(`https://online-jobplace.herokuapp.com/getPostProject`, {
+    fetch(`https://online-jobplace-server-production.up.railway.app/getPostProject`, {
         headers: {
             'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
@@ -52,7 +52,7 @@ export const getPostProjectData = (setGetPostData, history) => {
 
 export const getAuthUser = (setUser, history) => {
     let isMounted = true;
-    fetch('https://online-jobplace.herokuapp.com/singleUser', {
+    fetch('https://online-jobplace-server-production.up.railway.app/singleUser', {
         headers: {
             'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }

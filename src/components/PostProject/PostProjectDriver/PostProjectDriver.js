@@ -117,7 +117,7 @@ export const handleClickOpenFnc = (userInfo, loginInfo, budgetData, budgetState,
     formData.append('urgentDay', loginInfo.days ? loginInfo.days : '');
     formData.append('whatTypeContestRun', loginInfo.whatTypeContestRun ? loginInfo.whatTypeContestRun : '');
 
-    fetch('https://online-jobplace.herokuapp.com/postProject', {
+    fetch('https://online-jobplace-server-production.up.railway.app/postProject', {
         method: 'POST',
         headers: {
             'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`

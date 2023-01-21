@@ -18,7 +18,7 @@ const ViewBidInsights = () => {
     }, [])
 
     useEffect(() => {
-        fetch('https://online-jobplace.herokuapp.com/getPostProject', {
+        fetch('https://online-jobplace-server-production.up.railway.app/getPostProject', {
             headers: {
                 'authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
             }

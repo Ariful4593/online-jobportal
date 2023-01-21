@@ -22,7 +22,7 @@ import ViewBidInsights from "./components/ViewBidInsights/ViewBidInsights";
 export const collectionContext = createContext()
 function App() {
 
-  // https://online-jobplace.herokuapp.com/
+  // https://online-jobplace-server-production.up.railway.app/
   const [userAuth, setUserAuth] = useState([]);
   const [loginInfo, setLoginInfo] = useState({});
   const [userName, setUserName] = useState('');
